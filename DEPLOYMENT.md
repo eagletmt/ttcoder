@@ -14,6 +14,14 @@
     - logging
 
 ## Initial setup
+### System configuration
+The systemd units [ttcoder.service](systemd/ttcoder.service) and [ttcoder-crawler.service](systemd/ttcoder-crawler.service) assumes that:
+
+- `ttcoder` user exists
+- rbenv is installed system-wide in /usr/local/rbenv
+
+### ttcoder configuration
+
 Local host:
 
 ```sh
