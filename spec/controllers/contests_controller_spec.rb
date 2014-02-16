@@ -32,6 +32,23 @@ describe ContestsController do
     end
   end
 
+  describe '#create' do
+    context 'with empty name' do
+      let(:contest_name) { '' }
+      let(:contest_message) { 'Something went wrong' }
+      let(:contest_params) { { name: contest_name, message: contest_message} }
+
+      it 'rejects' do
+        post :create, contest: contest_params
+        expect(response).to be_ok
+        expect(response).to render_template(:new)
+        contest = assigns(:contest)
+        expect(contest.errors[:name]).not_to be_empty
+        expect(contest.message).to eq(contest.message)
+      end
+    end
+  end
+
   describe '#show' do
     it 'assigns @standing' do
       get :show, id: contest.name

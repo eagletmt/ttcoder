@@ -38,7 +38,6 @@ class ContestsController < ApplicationController
       redirect_to @contest, notice: 'Contest was successfully created.'
     else
       render action: 'new'
-      render json: @contest.errors, status: :unprocessable_entity
     end
   end
 
