@@ -1,4 +1,6 @@
 # TokyoTechCoder
+[![Build Status](https://secure.travis-ci.org/eagletmt/ttcoder.png)](https://travis-ci.org/eagletmt/ttcoder)
+
 http://ttc.wanko.cc/
 
 ## Required packages

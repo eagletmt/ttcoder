@@ -24,7 +24,6 @@ Local host:
 
 ```sh
 bin/cap production deploy:setup
-bin/rake generate_secret_token
 bin/cap production db:upload_config
 bin/cap production secrets:upload
 ```

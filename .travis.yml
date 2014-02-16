@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+  - 2.0.0
+  - 2.1.0
+  - ruby-head
+bundler_args: --deployment -j4 --without production development
+before_install:
+  - export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
+before_script:
+  - cp config/database.yml.sample config/database.yml
+  - cp config/secrets.yml.sample config/secrets.yml
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - rake db:migrate RAILS_ENV=test
+matrix:
+  allow_failures:
+    - rvm: ruby-head
