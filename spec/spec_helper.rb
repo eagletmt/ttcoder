@@ -3,13 +3,17 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-if ENV['COVERAGE'].to_i != 0
-  require 'simplecov'
-  SimpleCov.start 'rails'
-end
+require 'simplecov'
+require 'coveralls'
 require 'capybara/rspec'
 require 'webmock/rspec'
 require 'vcr'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter,
+]
+SimpleCov.start 'rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
