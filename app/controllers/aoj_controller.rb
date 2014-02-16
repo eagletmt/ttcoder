@@ -1,0 +1,2 @@
+class AojController < SiteProblemsController
+end

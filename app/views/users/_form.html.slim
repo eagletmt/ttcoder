@@ -1,0 +1,25 @@
+= form_for(@user, url: update_user_path) do |f|
+  - if @user.errors.any?
+    .alert
+      h2 Error
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li= msg
+
+  table
+    tbody
+      tr
+        td= f.label :name
+        td= f.text_field :name
+      tr
+        td= f.label :poj_user
+        td= f.text_field :poj_user
+        td.help-text= "Leave this field blank if it's the same with #{User.human_attribute_name(:name)}"
+      tr
+        td= f.label :aoj_user
+        td= f.text_field :aoj_user
+        td.help-text= "Leave this field blank if it's the same with #{User.human_attribute_name(:name)}"
+  - if @from_contest
+    = hidden_field_tag :from_contest, @from_contest
+  div
+    = f.submit(@user.create_button_text(@from_contest))

@@ -1,0 +1,6 @@
+- content_for :title, 'Tags'
+h1= yield :title
+
+ul
+  - @tags.each do |tag|
+    li= link_to "#{tag.name} (#{tag.count})", tag_path(tag.name)

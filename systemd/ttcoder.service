@@ -1,0 +1,23 @@
+[Unit]
+Description=Tokyo Tech Coder
+After=nginx.service postgresql.service redis.service
+Wants=nginx.service postgresql.service redis.service
+
+[Service]
+Type=forking
+User=ttcoder
+Environment=BUNDLE_GEMFILE=/home/ttcoder/deploy/current/Gemfile
+Environment=RBENV_ROOT=/usr/local/rbenv
+Environment=RBENV_VERSION=2.1.0
+WorkingDirectory=/home/ttcoder/deploy/current
+ExecStart=/usr/local/rbenv/shims/bundle exec unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production -D
+ExecReload=/bin/kill -HUP $MAINPID
+ExecRestart=/bin/kill -USR2 $MAINPID
+ExecRestart=/usr/bin/sleep 2
+ExecRestart=/bin/kill -QUIT $MAINPID
+ExecStop=/bin/kill -QUIT $MAINPID
+Restart=always
+PIDFile=/home/ttcoder/deploy/current/tmp/pids/unicorn.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+LineLength:
+  Max: 120
+RegexpLiteral:
+  MaxSlashes: 0
+
+Documentation:
+  Enabled: false
+IfUnlessModifier:
+  Enabled: false
+Lambda:
+  Enabled: false

@@ -1,0 +1,22 @@
+- content_for :title, "Edit tags of #{@problem.description}"
+h1= yield :title
+
+- if alert
+  p.alert= alert
+- if notice
+  p.notice= notice
+
+div
+  = form_tag(update_problem_tags_path(@problem)) do
+    ul.tags.float-listing
+      - @tags.each do |tag|
+        li.tag
+          = check_box_tag 'tags[]', tag.name, @problem.tags.exists?(tag), id: "tag_#{tag.name}"
+          = label_tag "tag_#{tag.name}", tag.name, class: %w[tag-text]
+    div= submit_tag 'Update tags'
+
+div
+  h2 New tag
+  = form_for(@tag) do |f|
+    = f.text_field :name, placeholder: 'new tag name'
+    = f.submit 'Create'

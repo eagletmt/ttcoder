@@ -1,0 +1,26 @@
+@import "mixins";
+@import "variables";
+
+.tags {
+  margin-bottom: 1.5em;
+}
+
+.tag {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  @include flatter-gradient-background(lighten(saturate($link-button-bg, 50%), 30%));
+  color: #444;
+  a {
+    text-decoration: none;
+    padding-left: $tag-margin;
+    padding-right: $tag-margin;
+    color: inherit;
+  }
+  input[type=checkbox] {
+    margin-left: $tag-margin;
+  }
+  .tag-text {
+    margin-left: $tag-margin;
+    padding-right: $tag-margin;
+  }
+}

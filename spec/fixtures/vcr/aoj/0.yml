@@ -1,0 +1,359 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://judge.u-aizu.ac.jp/onlinejudge/webservice/status_log?limit=10&start=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Access-Control-Allow-Origin:
+      - '*'
+      Content-Type:
+      - text/xml;charset=ISO-8859-1
+      Content-Length:
+      - '3635'
+      Date:
+      - Sat, 19 Oct 2013 14:22:30 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <status_list>
+        <status>
+        <run_id>
+        792259
+        </run_id>
+        <user_id>
+        lesliealantam
+        </user_id>
+        <problem_id>
+        0002
+        </problem_id>
+        <submission_date>
+        1382192539767
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:22:19
+        </submission_date_str>
+        <status>
+        Accepted
+        </status>
+        <language>
+        C++
+        </language>
+        <cputime>
+        0
+        </cputime>
+        <memory>
+        1160
+        </memory>
+        <code_size>
+        266
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792258
+        </run_id>
+        <user_id>
+        okaoka
+        </user_id>
+        <problem_id>
+        2401
+        </problem_id>
+        <submission_date>
+        1382192406690
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:20:06
+        </submission_date_str>
+        <status>
+        Wrong Answer
+        </status>
+        <language>
+        C++
+        </language>
+        <cputime>
+        4
+        </cputime>
+        <memory>
+        1196
+        </memory>
+        <code_size>
+        2594
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792257
+        </run_id>
+        <user_id>
+        tetora1011
+        </user_id>
+        <problem_id>
+        10029
+        </problem_id>
+        <submission_date>
+        1382192374785
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:19:34
+        </submission_date_str>
+        <status>
+        Accepted
+        </status>
+        <language>
+        C
+        </language>
+        <cputime>
+        3
+        </cputime>
+        <memory>
+        1260
+        </memory>
+        <code_size>
+        683
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792256
+        </run_id>
+        <user_id>
+        kayabuyama8x
+        </user_id>
+        <problem_id>
+        0099
+        </problem_id>
+        <submission_date>
+        1382192348742
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:19:08
+        </submission_date_str>
+        <status>
+        Wrong Answer
+        </status>
+        <language>
+        Python
+        </language>
+        <cputime>
+        9
+        </cputime>
+        <memory>
+        4356
+        </memory>
+        <code_size>
+        804
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792255
+        </run_id>
+        <user_id>
+        tetora1011
+        </user_id>
+        <problem_id>
+        10028
+        </problem_id>
+        <submission_date>
+        1382192304966
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:18:24
+        </submission_date_str>
+        <status>
+        Accepted
+        </status>
+        <language>
+        C
+        </language>
+        <cputime>
+        0
+        </cputime>
+        <memory>
+        648
+        </memory>
+        <code_size>
+        681
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792254
+        </run_id>
+        <user_id>
+        kayabuyama8x
+        </user_id>
+        <problem_id>
+        0099
+        </problem_id>
+        <submission_date>
+        1382192249767
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:17:29
+        </submission_date_str>
+        <status>
+        Runtime Error
+        </status>
+        <language>
+        Python
+        </language>
+        <cputime>
+        2
+        </cputime>
+        <memory>
+        4264
+        </memory>
+        <code_size>
+        798
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792253
+        </run_id>
+        <user_id>
+        uaa
+        </user_id>
+        <problem_id>
+        0557
+        </problem_id>
+        <submission_date>
+        1382192144044
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:15:44
+        </submission_date_str>
+        <status>
+        Accepted
+        </status>
+        <language>
+        C++
+        </language>
+        <cputime>
+        0
+        </cputime>
+        <memory>
+        1048
+        </memory>
+        <code_size>
+        659
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792252
+        </run_id>
+        <user_id>
+        okaoka
+        </user_id>
+        <problem_id>
+        2401
+        </problem_id>
+        <submission_date>
+        1382192141128
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:15:41
+        </submission_date_str>
+        <status>
+        Wrong Answer
+        </status>
+        <language>
+        C++
+        </language>
+        <cputime>
+        2
+        </cputime>
+        <memory>
+        1196
+        </memory>
+        <code_size>
+        2596
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792251
+        </run_id>
+        <user_id>
+        ENIXERvsREXINE
+        </user_id>
+        <problem_id>
+        2155
+        </problem_id>
+        <submission_date>
+        1382192132943
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:15:32
+        </submission_date_str>
+        <status>
+        Accepted
+        </status>
+        <language>
+        JAVA
+        </language>
+        <cputime>
+        831
+        </cputime>
+        <memory>
+        84232
+        </memory>
+        <code_size>
+        880
+        </code_size>
+        </status>
+        <status>
+        <run_id>
+        792250
+        </run_id>
+        <user_id>
+        kagamiz
+        </user_id>
+        <problem_id>
+        1056
+        </problem_id>
+        <submission_date>
+        1382192121398
+        </submission_date>
+        <submission_date_str>
+        Sat Oct 19 23:15:21
+        </submission_date_str>
+        <status>
+        Wrong Answer
+        </status>
+        <language>
+        C++
+        </language>
+        <cputime>
+        60
+        </cputime>
+        <memory>
+        3428
+        </memory>
+        <code_size>
+        691
+        </code_size>
+        </status>
+        </status_list>
+    http_version: 
+  recorded_at: Sat, 19 Oct 2013 14:22:31 GMT
+recorded_with: VCR 2.6.0

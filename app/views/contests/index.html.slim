@@ -1,0 +1,15 @@
+- content_for :title, 'Contests'
+h1= yield :title
+
+table.contests
+  thead
+    tr
+      th Name
+      th Created
+      th Message
+  tbody
+    - @contests.each do |contest|
+      tr
+        td.name-cell= link_to(contest.name, contest)
+        td= contest.created_at.strftime('%F')
+        td= contest.message

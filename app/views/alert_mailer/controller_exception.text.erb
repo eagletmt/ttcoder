@@ -1,0 +1,7 @@
+Caught a controller exception <%= @class_name %> !
+
+<%= @message %>
+
+<%- @backtrace.each do |bt| %>
+<%= bt %>
+<%- end %>

@@ -1,0 +1,2 @@
+class PojController < SiteProblemsController
+end

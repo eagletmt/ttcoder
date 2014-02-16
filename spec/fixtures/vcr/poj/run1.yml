@@ -1,0 +1,246 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://poj.org/status?size=10&top=100000000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 19 Oct 2013 14:58:58 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - JSESSIONID=199D162D7B43BE080BDEA8EFD94F421A; Path=/
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: "<html><head><meta http-equiv=\"Pragma\" content=\"no-cache\"><meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta http-equiv=\"Content-Language\"
+        content=\"en-US\"><title>Problem Status List</title><link rel=stylesheet href='poj.css'
+        type='text/css'><link rel='shortcut icon' href='poj.ico'><link rel='icon'
+        href='poj.gif' type='image/gif'><script src='poj.js' language='javascript'></script></head><body
+        lang=\"en-US\" leftmargin=5 link=blue alink=blue vlink=blue onkeydown=KeyDown(event)
+        onload=setRefresh(6) ><a name=top></a><TABLE style='BORDER-COLLAPSE: collapse'
+        borderColor=#ffffff width=100% border=1><TBODY><TR><TD align=CENTER colSpan=5><table
+        class=h1 cellpadding=0><tr><td width=25% align=left><img src='images/logo1.jpg'
+        height=100 border=0></td><td colspan=3 bgcolor='#EAEFFD'><table class=h2><tr><td><img
+        border=0 src='images/logo0.gif' width=450 height=90></td><td width=95><img
+        border=0 src='images/logo3.gif' width=95 height=95></td></tr></table></td></tr></table></TD></TR><TR
+        vAlign=top align=CENTER bgColor=#6589d1><TH class=h>Online Judge</TH><TH class=h>Problem
+        Set</TH><TH class=h>Authors</TH><TH class=h>Online Contests</TH><TH class=h>User</TH></TR><TR
+        vAlign=top align=CENTER bgColor='#f1f1fd'><TD class='h' onMouseOver='scbg(this,
+        1)' onMouseOut='scbg(this, 0)'><A href='bbs'>Web Board</A><BR><A href='./'>Home
+        Page</A><BR><A href='page?id=1000' target=_blank>F.A.Qs</A><BR><a href='chart'>Statistical
+        Charts</a></TD><TD class='h' onMouseOver='scbg(this, 1)' onMouseOut='scbg(this,
+        0)'><FORM action=gotoproblem method=get><A href='problemlist'>Problems</A><BR><A
+        href='submit'>Submit Problem</A><BR><A href='status'>Online Status</A><BR><font
+        color=blue>Prob.ID:</font><input type=text name=pid size=6><input type=Submit
+        value=Go name=pb1></form></td><TD class='h' onMouseOver='scbg(this,1)' onMouseOut='scbg(this,0)'><form
+        method=GET action=searchuser><a href=register>Register</a><br><a href=modifyuser>Update
+        your info</a><br><a href=userlist>Authors ranklist</a><br><input type=text
+        name=key size=10><input type=Submit value=Search name=B1></form></TD>\n<TD
+        class=h onMouseOver='scbg(this,1)' onMouseOut='scbg(this,0)'><font color=#1a5cc8>Current
+        Contest</font><br><a href=pastcontests>Past Contests</a><br><a href=contests>Scheduled
+        Contests</a><br><a href=challenge.html target=_blank><font color=red>Award
+        Contest</font></a></td><TD align=left class=h onMouseOver='scbg(this,1)' onMouseOut='scbg(this,0)'><form
+        method=POST action=login><table><tr><td>User ID:</td><td><input type=text
+        name=user_id1 size=10 style='font-family:monospace'></td></tr><tr><td>Password:</td><td><input
+        type=password name=password1 size=10 style='font-family:monospace'></td></tr></table><input
+        type=Submit value=login name=B1>&nbsp;&nbsp;<a href=register target=_parent>Register</a><input
+        type=hidden name=url value=/status?size=10&top=100000000></form></td></TR></TABLE><p
+        align=center><font size=4 color=#333399>Problem Status List</font></p><form
+        method=get action=status>Problem ID:<input type=text name=problem_id size=8
+        value=\"\">User ID:<input type=text name=user_id size=15 value=\"\">Result:<select
+        size=1 name=result><option value='' selected>All</option><option value=0>Accepted</option><option
+        value=1>Presentation Error</option><option value=2>Time Limit Exceeded</option><option
+        value=3>Memory Limit Exceeded</option><option value=4>Wrong Answer</option><option
+        value=5>Runtime Error</option><option value=6>Output Limit Exceeded</option><option
+        value=7>Compile Error</option></select>Language:<select size=1 name=language><option
+        value=''  selected>All</option><option value=0>G++</option><option value=1>GCC</option><option
+        value=2>Java</option><option value=3>Pascal</option><option value=4>C++</option><option
+        value=5>C</option><option value=6>Fortran</option></select><input type=submit
+        width=8 value=Go></form><TABLE cellSpacing=0 cellPadding=0 width=100% border=1
+        class=a bordercolor=#FFFFFF><tr class=in><td width=8%>Run ID</td><td width=10%>User</td><td
+        width=6%>Problem</td><td width=20%>Result</td><td width=7%>Memory</td><td
+        width=7%>Time</td><td width=7%>Language</td><td width=7%>Code Length</td><td
+        width=17%>Submit Time</td></tr>\n<tr align=center><td>12221478</td><td><a
+        href=userstatus?user_id=129074317zt>129074317zt</a></td><td><a href=problem?id=1068>1068</a></td><td><font
+        color=green>Running & Judging</font></td><td></td><td></td><td>C</td><td>429B</td><td>2013-10-19
+        23:00:56</td></tr>\n<tr align=center><td>12221477</td><td><a href=userstatus?user_id=vjudge4>vjudge4</a></td><td><a
+        href=problem?id=2455>2455</a></td><td><font color=red>Time Limit Exceeded</font></td><td></td><td></td><td>G++</td><td>3713B</td><td>2013-10-19
+        23:00:46</td></tr>\n<tr align=center><td>12221476</td><td><a href=userstatus?user_id=zengzilong123>zengzilong123</a></td><td><a
+        href=problem?id=1003>1003</a></td><td><font color=red>Presentation Error</font></td><td></td><td></td><td>C</td><td>270B</td><td>2013-10-19
+        23:00:24</td></tr>\n<tr align=center><td>12221475</td><td><a href=userstatus?user_id=hykych>hykych</a></td><td><a
+        href=problem?id=3415>3415</a></td><td><font color=red>Time Limit Exceeded</font></td><td></td><td></td><td>C++</td><td>2730B</td><td>2013-10-19
+        23:00:13</td></tr>\n<tr align=center><td>12221474</td><td><a href=userstatus?user_id=aq2sr>aq2sr</a></td><td><a
+        href=problem?id=3050>3050</a></td><td><font color=red>Wrong Answer</font></td><td></td><td></td><td>C++</td><td>1181B</td><td>2013-10-19
+        22:59:57</td></tr>\n<tr align=center><td>12221473</td><td><a href=userstatus?user_id=1030690116>1030690116</a></td><td><a
+        href=problem?id=3159>3159</a></td><td><font color=red>Wrong Answer</font></td><td></td><td></td><td>G++</td><td>1340B</td><td>2013-10-19
+        22:59:17</td></tr>\n<tr align=center><td>12221472</td><td><a href=userstatus?user_id=xujie36>xujie36</a></td><td><a
+        href=problem?id=1000>1000</a></td><td><font color=blue>Accepted</font></td><td>216K</td><td>0MS</td><td>C++</td><td>128B</td><td>2013-10-19
+        22:59:02</td></tr>\n<tr align=center><td>12221471</td><td><a href=userstatus?user_id=Heisenberg>Heisenberg</a></td><td><a
+        href=problem?id=1009>1009</a></td><td><font color=blue>Accepted</font></td><td>348K</td><td>32MS</td><td>C++</td><td>2717B</td><td>2013-10-19
+        22:58:45</td></tr>\n<tr align=center><td>12221470</td><td><a href=userstatus?user_id=huangyeshenqi123>huangyeshenqi123</a></td><td><a
+        href=problem?id=3268>3268</a></td><td><font color=red>Wrong Answer</font></td><td></td><td></td><td>C++</td><td>1863B</td><td>2013-10-19
+        22:58:33</td></tr>\n<tr align=center><td>12221469</td><td><a href=userstatus?user_id=myzee>myzee</a></td><td><a
+        href=problem?id=2762>2762</a></td><td><font color=blue>Accepted</font></td><td>288K</td><td>375MS</td><td>C++</td><td>2625B</td><td>2013-10-19
+        22:58:18</td></tr>\n</table>\n<p align=center>[<a href=status?size=10>Top</a>]&nbsp;&nbsp;[<a
+        href=status?size=10&bottom=12221478><font color=blue>Previous Page</font></a>]&nbsp;&nbsp;[<a
+        href=status?size=10&top=12221469><font color=blue>Next Page</font></a>]&nbsp;&nbsp;</p>\n<p><img
+        height=30 src=images/home.gif width=40 border=0><font size=3><a href=.>Home
+        Page</a> </font>&nbsp;&nbsp;<img height=30 src='images/goback.gif' width=40
+        border=0><font size=3><a href='javascript:history.go(-1)'>Go Back</a>&nbsp;&nbsp;<img
+        height=30 width=40 border=0 src='images/top.gif'><a href=#top>To top</a></font><br><hr><P
+        align=center style='font-family:Arial, Helvetica, sans-serif'>All Rights Reserved
+        2003-2013 Ying Fuchen,Xu Pengcheng,Xie Di<br>Any problem, Please <a href=mailto:webmaster@poj.org>Contact
+        Administrator</a></p><script type=\"text/javascript\"> var _gaq = _gaq ||
+        []; _gaq.push(['_setAccount', 'UA-790353-1']); _gaq.push(['_trackPageview']);
+        (function() { var ga = document.createElement('script'); ga.type = 'text/javascript';
+        ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+        : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s); })(); </script></body></html>\r\n"
+    http_version: 
+  recorded_at: Sat, 19 Oct 2013 15:01:12 GMT
+- request:
+    method: get
+    uri: http://poj.org/status?size=10&top=12221469
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 19 Oct 2013 14:58:58 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - JSESSIONID=25089B29CAAF747EC6E431A1C2F821BB; Path=/
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: "<html><head><meta http-equiv=\"Pragma\" content=\"no-cache\"><meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta http-equiv=\"Content-Language\"
+        content=\"en-US\"><title>Problem Status List</title><link rel=stylesheet href='poj.css'
+        type='text/css'><link rel='shortcut icon' href='poj.ico'><link rel='icon'
+        href='poj.gif' type='image/gif'><script src='poj.js' language='javascript'></script></head><body
+        lang=\"en-US\" leftmargin=5 link=blue alink=blue vlink=blue onkeydown=KeyDown(event)
+        onload=setRefresh(6) ><a name=top></a><TABLE style='BORDER-COLLAPSE: collapse'
+        borderColor=#ffffff width=100% border=1><TBODY><TR><TD align=CENTER colSpan=5><table
+        class=h1 cellpadding=0><tr><td width=25% align=left><img src='images/logo1.jpg'
+        height=100 border=0></td><td colspan=3 bgcolor='#EAEFFD'><table class=h2><tr><td><img
+        border=0 src='images/logo0.gif' width=450 height=90></td><td width=95><img
+        border=0 src='images/logo3.gif' width=95 height=95></td></tr></table></td></tr></table></TD></TR><TR
+        vAlign=top align=CENTER bgColor=#6589d1><TH class=h>Online Judge</TH><TH class=h>Problem
+        Set</TH><TH class=h>Authors</TH><TH class=h>Online Contests</TH><TH class=h>User</TH></TR><TR
+        vAlign=top align=CENTER bgColor='#f1f1fd'><TD class='h' onMouseOver='scbg(this,
+        1)' onMouseOut='scbg(this, 0)'><A href='bbs'>Web Board</A><BR><A href='./'>Home
+        Page</A><BR><A href='page?id=1000' target=_blank>F.A.Qs</A><BR><a href='chart'>Statistical
+        Charts</a></TD><TD class='h' onMouseOver='scbg(this, 1)' onMouseOut='scbg(this,
+        0)'><FORM action=gotoproblem method=get><A href='problemlist'>Problems</A><BR><A
+        href='submit'>Submit Problem</A><BR><A href='status'>Online Status</A><BR><font
+        color=blue>Prob.ID:</font><input type=text name=pid size=6><input type=Submit
+        value=Go name=pb1></form></td><TD class='h' onMouseOver='scbg(this,1)' onMouseOut='scbg(this,0)'><form
+        method=GET action=searchuser><a href=register>Register</a><br><a href=modifyuser>Update
+        your info</a><br><a href=userlist>Authors ranklist</a><br><input type=text
+        name=key size=10><input type=Submit value=Search name=B1></form></TD>\n<TD
+        class=h onMouseOver='scbg(this,1)' onMouseOut='scbg(this,0)'><font color=#1a5cc8>Current
+        Contest</font><br><a href=pastcontests>Past Contests</a><br><a href=contests>Scheduled
+        Contests</a><br><a href=challenge.html target=_blank><font color=red>Award
+        Contest</font></a></td><TD align=left class=h onMouseOver='scbg(this,1)' onMouseOut='scbg(this,0)'><form
+        method=POST action=login><table><tr><td>User ID:</td><td><input type=text
+        name=user_id1 size=10 style='font-family:monospace'></td></tr><tr><td>Password:</td><td><input
+        type=password name=password1 size=10 style='font-family:monospace'></td></tr></table><input
+        type=Submit value=login name=B1>&nbsp;&nbsp;<a href=register target=_parent>Register</a><input
+        type=hidden name=url value=/status?size=10&top=12221469></form></td></TR></TABLE><p
+        align=center><font size=4 color=#333399>Problem Status List</font></p><form
+        method=get action=status>Problem ID:<input type=text name=problem_id size=8
+        value=\"\">User ID:<input type=text name=user_id size=15 value=\"\">Result:<select
+        size=1 name=result><option value='' selected>All</option><option value=0>Accepted</option><option
+        value=1>Presentation Error</option><option value=2>Time Limit Exceeded</option><option
+        value=3>Memory Limit Exceeded</option><option value=4>Wrong Answer</option><option
+        value=5>Runtime Error</option><option value=6>Output Limit Exceeded</option><option
+        value=7>Compile Error</option></select>Language:<select size=1 name=language><option
+        value=''  selected>All</option><option value=0>G++</option><option value=1>GCC</option><option
+        value=2>Java</option><option value=3>Pascal</option><option value=4>C++</option><option
+        value=5>C</option><option value=6>Fortran</option></select><input type=submit
+        width=8 value=Go></form><TABLE cellSpacing=0 cellPadding=0 width=100% border=1
+        class=a bordercolor=#FFFFFF><tr class=in><td width=8%>Run ID</td><td width=10%>User</td><td
+        width=6%>Problem</td><td width=20%>Result</td><td width=7%>Memory</td><td
+        width=7%>Time</td><td width=7%>Language</td><td width=7%>Code Length</td><td
+        width=17%>Submit Time</td></tr>\n<tr align=center><td>12221468</td><td><a
+        href=userstatus?user_id=oilover>oilover</a></td><td><a href=problem?id=3093>3093</a></td><td><font
+        color=red>Wrong Answer</font></td><td></td><td></td><td>C++</td><td>789B</td><td>2013-10-19
+        22:57:55</td></tr>\n<tr align=center><td>12221467</td><td><a href=userstatus?user_id=cheerayhuang>cheerayhuang</a></td><td><a
+        href=problem?id=1922>1922</a></td><td><font color=blue>Accepted</font></td><td>704K</td><td>94MS</td><td>G++</td><td>623B</td><td>2013-10-19
+        22:57:54</td></tr>\n<tr align=center><td>12221466</td><td><a href=userstatus?user_id=zengzilong123>zengzilong123</a></td><td><a
+        href=problem?id=1003>1003</a></td><td><font color=red>Wrong Answer</font></td><td></td><td></td><td>C</td><td>257B</td><td>2013-10-19
+        22:57:50</td></tr>\n<tr align=center><td>12221465</td><td><a href=userstatus?user_id=xujie36>xujie36</a></td><td><a
+        href=problem?id=1000>1000</a></td><td><a href=showcompileinfo?solution_id=12221465
+        target=_blank><font color=green>Compile Error</font></a></td><td></td><td></td><td>GCC</td><td>140B</td><td>2013-10-19
+        22:57:24</td></tr>\n<tr align=center><td>12221464</td><td><a href=userstatus?user_id=vjudge2>vjudge2</a></td><td><a
+        href=problem?id=3415>3415</a></td><td><font color=red>Time Limit Exceeded</font></td><td></td><td></td><td>C++</td><td>2633B</td><td>2013-10-19
+        22:57:19</td></tr>\n<tr align=center><td>12221463</td><td><a href=userstatus?user_id=DTC8954>DTC8954</a></td><td><a
+        href=problem?id=1000>1000</a></td><td><font color=blue>Accepted</font></td><td>132K</td><td>0MS</td><td>C</td><td>177B</td><td>2013-10-19
+        22:56:54</td></tr>\n<tr align=center><td>12221462</td><td><a href=userstatus?user_id=oilover>oilover</a></td><td><a
+        href=problem?id=3093>3093</a></td><td><font color=red>Wrong Answer</font></td><td></td><td></td><td>C++</td><td>785B</td><td>2013-10-19
+        22:56:42</td></tr>\n<tr align=center><td>12221461</td><td><a href=userstatus?user_id=Xaelias>Xaelias</a></td><td><a
+        href=problem?id=2011>2011</a></td><td><font color=red>Time Limit Exceeded</font></td><td></td><td></td><td>G++</td><td>7820B</td><td>2013-10-19
+        22:56:35</td></tr>\n<tr align=center><td>12221460</td><td><a href=userstatus?user_id=myzee>myzee</a></td><td><a
+        href=problem?id=2186>2186</a></td><td><font color=blue>Accepted</font></td><td>3860K</td><td>94MS</td><td>C++</td><td>2348B</td><td>2013-10-19
+        22:56:26</td></tr>\n<tr align=center><td>12221459</td><td><a href=userstatus?user_id=ort0011>ort0011</a></td><td><a
+        href=problem?id=1906>1906</a></td><td><font color=red>Wrong Answer</font></td><td></td><td></td><td>Java</td><td>795B</td><td>2013-10-19
+        22:55:50</td></tr>\n</table>\n<p align=center>[<a href=status?size=10>Top</a>]&nbsp;&nbsp;[<a
+        href=status?size=10&bottom=12221468><font color=blue>Previous Page</font></a>]&nbsp;&nbsp;[<a
+        href=status?size=10&top=12221459><font color=blue>Next Page</font></a>]&nbsp;&nbsp;</p>\n<p><img
+        height=30 src=images/home.gif width=40 border=0><font size=3><a href=.>Home
+        Page</a> </font>&nbsp;&nbsp;<img height=30 src='images/goback.gif' width=40
+        border=0><font size=3><a href='javascript:history.go(-1)'>Go Back</a>&nbsp;&nbsp;<img
+        height=30 width=40 border=0 src='images/top.gif'><a href=#top>To top</a></font><br><hr><P
+        align=center style='font-family:Arial, Helvetica, sans-serif'>All Rights Reserved
+        2003-2013 Ying Fuchen,Xu Pengcheng,Xie Di<br>Any problem, Please <a href=mailto:webmaster@poj.org>Contact
+        Administrator</a></p><script type=\"text/javascript\"> var _gaq = _gaq ||
+        []; _gaq.push(['_setAccount', 'UA-790353-1']); _gaq.push(['_trackPageview']);
+        (function() { var ga = document.createElement('script'); ga.type = 'text/javascript';
+        ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+        : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s); })(); </script></body></html>\r\n"
+    http_version: 
+  recorded_at: Sat, 19 Oct 2013 15:01:13 GMT
+recorded_with: VCR 2.6.0

@@ -1,0 +1,53 @@
+// Place all the styles related to the contests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables";
+
+.status {
+  &.ac {
+    color: $success-color;
+  }
+  &.wa, &.tle, &.mle, &.re, &.ole {
+    color: $fail-color;
+  }
+  &.pe, &.ce {
+    color: $miss-color;
+  }
+
+  &.old {
+    background-color: hsla(40, 70%, 80%, 0.3);
+  }
+}
+
+.control-button {
+  margin-left: 1em;
+}
+
+.radio-label {
+  margin-right: 1em;
+}
+
+form .help-text {
+  font-size: 80%;
+  color: #888888;
+}
+
+.contests {
+  th, td {
+    text-align: left;
+    word-wrap: break-word;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    line-height: 1.5em;
+  }
+  th {
+    border-bottom: 2px solid #ddd;
+  }
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+  .name-cell {
+    max-width: 10em;
+  }
+}

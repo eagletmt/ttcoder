@@ -1,0 +1,22 @@
+@mixin placeholder-color($color) {
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+@function flatter-gradient($color) {
+  @return linear-gradient($color, darken($color, 5%));
+}
+
+@mixin flatter-gradient-background($color) {
+  background-image: flatter-gradient($color);
+  &:hover {
+    background-image: flatter-gradient(lighten($color, 10%));
+  }
+}
