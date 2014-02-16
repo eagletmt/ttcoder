@@ -7,7 +7,7 @@ set :application, 'ttcoder'
 set :scm, :git
 set :branch, 'master'
 set :deploy_to, '/home/ttcoder/deploy'
-set :repo_url, 'git@bitbucket.org:eagletmt/ttcoder.git'
+set :repo_url, 'https://github.com/eagletmt/ttcoder.git'
 
 set :user, 'ttcoder'
 set :use_sudo, false

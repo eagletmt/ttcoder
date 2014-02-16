@@ -38,7 +38,5 @@ sudo systemctl start ttcoder-crawler.service
 
 ## Deploy
 ```sh
-eval `ssh-agent`
-ssh-add
 bin/cap production deploy
 ```
