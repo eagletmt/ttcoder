@@ -1,4 +1,18 @@
 # Deployment
+
+## Required packages for production server
+- postgresql
+    - data store
+- redis
+    - session store
+    - codeboard
+- libxml2
+    - for nokogiri
+- libxslt
+    - for nokogiri
+- fluentd
+    - logging
+
 ## Initial setup
 Local host:
 
@@ -24,7 +38,12 @@ Local host:
 
 ```sh
 bin/cap production deploy:setup
+cp config/database.yml.sample config/database.yml
+vim config/database.yml
 bin/cap production db:upload_config
+cp config/secrets.yml.sample config/secrets.yml
+vim config/secrets.yml
+# Note: you can generate secret_key_base by bin/rake secret.
 bin/cap production secrets:upload
 ```
 
