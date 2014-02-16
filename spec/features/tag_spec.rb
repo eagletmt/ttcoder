@@ -71,7 +71,7 @@ feature 'Tags' do
     aoj_problem.save!
 
     visit '/'
-    click_link 'タグ一覧'
+    click_link 'Tags'
     expect(page).to have_link('simple (2)')
     expect(page).to have_link('dp (1)')
     expect(page).not_to have_link('parsing (0)')
@@ -81,7 +81,7 @@ feature 'Tags' do
     expect(page).to have_link('AOJ 1000')
 
     visit '/'
-    click_link 'タグ一覧'
+    click_link 'Tags'
     click_link 'dp (1)'
     expect(page).not_to have_link('POJ 1000')
     expect(page).to have_link('AOJ 1000')

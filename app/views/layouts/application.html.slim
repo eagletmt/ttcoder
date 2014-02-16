@@ -27,6 +27,7 @@ html lang="ja"
           li= link_to contest.name, contest
       = link_to 'View more contests', contests_path
       p= link_to 'Home', root_path
+      p= link_to 'Tags', tags_path
       p= link_to 'Codeboard', codeboard_path
       p.version-info= Rails.configuration.current_version
       - if @current_user
