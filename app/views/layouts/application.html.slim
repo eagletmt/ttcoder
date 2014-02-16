@@ -6,6 +6,7 @@ html lang="ja"
     title= format_title yield(:title)
     = csrf_meta_tags
     = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag '//code.highcharts.com/3.0.9/highcharts.js'
     = javascript_include_tag "application"
     - if Rails.env.production?
       - ga = Rails.application.secrets.google_analytics
