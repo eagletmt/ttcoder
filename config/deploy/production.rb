@@ -7,7 +7,5 @@ server(
   ssh_options: {
     user: 'ttcoder',
     keys: File.expand_path('~/.ssh/ttcoder.pem'),
-    port: 443,
-    auth_methods: %w[publickey],
   }
 )
