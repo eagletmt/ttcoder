@@ -18,6 +18,10 @@ div.home-users
   h2 Users
   = render partial: 'users/list'
 
+- repository_url = 'https://github.com/eagletmt/ttcoder'
+- issues_url = repository_url + '/issues'
 footer.clear
   p
-    |何か問題点や要望があれば #{link_to_twitter 'eagletmt'} や eagletmt@じーめーる へ。
+    |何か問題点や要望があれば #{link_to_twitter 'eagletmt'} や #{link_to 'eagletmt/ttcoder', issues_url} や eagletmt@じーめーる へ。
+    br
+    |#{simple_link_to repository_url}
