@@ -62,7 +62,9 @@ end
 
 group :test do
   gem 'rspec-rails', '3.0.0.beta1'
-  gem 'rspec-instafail'
+  gem 'fuubar', '>= 1.3.2'
+  # Let bundler find pre-released RSpec 3 depended by fuubar.
+  gem 'rspec', '3.0.0.beta1'
   gem 'factory_girl_rails'
   gem 'webrat'
   gem 'capybara', '>= 2.2.0'  # For RSpec 3
