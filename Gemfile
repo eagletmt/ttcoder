@@ -37,7 +37,6 @@ gem 'active_decorator'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'redis-rails'
-gem 'settingslogic'
 gem 'acts-as-taggable-on', '>= 3.0.0'
 
 group :doc do
