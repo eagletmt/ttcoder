@@ -1,20 +1,21 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "mixins";
-@import "variables";
+@import 'mixins';
+@import 'variables';
 
 %simple-list {
-  padding: 0;
   list-style-type: none;
+  padding: 0;
 }
 
 #left-bar {
   float: left;
-  width: $sidebar-width;
   margin-left: 8px;
   margin-right: 8px;
+  width: $sidebar-width;
   word-wrap: break-word;
+
   ul {
     @extend %simple-list;
   }
@@ -26,16 +27,22 @@
 }
 
 body {
-  color: $main-fg;
   background-color: $main-bg;
+  color: $main-fg;
 }
 
-h1, h2, h3, h4, h5, th {
+h1,
+h2,
+h3,
+h4,
+h5,
+th {
   font-weight: normal;
 }
+
 h1 {
-  padding-bottom: 5px;
   border-bottom: 1px solid darken($main-bg, 10%);;
+  padding-bottom: 5px;
 }
 
 a {
@@ -47,47 +54,52 @@ li {
 }
 
 form {
-  input[type=text], textarea {
-    border-radius: 3px;
-    border-width: 2px;
-    border-style: solid;
+  input[type=text],
+  textarea {
     border-color: darken($main-bg, 20%);
-    padding: 3px;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 2px;
     color: darken($main-fg, 10%);
+    padding: 3px;
     @include placeholder-color(lighten($main-fg, 5%));
   }
 }
 
 form input[type=submit] {
-  @include flatter-gradient-background($submit-bg);
-  color: white;
-  border: none;
+  border: 0;
   border-radius: 3px;
-  padding: 5px;
+  color: #fff;
   cursor: pointer;
   margin-right: 10px;
+  padding: 5px;
+  @include flatter-gradient-background($submit-bg);
 }
 
 .link-button {
-  @include flatter-gradient-background($link-button-bg);
-  padding: $link-button-padding;
-  color: white;
-  text-decoration: none;
   border-radius: 3px;
+  color: #fff;
+  padding: $link-button-padding;
+  text-decoration: none;
+  @include flatter-gradient-background($link-button-bg);
 }
 
 .grid-table-scroll {
   overflow-x: auto;
 }
+
 .grid-table {
   text-align: center;
-  th, td {
+
+  th,
+  td {
     padding: 7px;
   }
 
   td {
     border-top: $border-width solid $border-color;
   }
+
   .column {
     border-left: $border-width solid $border-color;
   }
@@ -100,9 +112,11 @@ form input[type=submit] {
 .home-recent-acs {
   float: left;
 }
+
 .home-users {
   float: left;
   margin-left: 1em;
+
   ul {
     @extend %simple-list;
   }
@@ -113,10 +127,10 @@ form input[type=submit] {
 }
 
 .top-message {
-  border-style: solid;
-  border-width: 1px;
   border-color: $main-fg;
   border-radius: 12px;
+  border-style: solid;
+  border-width: 1px;
   padding-left: 1em;
   padding-right: 1em;
 }
@@ -134,16 +148,17 @@ form input[type=submit] {
 }
 
 .float-listing {
-  @extend .no-list-type;
-  padding: 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
   display: inline-block;
+  list-style-type: none;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 0;
+
   li {
     float: left;
+    margin-bottom: 3px;
     margin-left: 7px;
     margin-right: 7px;
     margin-top: 3px;
-    margin-bottom: 3px;
   }
 }

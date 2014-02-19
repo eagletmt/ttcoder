@@ -2,9 +2,11 @@
   &:-moz-placeholder {
     color: $color;
   }
+
   &::-moz-placeholder {
     color: $color;
   }
+
   &::-webkit-input-placeholder {
     color: $color;
   }
@@ -16,6 +18,7 @@
 
 @mixin flatter-gradient-background($color) {
   background-image: flatter-gradient($color);
+
   &:hover {
     background-image: flatter-gradient(lighten($color, 10%));
   }

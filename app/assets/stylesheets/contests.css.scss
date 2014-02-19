@@ -2,21 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "variables";
+@import 'variables';
 
 .status {
   &.ac {
     color: $success-color;
   }
-  &.wa, &.tle, &.mle, &.re, &.ole {
+
+  &.wa,
+  &.tle,
+  &.mle,
+  &.re,
+  &.ole {
     color: $fail-color;
   }
-  &.pe, &.ce {
+
+  &.pe,
+  &.ce {
     color: $miss-color;
   }
 
   &.old {
-    background-color: hsla(40, 70%, 80%, 0.3);
+    background-color: hsla(40, 70%, 80%, .3);
   }
 }
 
@@ -29,24 +36,28 @@
 }
 
 form .help-text {
+  color: #888;
   font-size: 80%;
-  color: #888888;
 }
 
 .contests {
-  th, td {
+  th,
+  td {
+    line-height: 1.5em;
+    padding-left: .5em;
+    padding-right: .5em;
     text-align: left;
     word-wrap: break-word;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    line-height: 1.5em;
   }
+
   th {
     border-bottom: 2px solid #ddd;
   }
+
   td {
     border-bottom: 1px solid #ddd;
   }
+
   .name-cell {
     max-width: 10em;
   }
