@@ -106,10 +106,6 @@ class ContestsController < ApplicationController
       params.require(:problem).permit(:site, :problem_id)
     end
 
-    def user_params
-      params.require(:user).permit(:name)
-    end
-
     def keep_last_type
       flash.keep :last_type
     end

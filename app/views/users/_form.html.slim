@@ -19,7 +19,5 @@
         td= f.label :aoj_user
         td= f.text_field :aoj_user
         td.help-text= "Leave this field blank if it's the same with #{User.human_attribute_name(:name)}"
-  - if @from_contest
-    = hidden_field_tag :from_contest, @from_contest
   div
-    = f.submit(@user.create_button_text(@from_contest))
+    = f.submit('Update')
