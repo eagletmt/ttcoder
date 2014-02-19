@@ -3,26 +3,29 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 class Codeboard
   constructor: (@url, @board) ->
-    @board.on 'blur', =>
+    @board.on('blur', =>
       @post()
+    )
 
   get: ->
-    $.ajax
+    $.ajax(
       type: 'GET'
       url: @url
-    .done (json) =>
+    ).done (json) =>
       if !@board.is(':focus')
-        @board.val json.source
+        @board.val(json.source)
 
   post: ->
-    $.ajax
+    $.ajax(
       type: 'POST'
       url: @url
       data:
         source: @board.val()
+    )
 
 @controlCodeboard = (url, codeboard) ->
-  b = new Codeboard url, codeboard
-  setInterval ->
+  b = new Codeboard(url, codeboard)
+  setInterval(->
     b.get()
   , 5000
+  )
