@@ -13,6 +13,9 @@ describe PojController do
     let(:problem3) { '6535' }
 
     before do
+      # Stabilize submission dates
+      Timecop.travel(Time.now.noon)
+
       # Non-weekly accepts are not counted.
       FactoryGirl.create(:poj_submission_ac, user: user1.poj_user, problem_id: problem1, submitted_at: 3.weeks.ago)
       FactoryGirl.create(:poj_submission_ac, user: user2.poj_user, problem_id: problem1, submitted_at: 2.weeks.ago)
@@ -24,6 +27,10 @@ describe PojController do
       # Multiple accepts on the same problem are counted as one accept.
       FactoryGirl.create(:poj_submission_ac, user: user2.poj_user, problem_id: problem3, submitted_at: 2.days.ago)
       FactoryGirl.create(:poj_submission_ac, user: user2.poj_user, problem_id: problem3, submitted_at: 2.days.ago)
+    end
+
+    after do
+      Timecop.return
     end
 
     it 'sets the number of weekly accepts' do

@@ -13,6 +13,9 @@ describe AojController do
     let(:problem3) { '6535' }
 
     before do
+      # Stabilize submission dates
+      Timecop.travel(Time.now.noon)
+
       # Non-weekly accepts are not counted.
       FactoryGirl.create(:aoj_submission_ac, user_id: user1.aoj_user, problem_id: problem1, submission_date: 3.weeks.ago)
       FactoryGirl.create(:aoj_submission_ac, user_id: user2.aoj_user, problem_id: problem1, submission_date: 2.weeks.ago)
@@ -24,6 +27,10 @@ describe AojController do
       # Multiple accepts on the same problem are counted as one accept.
       FactoryGirl.create(:aoj_submission_ac, user_id: user2.aoj_user, problem_id: problem3, submission_date: 2.days.ago)
       FactoryGirl.create(:aoj_submission_ac, user_id: user2.aoj_user, problem_id: problem3, submission_date: 2.days.ago)
+    end
+
+    after do
+      Timecop.return
     end
 
     it 'sets the number of weekly accepts' do

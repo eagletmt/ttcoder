@@ -75,6 +75,7 @@ group :test do
   gem 'webmock', require: 'webmock/rspec'
   gem 'vcr'
   gem 'fakeredis', require: 'fakeredis/rspec'
+  gem 'timecop'
 end
 
 group :development, :test do
