@@ -8,6 +8,7 @@ class ContestsController < ApplicationController
     @contests = Contest.all
   end
 
+  STANDING_RELOAD_INTERVAL = 1.minute
   def show
     @users = @contest.users
     @problems = @contest.site_problems.to_a
@@ -21,6 +22,9 @@ class ContestsController < ApplicationController
       end
     end
     @scores = calculate_scores @users, @problems, @standing
+    if request.xhr?
+      render partial: 'standing'
+    end
   end
 
   def new

@@ -40,4 +40,38 @@ feature 'Contest' do
     expect(page).not_to have_button('Leave')
     expect(page).not_to have_content(user.name)
   end
+
+  scenario 'Reload standing', :js do
+    problem = FactoryGirl.create(:poj_problem)
+
+    visit contest_path(contest)
+    expect(page).not_to have_link(problem.description)
+
+    contest.site_problems << problem
+    contest.save!
+
+    click_link 'Reload'
+    expect(page).to have_link(problem.description)
+  end
+
+  context 'with short reload interval' do
+    given(:interval) { 3.seconds }
+
+    before do
+      stub_const('ContestsController::STANDING_RELOAD_INTERVAL', interval)
+    end
+
+    scenario 'Automatic standing reload', :js do
+      problem = FactoryGirl.create(:poj_problem)
+
+      visit contest_path(contest)
+      expect(page).not_to have_link(problem.description)
+
+      contest.site_problems << problem
+      contest.save!
+
+      sleep interval
+      expect(page).to have_link(problem.description)
+    end
+  end
 end

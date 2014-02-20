@@ -72,7 +72,7 @@ form input[type=submit] {
   color: #fff;
   cursor: pointer;
   margin-right: 10px;
-  padding: 5px;
+  padding: $submit-button-padding;
   @include flatter-gradient-background($submit-bg);
 }
 
@@ -161,4 +161,13 @@ form input[type=submit] {
     margin-right: 7px;
     margin-top: 3px;
   }
+}
+
+.hspace {
+  display: inline-block;
+  width: 10px;
+}
+
+form.inline {
+  display: inline;
 }
