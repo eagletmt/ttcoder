@@ -3,11 +3,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'simplecov'
-require 'coveralls'
-require 'capybara/rspec'
-require 'webmock/rspec'
-require 'vcr'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,

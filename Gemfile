@@ -67,12 +67,12 @@ group :test do
   gem 'rspec', '3.0.0.beta1'
   gem 'factory_girl_rails'
   gem 'webrat'
-  gem 'capybara', '>= 2.2.0'  # For RSpec 3
+  gem 'capybara', '>= 2.2.0', require: 'capybara/rspec'  # For RSpec 3
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'database_cleaner', '>= 1.2.0'
-  gem 'simplecov', require: false
+  gem 'simplecov'
 
-  gem 'webmock'
+  gem 'webmock', require: 'webmock/rspec'
   gem 'vcr'
   gem 'fakeredis', require: 'fakeredis/rspec'
 end
