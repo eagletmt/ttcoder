@@ -9,8 +9,6 @@ before_install:
 before_script:
   - cp config/database.yml.sample config/database.yml
   - cp config/secrets.yml.sample config/secrets.yml
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - rake db:migrate RAILS_ENV=test
 matrix:
   allow_failures:

@@ -26,7 +26,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr'
   config.hook_into :webmock
-  # For capybara-webkit
+  # For Capybara JavaScript driver
   config.ignore_localhost = true
 end
 
@@ -42,8 +42,8 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  # For capybara-webkit
-  Capybara.javascript_driver = :webkit
+  # For Capybara JavaScript driver
+  Capybara.javascript_driver = :poltergeist
   config.use_transactional_fixtures = false
   config.before :suite do
     DatabaseCleaner.clean_with :truncation

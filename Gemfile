@@ -68,7 +68,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'webrat'
   gem 'capybara', '>= 2.2.0'  # For RSpec 3
-  gem 'capybara-webkit', '>= 1.1.0'
+  gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'database_cleaner', '>= 1.2.0'
   gem 'simplecov', require: false
 
