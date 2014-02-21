@@ -1,23 +1,13 @@
 require 'spec_helper'
+require 'open3'
 
 describe 'Ruby files' do
   let(:ruby_files) { find_files(Rails.root, '.rb') }
+  let(:syntax_checker) { Rails.root.join('spec', 'tools', 'ruby_syntax_check.rb').to_s }
   let(:stderr) { StringIO.new }
 
-  around do |example|
-    verbose = $VERBOSE
-    $VERBOSE = true
-    err = $stderr
-    $stderr = stderr
-    example.run
-    $stderr = err
-    $VERBOSE = verbose
-  end
-
   it 'has no syntax errors or warnings' do
-    ruby_files.each do |ruby_file|
-      RubyVM::InstructionSequence.compile_file(ruby_file)
-    end
-    expect(stderr.string).to eq('')
+    check_output, _ = Open3.capture2e(syntax_checker, *ruby_files)
+    expect(check_output).to eq('')
   end
 end
