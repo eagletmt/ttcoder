@@ -13,3 +13,10 @@ before_script:
 matrix:
   allow_failures:
     - rvm: ruby-head
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/c4378570d751369a7fb6
+    on_success: always
+    on_failure: always
+    on_start: true
