@@ -20,6 +20,7 @@ html lang="ja"
   body
     div#left-bar
       - if @current_user
+        p= link_to(@current_user.name, user_path(@current_user))
         p= link_to 'New contest', new_contest_path, class: 'link-button'
       - else
         p= link_to 'Login', new_session_path, class: 'link-button'

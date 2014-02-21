@@ -16,29 +16,37 @@ feature 'Contest' do
     expect(page.current_path).to eq("/contests/#{new_contest_name}")
     expect(page).to have_content("Created by #{user.name}")
 
-    click_link(user.name)
+    within '#content' do
+      click_link(user.name)
+    end
     expect(page).to have_link(new_contest_name)
   end
 
   scenario 'Join to and leave from a contest' do
     visit contest_path(contest)
-    expect(page).to have_button('Join')
-    expect(page).not_to have_button('Leave')
-    expect(page).not_to have_content(user.name)
+    within '#content' do
+      expect(page).to have_button('Join')
+      expect(page).not_to have_button('Leave')
+      expect(page).not_to have_content(user.name)
+    end
 
     click_button 'Join'
 
-    expect(page).to have_content('Joined to')
-    expect(page).not_to have_button('Join')
-    expect(page).to have_button('Leave')
-    expect(page).to have_content(user.name)
+    within '#content' do
+      expect(page).to have_content('Joined to')
+      expect(page).not_to have_button('Join')
+      expect(page).to have_button('Leave')
+      expect(page).to have_content(user.name)
+    end
 
     click_button 'Leave'
 
-    expect(page).to have_content('Left from')
-    expect(page).to have_button('Join')
-    expect(page).not_to have_button('Leave')
-    expect(page).not_to have_content(user.name)
+    within '#content' do
+      expect(page).to have_content('Left from')
+      expect(page).to have_button('Join')
+      expect(page).not_to have_button('Leave')
+      expect(page).not_to have_content(user.name)
+    end
   end
 
   scenario 'Reload standing', :js do

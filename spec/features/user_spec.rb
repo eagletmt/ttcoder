@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 feature 'User CRUD' do
+  given(:username) { OmniAuth.config.mock_auth[:twitter].info.nickname }
   scenario 'Sign in with Twitter' do
     visit '/'
     click_link 'Login'
@@ -13,7 +14,6 @@ feature 'User CRUD' do
     expect(page.current_path).to eq('/')
     expect(page).to have_link('Logout')
 
-    username = OmniAuth.config.mock_auth[:twitter].info.nickname
     visit "/users/#{username}"
     expect(page).to have_content(username)
   end
@@ -96,7 +96,6 @@ feature 'User CRUD' do
 
     problem = '1234'
     auth = OmniAuth.config.mock_auth[:twitter]
-    username = auth.info.nickname
     FactoryGirl.create(:poj_submission_ac, user: username, problem_id: problem)
     FactoryGirl.create(:poj_submission_wa, user: 'POJ_Next', problem_id: problem)
     contest = FactoryGirl.create(:contest, name: 'NewContest')
@@ -121,5 +120,17 @@ feature 'User CRUD' do
     expect(page).to have_content('Next_User')
     expect(page).to have_content('WA')
     expect(page).not_to have_content('AC')
+  end
+
+  scenario 'View username on each page' do
+    visit '/'
+    expect(page).to_not have_link(username)
+
+    click_link 'Login'
+    click_link 'Sign in with Twitter'
+    click_button 'No'
+
+    visit '/'
+    expect(page).to have_link(username)
   end
 end
