@@ -76,6 +76,10 @@ form input[type=submit] {
   @include flatter-gradient-background($submit-bg);
 }
 
+td input[type=checkbox] {
+  float: right;
+}
+
 .link-button {
   border-radius: 3px;
   color: #fff;

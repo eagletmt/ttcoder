@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 10) do
+ActiveRecord::Schema.define(version: 11) do
 
   create_table "aoj_submissions", force: true do |t|
     t.integer  "run_id"
@@ -113,11 +113,12 @@ ActiveRecord::Schema.define(version: 10) do
   end
 
   create_table "twitter_users", id: false, force: true do |t|
-    t.string  "uid",     null: false
-    t.string  "name",    null: false
-    t.string  "token",   null: false
-    t.string  "secret",  null: false
-    t.integer "user_id", null: false
+    t.string  "uid",                     null: false
+    t.string  "name",                    null: false
+    t.string  "token",                   null: false
+    t.string  "secret",                  null: false
+    t.integer "user_id",                 null: false
+    t.boolean "public",  default: false, null: false
   end
 
   create_table "users", force: true do |t|

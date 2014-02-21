@@ -40,7 +40,6 @@ feature 'User CRUD' do
 
     visit "/users/#{user.name}"
     expect(page).to have_content(user.name)
-    expect(page).to have_content(auth.info.nickname)
   end
 
   scenario 'Sign in with Twitter and migrating to invalid user' do
@@ -132,5 +131,26 @@ feature 'User CRUD' do
 
     visit '/'
     expect(page).to have_link(username)
+  end
+
+  scenario 'Edit Twitter link visibility' do
+    visit '/'
+    click_link 'Login'
+    click_link 'Sign in with Twitter'
+    click_button 'No'
+
+    click_link username
+    expect(page).to_not have_link("@#{username}")
+
+    click_link 'Edit profile'
+    label = 'Display link to your Twitter account'
+    expect(page).to have_unchecked_field(label)
+    check label
+    click_button 'Update'
+
+    expect(page).to have_link("@#{username}")
+
+    click_link 'Edit profile'
+    expect(page).to have_checked_field(label)
   end
 end

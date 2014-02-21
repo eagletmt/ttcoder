@@ -26,12 +26,12 @@ table.grid-table
       td.column.number-cell= @aoj_tried_but_failed_count
 
 dl
-  - if @user.twitter_user
+  - if @user.twitter_user.try(:public)
     dt Twitter
     dd= link_to_twitter(@user.twitter_user.name)
 
 - if @current_user.try { |u| u.id == @user.id }
-  p= link_to 'Edit username', edit_user_path, class: 'link-button'
+  p= link_to 'Edit profile', edit_user_path, class: 'link-button'
 
 div
   h2 Tried but failed

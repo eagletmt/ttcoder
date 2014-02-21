@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :contests, lambda { order('id DESC') }, foreign_key: :owner_id
   has_one :twitter_user
+  accepts_nested_attributes_for :twitter_user
 
   scope :order_by_name, lambda {
     order("lower(#{connection.quote_column_name(:name)})")
