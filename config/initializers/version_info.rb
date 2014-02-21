@@ -1,6 +1,6 @@
 Rails.application.config.current_version =
   if Rails.env.production?
-    rev = `git --git-dir ../../repo rev-parse --short master`.chomp
+    rev = Rails.root.join('REVISION').read.chomp
     rel = File.basename(Dir.pwd)
     "#{rev} / #{rel}"
   else
