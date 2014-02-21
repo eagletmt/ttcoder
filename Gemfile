@@ -34,7 +34,7 @@ end
 
 group :development do
   gem 'launchy' # For Capybara's save_and_open_page
-  gem 'capistrano', '>= 3.0', require: false
+  gem 'capistrano', '>= 3.1', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv', '>= 2.0.0', require: false
