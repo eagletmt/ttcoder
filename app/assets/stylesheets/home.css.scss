@@ -113,15 +113,6 @@ form input[type=submit] {
   float: left;
 }
 
-.home-users {
-  float: left;
-  margin-left: 1em;
-
-  ul {
-    @extend %simple-list;
-  }
-}
-
 .clear {
   clear: both;
 }

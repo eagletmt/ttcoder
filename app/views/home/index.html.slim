@@ -14,10 +14,6 @@ div.home-recent-acs
     = render partial: 'aoj/submissions', locals: { submissions: @aoj_submissions, usermap: @aoj_usermap }
     p= link_to 'View more', aoj_recent_path, class: 'link-button'
 
-div.home-users
-  h2 Users
-  = render partial: 'users/list'
-
 - repository_url = 'https://github.com/eagletmt/ttcoder'
 - issues_url = repository_url + '/issues'
 footer.clear
