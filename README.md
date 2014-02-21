@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/eagletmt/ttcoder/badge.png?branch=master)](https://coveralls.io/r/eagletmt/ttcoder)
 [![Code Climate](https://codeclimate.com/github/eagletmt/ttcoder.png)](https://codeclimate.com/github/eagletmt/ttcoder)
 [![Dependency Status](https://gemnasium.com/eagletmt/ttcoder.png)](https://gemnasium.com/eagletmt/ttcoder)
+[![Gitter chat](https://badges.gitter.im/eagletmt/ttcoder.png)](https://gitter.im/eagletmt/ttcoder)
 
 http://ttc.wanko.cc/
 
