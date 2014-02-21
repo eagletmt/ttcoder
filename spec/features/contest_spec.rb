@@ -66,7 +66,7 @@ feature 'Contest' do
     given(:interval) { 3.seconds }
 
     before do
-      ContestsController  # autoload first
+      ContestsController.class_eval {}  # autoload first
       stub_const('ContestsController::STANDING_RELOAD_INTERVAL', interval)
     end
 
