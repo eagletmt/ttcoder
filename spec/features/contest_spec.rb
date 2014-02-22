@@ -1,51 +1,54 @@
 require 'spec_helper'
 
 feature 'Contest' do
-  given(:user) { FactoryGirl.create(:twitter_user).user }
   given(:contest) { FactoryGirl.create(:contest) }
 
-  background do
-    login :twitter, user
-  end
+  context 'with login user' do
+    given(:user) { FactoryGirl.create(:twitter_user).user }
 
-  scenario 'Create a contest' do
-    new_contest_name = '__CONTEST__'
-    click_link 'New contest'
-    fill_in 'contest_name', with: new_contest_name
-    click_button 'Create'
-    expect(page.current_path).to eq("/contests/#{new_contest_name}")
-    expect(page).to have_content("Created by #{user.name}")
-
-    within '#content' do
-      click_link(user.name)
-    end
-    expect(page).to have_link(new_contest_name)
-  end
-
-  scenario 'Join to and leave from a contest' do
-    visit contest_path(contest)
-    within '#content' do
-      expect(page).to have_button('Join')
-      expect(page).not_to have_button('Leave')
-      expect(page).not_to have_content(user.name)
+    background do
+      login :twitter, user
     end
 
-    click_button 'Join'
+    scenario 'Create a contest' do
+      new_contest_name = '__CONTEST__'
+      click_link 'New contest'
+      fill_in 'contest_name', with: new_contest_name
+      click_button 'Create'
+      expect(page.current_path).to eq("/contests/#{new_contest_name}")
+      expect(page).to have_content("Created by #{user.name}")
 
-    within '#content' do
-      expect(page).to have_content('Joined to')
-      expect(page).not_to have_button('Join')
-      expect(page).to have_button('Leave')
-      expect(page).to have_content(user.name)
+      within '#content' do
+        click_link(user.name)
+      end
+      expect(page).to have_link(new_contest_name)
     end
 
-    click_button 'Leave'
+    scenario 'Join to and leave from a contest' do
+      visit contest_path(contest)
+      within '#content' do
+        expect(page).to have_button('Join')
+        expect(page).not_to have_button('Leave')
+        expect(page).not_to have_content(user.name)
+      end
 
-    within '#content' do
-      expect(page).to have_content('Left from')
-      expect(page).to have_button('Join')
-      expect(page).not_to have_button('Leave')
-      expect(page).not_to have_content(user.name)
+      click_button 'Join'
+
+      within '#content' do
+        expect(page).to have_content('Joined to')
+        expect(page).not_to have_button('Join')
+        expect(page).to have_button('Leave')
+        expect(page).to have_content(user.name)
+      end
+
+      click_button 'Leave'
+
+      within '#content' do
+        expect(page).to have_content('Left from')
+        expect(page).to have_button('Join')
+        expect(page).not_to have_button('Leave')
+        expect(page).not_to have_content(user.name)
+      end
     end
   end
 
