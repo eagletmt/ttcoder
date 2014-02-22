@@ -11,8 +11,67 @@ feature 'User CRUD' do
     expect(page.current_path).to eq('/')
     expect(page).to have_link('Logout')
 
-    visit "/users/#{username}"
-    expect(page).to have_content(username)
+    click_link username
+    within '#content' do
+      expect(page).to have_content(username, count: 3)
+    end
+  end
+
+  scenario 'Create a new account with custom username' do
+    visit '/'
+    click_link 'Login'
+    click_link 'Sign in with Twitter'
+    expect(page).to have_field('username', with: username)
+
+    custom_name = 'Custom'
+    custom_poj_user = 'Poj_C2'
+    custom_aoj_user = 'Aoj_C2'
+    fill_in 'username', with: custom_name
+    fill_in 'username at POJ', with: custom_poj_user
+    fill_in 'username at AOJ', with: custom_aoj_user
+    expect { click_button 'Create' }.to change { User.count }.by(1)
+
+    click_link custom_name
+    expect(page).to have_content(custom_name)
+    expect(page).to have_content(custom_poj_user)
+    expect(page).to have_content(custom_aoj_user)
+  end
+
+  scenario 'Reject direct access to /users/new' do
+    visit '/users/new'
+    expect(page.current_path).to eq('/login')
+  end
+
+  context 'with duplication' do
+    background do
+      user = FactoryGirl.create(:user, name: username)
+      FactoryGirl.create(:twitter_user, user: user)
+    end
+
+    scenario 'Try to create a new account but fail' do
+      visit '/'
+      click_link 'Login'
+      click_link 'Sign in with Twitter'
+      expect { click_button 'Create' }.to_not change { User.count }
+      expect(page).to have_css('.alert', text: 'username')
+    end
+
+    scenario 'Create a new account with retry' do
+      visit '/'
+      click_link 'Login'
+      click_link 'Sign in with Twitter'
+      click_button 'Create'
+      expect(page).to have_css('.alert', text: 'username')
+
+      custom_name = 'Unique_User'
+      fill_in 'username', with: custom_name
+      expect { click_button 'Create' }.to change { User.count }.by(1)
+
+      click_link custom_name
+      within '#content' do
+        expect(page).to have_content(custom_name, count: 1)
+      end
+    end
   end
 
   scenario 'Returns to the previous page after login' do
