@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Contest' do
-  given(:user) { FactoryGirl.create(:user) }
+  given(:user) { FactoryGirl.create(:twitter_user).user }
   given(:contest) { FactoryGirl.create(:contest) }
 
   background do

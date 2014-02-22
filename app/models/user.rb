@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   after_save :update_standing_cache!
 
-  def self.find_or_new_from_omniauth(auth)
+  def self.find_or_new_from_omniauth(auth, user_params = {})
     uid = auth.uid
     name = auth.info.nickname
     token = auth.credentials.token
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
         provider_user.user
       else
         Rails.logger.info("[Auth #{auth.provider}] New #{uid} name=#{name.inspect}")
-        user = new(name: name)
+        user = new({name: name}.merge(user_params))
         user.send("build_#{attr_name}", uid: uid, name: name, token: token, secret: secret)
         user
       end

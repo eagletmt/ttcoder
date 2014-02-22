@@ -1,8 +1,7 @@
 module LoginHelper
   def login(provider, user)
+    OmniAuth.config.mock_auth[:twitter][:uid] = user.twitter_user.uid
     visit auth_path(provider)
-    fill_in 'prev_user', with: user.name
-    click_button 'Associate'
   end
 end
 

@@ -10,53 +10,34 @@ class SessionsController < ApplicationController
         login! user
       else
         flash[:auth] = auth
-        redirect_to associate_user_path
+        redirect_to new_user_path
       end
     else
       redirect_to new_session_path
     end
   end
 
-  def new_associate
+  def new_user
     if flash[:auth]
-      @new_username = flash[:auth][:info][:nickname]
+      @user = User.find_or_new_from_omniauth(flash[:auth])
       flash.keep(:auth)
-      render :associate
     else
       redirect_to new_session_path
     end
   end
 
-  def associate
+  def create_user
     if flash[:auth]
-      if params[:commit] == 'Associate'
-        prev_user = User.find_by(name: params[:prev_user])
-        if prev_user
-          if prev_user.twitter_user
-            @already_taken = prev_user
-          else
-            user = User.find_or_new_from_omniauth(flash[:auth])
-            prev_user.twitter_user = user.twitter_user
-            prev_user.save!
-            login! prev_user
-          end
-        else
-          flash.keep(:auth)
-          @prev_not_found = params[:prev_user]
-        end
+      @user = User.find_or_new_from_omniauth(flash[:auth], user_params)
+      if @user.save
+        login! @user
       else
-        user = User.find_or_new_from_omniauth(flash[:auth])
-        user.save!
-        login! user
+        flash.keep(:auth)
+        render :new_user
       end
     else
       redirect_to new_session_path
     end
-  end
-
-  def back
-    redirect_to(session[:return_to] || root_path)
-    session[:return_to] = nil
   end
 
   def destroy
@@ -71,5 +52,14 @@ class SessionsController < ApplicationController
   def login!(user)
     session[:user_id] = user.id
     back
+  end
+
+  def back
+    redirect_to(session[:return_to] || root_path)
+    session[:return_to] = nil
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :poj_user, :aoj_user)
   end
 end
