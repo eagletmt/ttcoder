@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 feature 'Contest edition' do
-  given(:user) { FactoryGirl.create(:user) }
+  given(:user) { FactoryGirl.create(:twitter_user).user }
   given!(:contest) { FactoryGirl.create(:contest, name: 'ayakashi') }
   given!(:poj4000) { FactoryGirl.create(:poj_problem, problem_id: '4000') }
   given!(:poj3000) { FactoryGirl.create(:poj_problem, problem_id: '3000') }
   given!(:aoj4000) { FactoryGirl.create(:aoj_problem, problem_id: '4000') }
 
   background do
-    contest.users << FactoryGirl.create(:user) << FactoryGirl.create(:user)
+    contest.users << FactoryGirl.create(:twitter_user).user << FactoryGirl.create(:twitter_user).user
     contest.site_problems << poj3000 << aoj4000
 
     login :twitter, user

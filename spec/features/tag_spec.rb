@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Tags' do
-  given(:user) { FactoryGirl.create(:user) }
+  given(:user) { FactoryGirl.create(:twitter_user).user }
   given!(:poj_problem) { FactoryGirl.create(:poj_problem, problem_id: '1000') }
   given!(:aoj_problem) { FactoryGirl.create(:aoj_problem, problem_id: '1000') }
 

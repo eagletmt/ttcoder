@@ -14,9 +14,8 @@ Rails.application.routes.draw do
 
   get '/users/edit', to: 'users#edit', as: :edit_user
   patch '/users/update', to: 'users#update', as: :update_user
-  get '/associate_user', to: 'sessions#new_associate', as: :new_associate_user
-  post '/associate_user', to: 'sessions#associate', as: :associate_user
-  post '/no_associate_user', to: 'sessions#no_associate', as: :no_associate_user
+  get '/users/new', to: 'sessions#new_user', as: :new_user
+  post '/users', to: 'sessions#create_user', as: :create_user
   resources :users, only: [:index, :show]
 
   scope '/poj' do
