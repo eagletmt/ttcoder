@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.0.0
-  - 2.1.0
+  - 2.1.1
   - ruby-head
 bundler_args: --deployment -j4 --without production development
 before_install:
