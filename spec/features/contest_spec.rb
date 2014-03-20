@@ -24,7 +24,7 @@ feature 'Contest' do
       expect(page).to have_link(new_contest_name)
     end
 
-    scenario 'Join to and leave from a contest' do
+    scenario 'Join to and leave a contest' do
       visit contest_path(contest)
       within '#content' do
         expect(page).to have_button('Join')
@@ -45,7 +45,7 @@ feature 'Contest' do
       click_button 'Leave'
 
       within '#content' do
-        expect(page).to have_content('Left from')
+        expect(page).to have_content('Left')
         expect(page).to have_button('Join')
         expect(page).not_to have_button('Leave')
         within '#standing' do

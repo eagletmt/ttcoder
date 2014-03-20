@@ -83,7 +83,7 @@ class ContestsController < ApplicationController
   def leave
     if @contest.users.delete(@current_user)
       Activity.create(user: @current_user, target: @contest, kind: :contest_leave)
-      redirect_to contest_path(@contest), notice: "Left from #{@contest.name}"
+      redirect_to contest_path(@contest), notice: "Left #{@contest.name}"
     else
       redirect_to contest_path(@contest), alert: "You haven't joined!"
     end
