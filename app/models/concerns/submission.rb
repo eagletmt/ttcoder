@@ -33,6 +33,7 @@ module Submission
     validates :problem_id, presence: true, format: /\A\d+\z/
 
     after_save :update_standing_cache!
+    after_create :create_create_activity
   end
 
   def abbrev_status
@@ -47,6 +48,12 @@ module Submission
       status: self[self.class.status_field],
       submitted_at: self[self.class.submitted_at_field],
     )
+  end
+
+  def create_create_activity
+    if user = User.find_in(self.class.site, self[self.class.user_field])
+      Activity.create(user: user, target: self, kind: :submission_create)
+    end
   end
 
   module ClassMethods
