@@ -49,5 +49,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :create]
   get '/tagged/:id', to: 'tags#show', as: :tag
 
+  resources :activities, only: [:index]
+
   root 'home#index'
 end

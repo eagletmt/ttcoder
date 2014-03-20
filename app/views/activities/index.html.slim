@@ -1,0 +1,6 @@
+- content_for :title, 'Activities'
+h1= yield :title
+
+.activities
+  - @activities.each do |activity|
+    .activity= activity.description
