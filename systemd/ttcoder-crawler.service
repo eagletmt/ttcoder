@@ -8,7 +8,7 @@ Type=simple
 User=ttcoder
 Environment=BUNDLE_GEMFILE=/home/ttcoder/deploy/current/Gemfile
 Environment=RBENV_ROOT=/usr/local/rbenv
-Environment=RBENV_VERSION=2.1.0
+Environment=RBENV_VERSION=2.1.1
 WorkingDirectory=/home/ttcoder/deploy/current
 ExecStart=/usr/local/rbenv/shims/bundle exec rake crawler:work RAILS_ENV=production
 Restart=always
