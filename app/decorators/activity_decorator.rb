@@ -25,6 +25,14 @@ module ActivityDecorator
     "#{link_to_user} updated tags of #{link_to(target.description, problem_path(target))} to #{tag_links.join(', ')}"
   end
 
+  def contest_join_description
+    "#{link_to_user} joined to contest #{link_to(target.name, target)}"
+  end
+
+  def contest_leave_description
+    "#{link_to_user} left contest #{link_to(target.name, target)}"
+  end
+
   def link_to_user
     link_to(user.name, user)
   end

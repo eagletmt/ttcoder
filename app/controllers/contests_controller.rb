@@ -74,6 +74,7 @@ class ContestsController < ApplicationController
 
   def join
     @contest.users << @current_user
+    Activity.create(user: @current_user, target: @contest, kind: :contest_join)
     redirect_to contest_path(@contest), notice: "Joined to #{@contest.name}"
   rescue ActiveRecord::RecordInvalid
     redirect_to contest_path(@contest), alert: "You have already joined!"
@@ -81,6 +82,7 @@ class ContestsController < ApplicationController
 
   def leave
     if @contest.users.delete(@current_user)
+      Activity.create(user: @current_user, target: @contest, kind: :contest_leave)
       redirect_to contest_path(@contest), notice: "Left from #{@contest.name}"
     else
       redirect_to contest_path(@contest), alert: "You haven't joined!"

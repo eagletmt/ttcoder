@@ -40,6 +40,7 @@ feature 'Contest' do
         expect(page).to have_button('Leave')
         expect(page).to have_content(user.name)
       end
+      expect(page).to have_content("#{user.name} joined to contest #{contest.name}")
 
       click_button 'Leave'
 
@@ -47,8 +48,11 @@ feature 'Contest' do
         expect(page).to have_content('Left from')
         expect(page).to have_button('Join')
         expect(page).not_to have_button('Leave')
-        expect(page).not_to have_content(user.name)
+        within '#standing' do
+          expect(page).not_to have_content(user.name)
+        end
       end
+      expect(page).to have_content("#{user.name} left contest #{contest.name}")
     end
   end
 

@@ -8,6 +8,8 @@ class Activity < ActiveRecord::Base
     :contest_update,
     :tag_create,
     :tags_update,
+    :contest_join,
+    :contest_leave,
   ]
 
   scope :recent, lambda { |count|
