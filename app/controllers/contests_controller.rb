@@ -47,6 +47,7 @@ class ContestsController < ApplicationController
 
   def update
     if @contest.update(contest_params)
+      Activity.create(user: @current_user, target: @contest, kind: :contest_update)
       redirect_to @contest, notice: 'Contest was successfully updated.'
     else
       @contest.name = @contest.name_was
