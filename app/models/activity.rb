@@ -4,6 +4,8 @@ class Activity < ActiveRecord::Base
   serialize :parameters, JSON
   enum kind: [
     :submission_create,
+    :contest_create,
+    :contest_update,
   ]
 
   scope :recent, lambda { |count|
