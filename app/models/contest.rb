@@ -1,6 +1,7 @@
 class Contest < ActiveRecord::Base
   include ParamAttribute
   validate_as_param :name
+  validates :owner_id, presence: true
 
   belongs_to :owner, class_name: 'User'
   has_many :contests_users, lambda { uniq }

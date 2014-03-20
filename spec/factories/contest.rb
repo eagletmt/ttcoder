@@ -5,5 +5,6 @@ FactoryGirl.define do
 
   factory :contest do
     name { generate :contest_name }
+    owner { create(:user) }
   end
 end
