@@ -7,6 +7,7 @@ class Activity < ActiveRecord::Base
     :contest_create,
     :contest_update,
     :tag_create,
+    :tags_update,
   ]
 
   scope :recent, lambda { |count|

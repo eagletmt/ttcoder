@@ -32,6 +32,12 @@ feature 'Tags' do
     end
     check 'simple'
     click_button 'Update tags'
+    # FIXME: Move to controller spec
+    activity = Activity.recent(1).first
+    expect(activity).to be_tags_update
+    expect(activity.user).to eq(user)
+    expect(activity.target).to eq(poj_problem)
+    expect(activity.parameters).to eq(Tag.where(name: %w[simple]).pluck(:id))
 
     expect(page.current_path).to eq('/poj/1000')
     expect(page).to have_link('simple')
@@ -46,6 +52,12 @@ feature 'Tags' do
     check 'dp'
     check 'parsing'
     click_button 'Update tags'
+    # FIXME: Move to controller spec
+    activity = Activity.recent(1).first
+    expect(activity).to be_tags_update
+    expect(activity.user).to eq(user)
+    expect(activity.target).to eq(aoj_problem)
+    expect(activity.parameters).to eq(Tag.where(name: %w[dp parsing]).pluck(:id))
 
     expect(page.current_path).to eq('/aoj/1000')
     expect(page).to have_link('dp')

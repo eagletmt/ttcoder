@@ -61,6 +61,7 @@ class SiteProblemsController < ApplicationController
     site_problem = SiteProblem.find_or_create_by(site: site, problem_id: params[:problem_id])
     site_problem.tag_list = params[:tags]
     site_problem.save!
+    Activity.create(user: @current_user, target: site_problem, kind: :tags_update, parameters: site_problem.tags.pluck(:id))
     redirect_to send(:"#{site}_path", params[:problem_id])
     session[:return_to] = nil
   end
