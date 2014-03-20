@@ -14,6 +14,21 @@ feature 'Contest edition' do
     login :twitter, user
   end
 
+  scenario 'Update message' do
+    visit '/'
+    click_link contest.name
+
+    new_message = '__NEW_MESSAGE__'
+    expect(page).to_not have_content(new_message)
+    click_link 'Edit this contest'
+
+    fill_in 'contest_message', with: new_message
+    click_button 'Update'
+
+    expect(page).to have_content(new_message)
+    expect(page).to have_content("#{user.name} updated contest #{contest.name}")
+  end
+
   scenario 'Add a problem' do
     visit '/'
     click_link contest.name

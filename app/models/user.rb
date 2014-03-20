@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.find_in(site, name)
+    find_by(:"#{site}_user" => name)
+  end
+
   def user_in(site)
     send :"#{site}_user"
   end

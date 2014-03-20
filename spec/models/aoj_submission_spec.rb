@@ -56,6 +56,19 @@ describe AojSubmission do
       sub = FactoryGirl.build :aoj_submission_ac, code_size: ''
       expect { sub.save }.not_to change { described_class.count }
     end
+
+    context 'with user' do
+      let(:user) { FactoryGirl.create(:user) }
+
+      it 'creates activity' do
+        sub = FactoryGirl.build(:aoj_submission_ac, user_id: user.aoj_user)
+        expect { sub.save }.to change { Activity.count }.by(1)
+        activity = Activity.recent(1).first
+        expect(activity).to be_submission_create
+        expect(activity.user).to eq(user)
+        expect(activity.target).to eq(sub)
+      end
+    end
   end
 
   describe '.user' do

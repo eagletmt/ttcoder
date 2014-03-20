@@ -6,7 +6,11 @@ describe Contest do
   describe '#save' do
     it 'saves with name' do
       c = described_class.new(name: 'name', owner_id: user.id)
-      expect(c.save).to be(true)
+      expect { c.save! }.to change { Activity.count }.by(1)
+      activity = Activity.recent(1).first
+      expect(activity.user).to eq(user)
+      expect(activity).to be_contest_create
+      expect(activity.target).to eq(c)
     end
 
     it 'requires name' do

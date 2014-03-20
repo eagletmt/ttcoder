@@ -9,6 +9,7 @@ class ContestsController < ApplicationController
   end
 
   STANDING_RELOAD_INTERVAL = 1.minute
+  ACTIVITY_COUNT = 20
   def show
     @users = @contest.users
     @problems = @contest.site_problems.to_a
@@ -22,6 +23,7 @@ class ContestsController < ApplicationController
       end
     end
     @scores = calculate_scores @users, @problems, @standing
+    @activities = Activity.recent(ACTIVITY_COUNT).where(target: @contest)
     if request.xhr?
       render partial: 'standing'
     end
@@ -47,6 +49,7 @@ class ContestsController < ApplicationController
 
   def update
     if @contest.update(contest_params)
+      Activity.create(user: @current_user, target: @contest, kind: :contest_update)
       redirect_to @contest, notice: 'Contest was successfully updated.'
     else
       @contest.name = @contest.name_was
@@ -71,6 +74,7 @@ class ContestsController < ApplicationController
 
   def join
     @contest.users << @current_user
+    Activity.create(user: @current_user, target: @contest, kind: :contest_join)
     redirect_to contest_path(@contest), notice: "Joined to #{@contest.name}"
   rescue ActiveRecord::RecordInvalid
     redirect_to contest_path(@contest), alert: "You have already joined!"
@@ -78,6 +82,7 @@ class ContestsController < ApplicationController
 
   def leave
     if @contest.users.delete(@current_user)
+      Activity.create(user: @current_user, target: @contest, kind: :contest_leave)
       redirect_to contest_path(@contest), notice: "Left from #{@contest.name}"
     else
       redirect_to contest_path(@contest), alert: "You haven't joined!"

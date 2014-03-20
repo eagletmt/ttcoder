@@ -6,6 +6,7 @@ shared_examples 'a site problems show' do
     assign :used_contests, []
     assign :solved_users, []
     assign :tags, []
+    assign :activities, []
   end
 
   context 'with contest' do

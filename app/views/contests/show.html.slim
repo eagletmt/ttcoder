@@ -22,6 +22,10 @@ div
       = form_tag(join_contest_path(@contest), class: 'inline') do
         = submit_tag 'Join'
 
+div
+  h2 Activities
+  = render 'activities/list'
+
 javascript:
   $(document).ready(function() {
     $('#reload').on('ajax:success', function(evt, data, xhr) {

@@ -11,7 +11,15 @@ class Contest < ActiveRecord::Base
 
   default_scope { order('contests.id DESC') }
 
+  after_create :create_create_activity
+
   def to_param
     name
+  end
+
+  private
+
+  def create_create_activity
+    Activity.create(user: owner, target: self, kind: :contest_create)
   end
 end

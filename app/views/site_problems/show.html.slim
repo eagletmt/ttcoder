@@ -21,3 +21,7 @@ div
 div
   h2= "Last #{@count} submissions"
   = render partial: "#{@problem.site}/submissions", locals: { submissions: @submissions, usermap: @usermap }
+
+div
+  h2 Activities
+  = render 'activities/list'
