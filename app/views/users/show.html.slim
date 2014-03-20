@@ -43,7 +43,5 @@ div
       li= link_to "AOJ #{c.problem_id}", aoj_path(c.problem_id)
 
 div
-  h2 Created contests
-  ul
-    - @contests.each do |contest|
-      li= link_to contest.name, contest_path(contest)
+  h2 Activities
+  = render 'activities/list'

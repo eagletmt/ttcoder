@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       end
   end
 
+  ACTIVITY_COUNT = 50
   def show
     @poj_tried_count = StandingCache.where(user: @user.poj_user.downcase, problem_type: :poj).count
     @aoj_tried_count = StandingCache.where(user: @user.aoj_user.downcase, problem_type: :aoj).count
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
     @poj_tried_but_failed_count = @poj_tried_but_failed.count
     @aoj_tried_but_failed_count = @aoj_tried_but_failed.count
 
-    @contests = @user.contests.limit(100)
+    @activities = Activity.recent(ACTIVITY_COUNT).where(user: @user)
   end
 
   def edit
