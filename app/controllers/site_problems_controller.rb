@@ -41,6 +41,7 @@ class SiteProblemsController < ApplicationController
     end
   end
 
+  ACTIVITY_COUNT = 20
   def show
     @problem = SiteProblem.find_or_create_by(site: site, problem_id: params[:problem_id])
     @used_contests = @problem.contests
@@ -48,6 +49,7 @@ class SiteProblemsController < ApplicationController
     @submissions = submission_class.user(@usermap.keys).where(problem_id: @problem.problem_id).order_by_submission.limit(@count)
     @solved_users = SiteProblem.solved_users(site, @problem.problem_id)
     @tags = @problem.tags.order(:name)
+    @activities = Activity.recent(ACTIVITY_COUNT).where(target: @problem)
   end
 
   def edit_tags

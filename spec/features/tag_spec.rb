@@ -41,6 +41,7 @@ feature 'Tags' do
 
     expect(page.current_path).to eq('/poj/1000')
     expect(page).to have_link('simple')
+    expect(page).to have_content("#{user.name} updated tags of POJ 1000 to simple")
 
     visit '/aoj/1000'
     expect(page).not_to have_link('simple')
@@ -62,6 +63,7 @@ feature 'Tags' do
     expect(page.current_path).to eq('/aoj/1000')
     expect(page).to have_link('dp')
     expect(page).to have_link('parsing')
+    expect(page).to have_content("#{user.name} updated tags of AOJ 1000 to dp, parsing")
 
     visit '/poj/1000'
     click_link 'Edit tags'
