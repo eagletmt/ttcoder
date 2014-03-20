@@ -25,6 +25,7 @@ describe 'contests/show' do
       }
       assign :standing, standing
       assign :scores, scores
+      assign :activities, []
       render
       expect(rendered).to have_selector('.grid-table .ac')
       expect(rendered).not_to have_selector('.grid-table .ac.old')
@@ -44,6 +45,7 @@ describe 'contests/show' do
       }
       assign :standing, standing
       assign :scores, scores
+      assign :activities, []
       render
       expect(rendered).to have_selector('.grid-table .ac.old')
     end

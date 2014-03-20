@@ -22,8 +22,5 @@ div
             td.column= sprintf '%.2f', @scores[user.name]
   p
     tt score(user) = sum(user.solved?(problem) ? 360.0/number-of-solved-users(problem) : 0)
-- if @contest.owner
-  p
-    |Created by #{link_to(@contest.owner.name, user_path(@contest.owner))}
 - if @contest.message.present?
   p= simple_format @contest.message

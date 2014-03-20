@@ -9,6 +9,7 @@ class ContestsController < ApplicationController
   end
 
   STANDING_RELOAD_INTERVAL = 1.minute
+  ACTIVITY_COUNT = 20
   def show
     @users = @contest.users
     @problems = @contest.site_problems.to_a
@@ -22,6 +23,7 @@ class ContestsController < ApplicationController
       end
     end
     @scores = calculate_scores @users, @problems, @standing
+    @activities = Activity.recent(ACTIVITY_COUNT).where(target: @contest)
     if request.xhr?
       render partial: 'standing'
     end
