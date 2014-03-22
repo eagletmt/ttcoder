@@ -5,7 +5,8 @@ module ActivityDecorator
 
   def submission_create_description
     problem = SiteProblem.new(site: target.class.site, problem_id: target.problem_id)
-    "#{link_to_user} submitted to #{link_to(problem.description, problem_path(problem))} and got #{target.abbrev_status}"
+    submission = ActiveDecorator::Decorator.instance.decorate(target)
+    "#{link_to_user} submitted to #{link_to(problem.description, problem_path(problem))} and got #{link_to(target.abbrev_status, submission.submission_link)}"
   end
 
   def contest_create_description

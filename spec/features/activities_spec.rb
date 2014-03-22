@@ -13,7 +13,9 @@ feature 'Activity' do
   scenario 'list recent activities' do
     visit '/activities'
     expect(page).to have_content("#{user1.name} submitted")
+    expect(page).to have_link('AC')
     expect(page).to have_content("#{user2.name} submitted")
+    expect(page).to have_link('WA')
     expect(page).to have_content("#{user1.name} created contest")
   end
 end
