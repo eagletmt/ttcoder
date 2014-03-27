@@ -1,4 +1,9 @@
-source 'https://rubygems.org'
+# http://mrkn.hatenablog.com/entry/2013/10/29/120436
+if ENV['BUNDLE_SOURCE'].nil? || ENV['BUNDLE_SOURCE'].empty?
+  source 'https://rubygems.org'
+else
+  source ENV['BUNDLE_SOURCE']
+end
 
 gem 'rails', '4.1.0.rc1'
 
