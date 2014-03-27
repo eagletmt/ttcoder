@@ -32,6 +32,9 @@ set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 
 # capistrano-bundler
 set :bundle_flags, '--deployment -j4'
+set :bundle_env_variables, {
+  'BUNDLE_SOURCE' => ENV['BUNDLE_SOURCE'],
+}
 
 namespace :deploy do
   desc 'Restart application'
