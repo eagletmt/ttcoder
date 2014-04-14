@@ -5,7 +5,7 @@ else
   source ENV['BUNDLE_SOURCE']
 end
 
-gem 'rails', '4.1.0.rc2'
+gem 'rails', '4.1.0'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
