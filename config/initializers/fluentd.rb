@@ -1,6 +1,6 @@
 case Rails.env
 when 'production'
-  Fluent::Logger::FluentLogger.open('ttcoder', host: 'localhost', port: 24224)
+  Fluent::Logger.open(Fluent::Logger::FluentLogger, 'ttcoder', host: 'localhost', port: 24224)
 when 'development', 'test'
-  Fluent::Logger::NullLogger.open
+  Fluent::Logger.open(Fluent::Logger::NullLogger)
 end

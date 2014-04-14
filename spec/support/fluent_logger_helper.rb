@@ -12,7 +12,7 @@ RSpec.configure do |config|
   config.include(FluentLoggerHelper)
 
   config.before(:suite) do
-    Fluent::Logger::TestLogger.open
+    Fluent::Logger.open(Fluent::Logger::TestLogger)
   end
 
   config.after(:each) do
