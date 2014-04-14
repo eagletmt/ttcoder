@@ -1,6 +1,6 @@
 module FluentLoggerHelper
   def logger
-    Fluent::Logger.class_variable_get(:@@default_logger)
+    Fluent::Logger.default
   end
 
   def last_log(tag)
