@@ -6,7 +6,7 @@ namespace :deploy do
     end
   end
 
-  before :updated, :write_revision
+  before :updated, 'deploy:write_revision'
 end
 
 # vim: set ft=ruby:
