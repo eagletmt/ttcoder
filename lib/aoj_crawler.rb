@@ -26,7 +26,26 @@ class AojCrawler
     end
 
     res = @conn.get('status_log', params)
-    doc = Nokogiri::XML.parse(res.body)
+    subs = extract_submissions(Nokogiri::XML.parse(res.body))
+    remove_existing_submissions(subs)
+    return false if subs.empty?
+
+    Fluent::Logger.post('aoj_import', submissions: subs.values.map(&:attributes))
+    ActiveRecord::Base.transaction do
+      subs.each_value do |sub|
+        insert_submission(sub)
+      end
+    end
+    true
+  rescue Faraday::Error::ClientError => e
+    Fluent::Logger.post('aoj_http_error', {
+      message: e.message,
+      backtrace: Rails.backtrace_cleaner.clean(e.backtrace),
+    })
+    true
+  end
+
+  def extract_submissions(doc)
     subs = {}
     doc.xpath('/status_list/status').each do |status|
       h = {}
@@ -38,30 +57,22 @@ class AojCrawler
       h['run_id'] = h['run_id'].to_i
       subs[h['run_id']] = AojSubmission.new(h)
     end
+    subs
+  end
 
+  def remove_existing_submissions(subs)
     AojSubmission.where(run_id: subs.keys).pluck(:run_id).each do |existing_id|
       subs.delete(existing_id)
     end
-    return false if subs.empty?
+  end
 
-    Fluent::Logger.post('aoj_import', submissions: subs.values.map(&:attributes))
-    ActiveRecord::Base.transaction do
-      subs.each_value do |sub|
-        if sub.valid?
-          sub.save!
-        else
-          sub.errors.each do |attr, msg|
-            Fluent::Logger.post('aoj_import_error', attribute: attr, value: sub.public_send(attr), message: msg)
-          end
-        end
+  def insert_submission(sub)
+    if sub.valid?
+      sub.save!
+    else
+      sub.errors.each do |attr, msg|
+        Fluent::Logger.post('aoj_import_error', attribute: attr, value: sub.public_send(attr), message: msg)
       end
     end
-    true
-  rescue Faraday::Error::ClientError => e
-    Fluent::Logger.post('aoj_http_error', {
-      message: e.message,
-      backtrace: Rails.backtrace_cleaner.clean(e.backtrace),
-    })
-    true
   end
 end

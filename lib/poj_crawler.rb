@@ -31,7 +31,26 @@ class PojCrawler
     end
 
     res = @conn.get('status', params)
-    doc = Nokogiri::HTML.parse(res.body)
+    subs = extract_submissions(Nokogiri::HTML.parse(res.body))
+    remove_existing_submissions(subs)
+    return nil if subs.empty?
+
+    Fluent::Logger.post('poj_import', submissions: subs.values.map(&:attributes))
+    ActiveRecord::Base.transaction do
+      subs.each_value do |sub|
+        insert_submission(sub)
+      end
+    end
+
+    subs.keys.min
+  rescue Faraday::Error::ClientError => e
+    Fluent::Logger.post('poj_http_error', {
+      message: e.message,
+      backtrace: Rails.backtrace_cleaner.clean(e.backtrace),
+    })
+  end
+
+  def extract_submissions(doc)
     subs = {}
     doc.css('table.a tr[align=center]').each do |tr|
       tds = tr.xpath('td').map(&:inner_text)
@@ -49,32 +68,24 @@ class PojCrawler
       sub.submitted_at = Time.parse(tds[8] + ' +0800')  # XXX
       subs[sub.id] = sub
     end
+    subs
+  end
 
+  def remove_existing_submissions(subs)
     PojSubmission.where(id: subs.keys).pluck(:id).each do |existing_id|
       subs.delete(existing_id)
     end
-    return nil if subs.empty?
+  end
 
-    Fluent::Logger.post('poj_import', submissions: subs.values.map(&:attributes))
-    ActiveRecord::Base.transaction do
-      subs.each_value do |sub|
-        if sub.valid?
-          sub.save!
-        else
-          sub.errors.each do |attr, msg|
-            unless sub.ignorable_error?(attr, msg)
-              Fluent::Logger.post('poj_import_error', attribute: attr, value: sub.public_send(attr), message: msg)
-            end
-          end
+  def insert_submission(sub)
+    if sub.valid?
+      sub.save!
+    else
+      sub.errors.each do |attr, msg|
+        unless sub.ignorable_error?(attr, msg)
+          Fluent::Logger.post('poj_import_error', attribute: attr, value: sub.public_send(attr), message: msg)
         end
       end
     end
-
-    subs.keys.min
-  rescue Faraday::Error::ClientError => e
-    Fluent::Logger.post('poj_http_error', {
-      message: e.message,
-      backtrace: Rails.backtrace_cleaner.clean(e.backtrace),
-    })
   end
 end
