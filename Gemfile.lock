@@ -79,7 +79,7 @@ GEM
       thor
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
-    database_cleaner (1.2.0)
+    database_rewinder (0.2.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
@@ -324,7 +324,7 @@ DEPENDENCIES
   capybara (>= 2.2.0)
   coffee-rails (~> 4.0.0)
   coveralls
-  database_cleaner (>= 1.2.0)
+  database_rewinder
   factory_girl_rails
   fakeredis
   faraday

@@ -55,7 +55,7 @@ group :test do
   gem 'webrat'
   gem 'capybara', '>= 2.2.0', require: 'capybara/rspec'  # For RSpec 3
   gem 'poltergeist', require: 'capybara/poltergeist'
-  gem 'database_cleaner', '>= 1.2.0'
+  gem 'database_rewinder'
   gem 'simplecov'
 
   gem 'webmock', require: 'webmock/rspec'

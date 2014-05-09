@@ -41,14 +41,21 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :poltergeist
   config.use_transactional_fixtures = false
   config.before :suite do
-    DatabaseCleaner.clean_with :truncation
+    DatabaseRewinder.clean_all
   end
   config.before :each do |example|
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
-    DatabaseCleaner.start
+    if example.metadata[:js]
+      nil
+    else
+      ActiveRecord::Base.connection.begin_transaction
+    end
   end
-  config.after :each do
-    DatabaseCleaner.clean
+  config.after :each do |example|
+    if example.metadata[:js]
+      DatabaseRewinder.clean
+    else
+      ActiveRecord::Base.connection.rollback_transaction
+    end
   end
 
   # If true, the base class of anonymous controllers will be inferred
