@@ -8,7 +8,7 @@ Type=forking
 User=ttcoder
 Environment=BUNDLE_GEMFILE=/home/ttcoder/deploy/current/Gemfile
 Environment=RBENV_ROOT=/usr/local/rbenv
-Environment=RBENV_VERSION=2.1.1
+Environment=RBENV_VERSION=2.1.2
 WorkingDirectory=/home/ttcoder/deploy/current
 ExecStart=/usr/local/rbenv/shims/bundle exec unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production -D
 ExecReload=/bin/kill -HUP $MAINPID
