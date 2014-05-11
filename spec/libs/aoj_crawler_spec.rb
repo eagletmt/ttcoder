@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'aoj_crawler'
 
-describe AojCrawler do
+RSpec.describe AojCrawler do
   let(:crawler) { AojCrawler.new }
 
   describe '#crawl' do

@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-feature 'Contest' do
-  given(:contest) { FactoryGirl.create(:contest) }
+RSpec.describe 'Contest' do
+  let(:contest) { FactoryGirl.create(:contest) }
 
   context 'with login user' do
-    given(:user) { FactoryGirl.create(:twitter_user).user }
+    let(:user) { FactoryGirl.create(:twitter_user).user }
 
-    background do
+    before do
       login :twitter, user
     end
 
-    scenario 'Create a contest' do
+    it 'Create a contest' do
       new_contest_name = '__CONTEST__'
       click_link 'New contest'
       fill_in 'contest_name', with: new_contest_name
@@ -24,7 +24,7 @@ feature 'Contest' do
       expect(page).to have_link(new_contest_name)
     end
 
-    scenario 'Join to and leave a contest' do
+    it 'Join to and leave a contest' do
       visit contest_path(contest)
       within '#content' do
         expect(page).to have_button('Join')
@@ -56,7 +56,7 @@ feature 'Contest' do
     end
   end
 
-  scenario 'Reload standing', :js do
+  it 'Reload standing', :js do
     problem = FactoryGirl.create(:poj_problem)
 
     visit contest_path(contest)
@@ -70,14 +70,14 @@ feature 'Contest' do
   end
 
   context 'with short reload interval' do
-    given(:interval) { 3.seconds }
+    let(:interval) { 3.seconds }
 
     before do
       ContestsController.class_eval {}  # autoload first
       stub_const('ContestsController::STANDING_RELOAD_INTERVAL', interval)
     end
 
-    scenario 'Automatic standing reload', :js do
+    it 'Automatic standing reload', :js do
       problem = FactoryGirl.create(:poj_problem)
 
       visit contest_path(contest)

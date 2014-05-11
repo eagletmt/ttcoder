@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-feature 'Tags' do
-  given(:user) { FactoryGirl.create(:twitter_user).user }
-  given!(:poj_problem) { FactoryGirl.create(:poj_problem, problem_id: '1000') }
-  given!(:aoj_problem) { FactoryGirl.create(:aoj_problem, problem_id: '1000') }
+RSpec.describe 'Tags' do
+  let(:user) { FactoryGirl.create(:twitter_user).user }
+  let!(:poj_problem) { FactoryGirl.create(:poj_problem, problem_id: '1000') }
+  let!(:aoj_problem) { FactoryGirl.create(:aoj_problem, problem_id: '1000') }
 
-  background do
+  before do
     FactoryGirl.create(:tag, name: 'simple')
     FactoryGirl.create(:tag, name: 'dp')
     FactoryGirl.create(:tag, name: 'parsing')
   end
 
-  scenario 'Create a new tag' do
+  it 'Create a new tag' do
     login :twitter, user
     visit '/poj/1000'
     click_link 'Edit tags'
@@ -21,7 +21,7 @@ feature 'Tags' do
     expect(page.current_path).to eq(path)
   end
 
-  scenario 'Edit tags' do
+  it 'Edit tags' do
     login :twitter, user
     visit '/poj/1000'
     expect(page).not_to have_link('simple')
@@ -78,7 +78,7 @@ feature 'Tags' do
     expect(page).to have_field('parsing', unchecked: false)
   end
 
-  scenario 'Show tagged problems' do
+  it 'Show tagged problems' do
     poj_problem.tag_list = %w[simple]
     poj_problem.save!
     aoj_problem.tag_list = %w[simple dp]
@@ -101,7 +101,7 @@ feature 'Tags' do
     expect(page).to have_link('AOJ 1000')
   end
 
-  scenario 'Create invalid tag name' do
+  it 'Create invalid tag name' do
     login :twitter, user
     visit '/poj/2000'
     click_link 'Edit tags'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PojSubmission do
+RSpec.describe PojSubmission do
   describe '#save' do
     it 'saves' do
       sub = FactoryGirl.build :poj_submission_ac

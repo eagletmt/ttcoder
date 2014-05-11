@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-feature 'Activity' do
-  given(:user1) { FactoryGirl.create(:user) }
-  given(:user2) { FactoryGirl.create(:user) }
+RSpec.describe 'Activity' do
+  let(:user1) { FactoryGirl.create(:user) }
+  let(:user2) { FactoryGirl.create(:user) }
 
-  background do
+  before do
     FactoryGirl.create(:poj_submission_ac, user: user1.poj_user)
     FactoryGirl.create(:aoj_submission_wa, user_id: user2.aoj_user)
     FactoryGirl.create(:contest, owner: user1)
   end
 
-  scenario 'list recent activities' do
+  it 'list recent activities' do
     visit '/activities'
     expect(page).to have_content("#{user1.name} submitted")
     expect(page).to have_link('AC')

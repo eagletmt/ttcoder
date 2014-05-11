@@ -1,5 +1,5 @@
 shared_examples 'a site problem page' do
-  given(:submission_class) { "#{site.camelize}Submission".constantize }
+  let(:submission_class) { "#{site.camelize}Submission".constantize }
 
   def create_submission(sym, problem, user, submitted_at)
     params = {}
@@ -17,13 +17,13 @@ shared_examples 'a site problem page' do
     create_submission(:wa, problem, user, submitted_at)
   end
 
-  given(:problem) { FactoryGirl.create(:problem, site: site) }
-  given(:user1) { FactoryGirl.create(:user) }
-  given(:user2) { FactoryGirl.create(:user) }
+  let(:problem) { FactoryGirl.create(:problem, site: site) }
+  let(:user1) { FactoryGirl.create(:user) }
+  let(:user2) { FactoryGirl.create(:user) }
   let!(:sub1) { create_ac(problem, user1, 5.days.ago) }
   let!(:sub2) { create_wa(problem, user2, 4.days.ago) }
 
-  scenario ':site/recent shows recent ACs and graph', js: true do
+  it ':site/recent shows recent ACs and graph', js: true do
     visit "/#{site}/recent"
     expect(page).to have_content("ACs at #{site.upcase}")
     expect(page).to have_css('#weekly-graph svg')
@@ -31,7 +31,7 @@ shared_examples 'a site problem page' do
     expect(page).not_to have_link(user2.name)
   end
 
-  scenario ':site/:problem_id creates a new SiteProblem if not exists' do
+  it ':site/:problem_id creates a new SiteProblem if not exists' do
     expect {
       visit "/#{site}/#{problem.problem_id}0"
     }.to change { SiteProblem.count }.by(1)

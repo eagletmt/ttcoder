@@ -1,5 +1,4 @@
 require 'spec_helper'
 
-describe HomeController do
-
+RSpec.describe HomeController do
 end
