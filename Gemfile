@@ -51,7 +51,6 @@ group :test do
   gem 'fuubar', '>= 1.3.2'
   gem 'rspec', '>= 3.0.0.beta1'
   gem 'factory_girl_rails'
-  gem 'webrat'
   gem 'capybara', '>= 2.2.0', require: 'capybara/rspec'  # For RSpec 3
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'database_rewinder'
