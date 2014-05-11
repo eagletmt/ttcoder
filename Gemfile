@@ -48,7 +48,7 @@ end
 
 group :test do
   gem 'rspec-rails', '>= 3.0.0.beta1'
-  gem 'fuubar', '>= 1.3.2'
+  gem 'fuubar', '>= 2.0.0.beta1'
   gem 'rspec', '>= 3.0.0.beta1'
   gem 'factory_girl_rails'
   gem 'capybara', '>= 2.2.0', require: 'capybara/rspec',
