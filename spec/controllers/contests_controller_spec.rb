@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ContestsController do
+RSpec.describe ContestsController do
   let(:users) { 2.times.map { FactoryGirl.create :user } }
   let(:u1) { users[0] }
   let(:u2) { users[1] }

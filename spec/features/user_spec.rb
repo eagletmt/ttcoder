@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-feature 'User CRUD' do
-  given(:username) { OmniAuth.config.mock_auth[:twitter].info.nickname }
-  scenario 'Sign in with Twitter' do
+RSpec.describe 'User CRUD' do
+  let(:username) { OmniAuth.config.mock_auth[:twitter].info.nickname }
+  it 'Sign in with Twitter' do
     visit '/'
     click_link 'Login'
     click_link 'Sign in with Twitter'
@@ -17,7 +17,7 @@ feature 'User CRUD' do
     end
   end
 
-  scenario 'Create a new account with custom username' do
+  it 'Create a new account with custom username' do
     visit '/'
     click_link 'Login'
     click_link 'Sign in with Twitter'
@@ -37,18 +37,18 @@ feature 'User CRUD' do
     expect(page).to have_content(custom_aoj_user)
   end
 
-  scenario 'Reject direct access to /users/new' do
+  it 'Reject direct access to /users/new' do
     visit '/users/new'
     expect(page.current_path).to eq('/login')
   end
 
   context 'with duplication' do
-    background do
+    before do
       user = FactoryGirl.create(:user, name: username)
       FactoryGirl.create(:twitter_user, user: user)
     end
 
-    scenario 'Try to create a new account but fail' do
+    it 'Try to create a new account but fail' do
       visit '/'
       click_link 'Login'
       click_link 'Sign in with Twitter'
@@ -56,7 +56,7 @@ feature 'User CRUD' do
       expect(page).to have_css('.alert', text: 'username')
     end
 
-    scenario 'Create a new account with retry' do
+    it 'Create a new account with retry' do
       visit '/'
       click_link 'Login'
       click_link 'Sign in with Twitter'
@@ -74,7 +74,7 @@ feature 'User CRUD' do
     end
   end
 
-  scenario 'Returns to the previous page after login' do
+  it 'Returns to the previous page after login' do
     visit '/contests/new'
     expect(page.current_path).to eq('/login')
     click_link 'Sign in with Twitter'
@@ -82,7 +82,7 @@ feature 'User CRUD' do
     expect(page.current_path).to eq('/contests/new')
   end
 
-  scenario 'Edits an existing user' do
+  it 'Edits an existing user' do
     visit '/'
     click_link 'Login'
     click_link 'Sign in with Twitter'
@@ -116,7 +116,7 @@ feature 'User CRUD' do
     expect(page).not_to have_content('AC')
   end
 
-  scenario 'View username on each page' do
+  it 'View username on each page' do
     visit '/'
     expect(page).to_not have_link(username)
 
@@ -128,7 +128,7 @@ feature 'User CRUD' do
     expect(page).to have_link(username)
   end
 
-  scenario 'Edit Twitter link visibility' do
+  it 'Edit Twitter link visibility' do
     visit '/'
     click_link 'Login'
     click_link 'Sign in with Twitter'

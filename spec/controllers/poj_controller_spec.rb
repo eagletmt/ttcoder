@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PojController do
+RSpec.describe PojController do
   let(:user) { FactoryGirl.create(:user) }
   let(:tag1) { FactoryGirl.create(:tag, name: 'abc') }
   let(:tag2) { FactoryGirl.create(:tag, name: 'aba') }

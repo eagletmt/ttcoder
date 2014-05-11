@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'contests/show' do
+RSpec.describe 'contests/show' do
   let(:t1) { Time.parse '2013-06-04 10:00' }
   let(:t2) { Time.parse '2013-06-04 12:00' }
   let(:t3) { Time.parse '2013-06-04 14:00' }

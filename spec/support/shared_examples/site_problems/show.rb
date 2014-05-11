@@ -15,7 +15,7 @@ shared_examples 'a site problems show' do
       assign :used_contests, [contest]
       render
       expect(rendered).to have_content('Used in')
-      expect(rendered).to have_selector('a', href: contest_path(contest))
+      expect(rendered).to have_link('', href: contest_path(contest))
     end
   end
 
@@ -32,7 +32,7 @@ shared_examples 'a site problems show' do
       assign :solved_users, [user]
       render
       expect(rendered).to have_content('Solved by')
-      expect(rendered).to have_selector('a', href: user_path(user))
+      expect(rendered).to have_link('', href: user_path(user))
     end
   end
 

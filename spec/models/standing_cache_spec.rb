@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StandingCache do
+RSpec.describe StandingCache do
   let(:attributes) do
     {
       user: 'user001',

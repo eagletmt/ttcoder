@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AlertMailer do
+RSpec.describe AlertMailer do
   describe 'controller_exception' do
     class SomethingWentWrong < StandardError
     end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'poj_crawler'
 
-describe PojCrawler do
+RSpec.describe PojCrawler do
   let(:crawler) { PojCrawler.new }
   let(:top) { 100_000_000 }
 

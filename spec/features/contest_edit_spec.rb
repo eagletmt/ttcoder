@@ -1,20 +1,20 @@
 require 'spec_helper'
 
-feature 'Contest edition' do
-  given(:user) { FactoryGirl.create(:twitter_user).user }
-  given!(:contest) { FactoryGirl.create(:contest, name: 'ayakashi') }
-  given!(:poj4000) { FactoryGirl.create(:poj_problem, problem_id: '4000') }
-  given!(:poj3000) { FactoryGirl.create(:poj_problem, problem_id: '3000') }
-  given!(:aoj4000) { FactoryGirl.create(:aoj_problem, problem_id: '4000') }
+RSpec.describe 'Contest edition' do
+  let(:user) { FactoryGirl.create(:twitter_user).user }
+  let!(:contest) { FactoryGirl.create(:contest, name: 'ayakashi') }
+  let!(:poj4000) { FactoryGirl.create(:poj_problem, problem_id: '4000') }
+  let!(:poj3000) { FactoryGirl.create(:poj_problem, problem_id: '3000') }
+  let!(:aoj4000) { FactoryGirl.create(:aoj_problem, problem_id: '4000') }
 
-  background do
+  before do
     contest.users << FactoryGirl.create(:twitter_user).user << FactoryGirl.create(:twitter_user).user
     contest.site_problems << poj3000 << aoj4000
 
     login :twitter, user
   end
 
-  scenario 'Update message' do
+  it 'Update message' do
     visit '/'
     click_link contest.name
 
@@ -29,7 +29,7 @@ feature 'Contest edition' do
     expect(page).to have_content("#{user.name} updated contest #{contest.name}")
   end
 
-  scenario 'Add a problem' do
+  it 'Add a problem' do
     visit '/'
     click_link contest.name
 
@@ -48,7 +48,7 @@ feature 'Contest edition' do
     expect(page).to have_content('AOJ 1234')
   end
 
-  scenario 'Add a problem with empty problem_id' do
+  it 'Add a problem with empty problem_id' do
     visit '/'
     click_link contest.name
     click_link 'Edit this contest'
@@ -61,7 +61,7 @@ feature 'Contest edition' do
     expect(page).to have_content('Invalid problem')
   end
 
-  scenario 'Failed to add a problem with non-numeric problem_id' do
+  it 'Failed to add a problem with non-numeric problem_id' do
     visit '/'
     click_link contest.name
     click_link 'Edit this contest'
@@ -74,7 +74,7 @@ feature 'Contest edition' do
     expect(page).to have_content('Invalid problem')
   end
 
-  scenario 'Remove a problem' do
+  it 'Remove a problem' do
     visit '/'
     click_link contest.name
 
@@ -93,7 +93,7 @@ feature 'Contest edition' do
     expect(page).not_to have_content(poj4000.description)
   end
 
-  scenario 'Up-down a problem' do
+  it 'Up-down a problem' do
     contest.site_problems << poj4000
 
     visit '/'

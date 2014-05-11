@@ -47,13 +47,15 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '3.0.0.beta1'
-  gem 'fuubar', '>= 1.3.2'
-  # Let bundler find pre-released RSpec 3 depended by fuubar.
-  gem 'rspec', '3.0.0.beta1'
+  gem 'rspec-rails', '>= 3.0.0.beta1'
+  gem 'fuubar', '>= 2.0.0.beta1'
+  gem 'rspec', '>= 3.0.0.beta1'
   gem 'factory_girl_rails'
-  gem 'webrat'
-  gem 'capybara', '>= 2.2.0', require: 'capybara/rspec'  # For RSpec 3
+  gem 'capybara', '>= 2.2.0', require: 'capybara/rspec',
+    # For RSpec 3 beta2
+    # https://github.com/jnicklas/capybara/pull/1219
+    git: 'https://github.com/jnicklas/capybara',
+    ref: 'f18637bf905db7f05a9e9187a30e1cc435fbf593'
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'database_rewinder'
   gem 'simplecov'
