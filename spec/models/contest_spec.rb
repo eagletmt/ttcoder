@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Contest do
+RSpec.describe Contest, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
   describe '#save' do

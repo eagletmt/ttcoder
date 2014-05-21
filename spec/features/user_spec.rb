@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'User CRUD' do
+RSpec.describe 'User CRUD', type: :feature do
   let(:username) { OmniAuth.config.mock_auth[:twitter].info.nickname }
   it 'Sign in with Twitter' do
     visit '/'

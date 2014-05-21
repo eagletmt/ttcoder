@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'site controller routing' do
+RSpec.describe 'site controller routing', type: :routing do
   describe '/poj' do
     it 'routes integer problem_id' do
       expect(get: '/poj/0123').to route_to(controller: 'poj', action: 'show', problem_id: '0123')

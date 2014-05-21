@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Activity' do
+RSpec.describe 'Activity', type: :feature do
   let(:user1) { FactoryGirl.create(:user) }
   let(:user2) { FactoryGirl.create(:user) }
 

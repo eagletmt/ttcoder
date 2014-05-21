@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'site_problems/show' do
+RSpec.describe 'site_problems/show', type: :view do
   context 'with poj' do
     let(:site) { 'poj' }
     it_behaves_like 'a site problems show'

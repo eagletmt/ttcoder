@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe AojController do
+RSpec.describe AojController, type: :controller do
   let(:user) { FactoryGirl.create(:user) }
   let(:tag1) { FactoryGirl.create(:tag, name: 'abc') }
   let(:tag2) { FactoryGirl.create(:tag, name: 'aba') }

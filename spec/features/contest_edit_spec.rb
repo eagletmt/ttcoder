@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Contest edition' do
+RSpec.describe 'Contest edition', type: :feature do
   let(:user) { FactoryGirl.create(:twitter_user).user }
   let!(:contest) { FactoryGirl.create(:contest, name: 'ayakashi') }
   let!(:poj4000) { FactoryGirl.create(:poj_problem, problem_id: '4000') }

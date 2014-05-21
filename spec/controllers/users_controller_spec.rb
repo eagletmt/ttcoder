@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe UsersController do
+RSpec.describe UsersController, type: :controller do
   describe '#show' do
     let(:user) { FactoryGirl.create(:user) }
     let(:problem1) { '1000' }

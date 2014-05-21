@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Contest' do
+RSpec.describe 'Contest', type: :feature do
   let(:contest) { FactoryGirl.create(:contest) }
 
   context 'with login user' do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe TagsController do
+RSpec.describe TagsController, type: :controller do
   let(:problem1) { FactoryGirl.create(:poj_problem) }
   let(:problem2) { FactoryGirl.create(:aoj_problem) }
   let(:problem3) { FactoryGirl.create(:poj_problem) }

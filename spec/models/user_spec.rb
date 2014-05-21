@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe User do
+RSpec.describe User, type: :model do
   describe '#save' do
     it 'saves' do
       u = described_class.new name: 'name', poj_user: 'poj', aoj_user: 'aoj'

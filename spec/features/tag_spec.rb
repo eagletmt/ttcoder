@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Tags' do
+RSpec.describe 'Tags', type: :feature do
   let(:user) { FactoryGirl.create(:twitter_user).user }
   let!(:poj_problem) { FactoryGirl.create(:poj_problem, problem_id: '1000') }
   let!(:aoj_problem) { FactoryGirl.create(:aoj_problem, problem_id: '1000') }

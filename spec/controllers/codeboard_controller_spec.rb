@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-RSpec.describe CodeboardController do
+RSpec.describe CodeboardController, type: :controller do
 end

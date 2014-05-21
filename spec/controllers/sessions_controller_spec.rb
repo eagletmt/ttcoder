@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe SessionsController do
+RSpec.describe SessionsController, type: :controller do
   describe '#create_user' do
     let(:user_params) do
       {

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Tag do
+RSpec.describe Tag, type: :model do
   describe '#save' do
     let(:tag) { FactoryGirl.build(:tag) }
 
