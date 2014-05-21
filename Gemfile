@@ -48,7 +48,9 @@ end
 
 group :test do
   gem 'rspec-rails', '>= 3.0.0.rc1'
-  #gem 'fuubar', '>= 2.0.0.beta1'
+  gem 'fuubar', '>= 2.0.0.beta1',
+    git: 'https://github.com/eagletmt/fuubar',
+    branch: 'rspec-300-rc1'
   gem 'rspec', '>= 3.0.0.rc1'
   gem 'rspec-activemodel-mocks'
   gem 'factory_girl_rails'

@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/eagletmt/fuubar
+  revision: e5edc806e6b3225d363f76aba25a700eed630dc1
+  branch: rspec-300-rc1
+  specs:
+    fuubar (2.0.0.beta2)
+      rspec (~> 3.0.0.rc1)
+      ruby-progressbar (~> 1.4)
+
+GIT
   remote: https://github.com/jnicklas/capybara
   revision: f18637bf905db7f05a9e9187a30e1cc435fbf593
   ref: f18637bf905db7f05a9e9187a30e1cc435fbf593
@@ -329,6 +338,7 @@ DEPENDENCIES
   fakeredis
   faraday
   fluent-logger
+  fuubar (>= 2.0.0.beta1)!
   jbuilder
   jquery-rails
   launchy
