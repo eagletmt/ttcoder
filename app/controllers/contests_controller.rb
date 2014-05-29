@@ -68,7 +68,7 @@ class ContestsController < ApplicationController
   end
 
   def remove_problem
-    @contest.site_problems.delete(params[:problem_id])
+    @contest.site_problems.destroy(params[:problem_id])
     redirect_to edit_contest_path(@contest)
   end
 
@@ -81,7 +81,7 @@ class ContestsController < ApplicationController
   end
 
   def leave
-    if @contest.users.delete(@current_user)
+    if @contest.users.destroy(@current_user)
       Activity.create(user: @current_user, target: @contest, kind: :contest_leave)
       redirect_to contest_path(@contest), notice: "Left #{@contest.name}"
     else
