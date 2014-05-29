@@ -5,11 +5,28 @@ else
   source ENV['BUNDLE_SOURCE']
 end
 
-gem 'rails', '4.1.2.rc1'
+git_source :github do |repo_name|
+  unless repo_name.include?('/')
+    repo_name = "#{repo_name}/#{repo_name}"
+  end
+  "https://github.com/#{repo_name}"
+end
 
-gem 'sass-rails', '~> 4.0.0'
+edge = Pathname.new(__FILE__).extname == '.edge'
+
+if edge
+  gem 'rails', github: 'rails'
+  gem 'arel', github: 'rails/arel'
+  gem 'sprockets-rails',  github: 'rails/sprockets-rails'
+  gem 'sass-rails', github: 'rails/sass-rails'
+  gem 'coffee-rails', github: 'rails/coffee-rails'
+else
+  gem 'rails', '4.1.2.rc1'
+  gem 'sass-rails', '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.0'
+end
+
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder'
@@ -47,7 +64,11 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '>= 3.0.0.rc1'
+  if edge
+    gem 'rspec-rails', github: 'rspec/rspec-rails'
+  else
+    gem 'rspec-rails', '>= 3.0.0.rc1'
+  end
   gem 'fuubar', '>= 2.0.0.rc1'
   gem 'rspec', '>= 3.0.0.rc1'
   gem 'rspec-activemodel-mocks'

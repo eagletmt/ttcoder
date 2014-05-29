@@ -3,6 +3,9 @@ rvm:
   - 2.0.0
   - 2.1.2
   - ruby-head
+env:
+  - BUNDE_GEMFILE=Gemfile
+  - BUNDE_GEMFILE=Gemfile.edge
 bundler_args: --deployment -j4 --without production development
 before_install:
   - export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
@@ -13,6 +16,7 @@ before_script:
 matrix:
   allow_failures:
     - rvm: ruby-head
+    - env: BUNDE_GEMFILE=Gemfile.edge
 notifications:
   webhooks:
     urls:

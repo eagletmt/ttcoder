@@ -1,6 +1,11 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
+
+# In edge setting, "uninitialized constant Minitest::Test (NameError)" is
+# raised from lib/active_support/test_case.rb:18 as of rails/rails 29f8eae3faf9.
+require 'minitest'
+
 require 'rspec/rails'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
