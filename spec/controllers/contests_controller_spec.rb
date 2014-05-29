@@ -162,7 +162,7 @@ RSpec.describe ContestsController, type: :controller do
       end
 
       it 'works' do
-        expect { post :join, id: contest.name }.to change { contest.reload.users.exists?(new_user) }.from(false).to(true)
+        expect { post :join, id: contest.name }.to change { contest.reload.users.exists?(new_user.id) }.from(false).to(true)
         expect(response).to redirect_to(contest)
         expect(flash[:notice]).not_to be_nil
         expect(flash[:alert]).to be_nil
@@ -174,7 +174,7 @@ RSpec.describe ContestsController, type: :controller do
         end
 
         it 'rejects' do
-          expect { post :join, id: contest.name }.not_to change { contest.reload.users.exists?(new_user) }
+          expect { post :join, id: contest.name }.not_to change { contest.reload.users.exists?(new_user.id) }
           expect(response).to redirect_to(contest)
           expect(flash[:notice]).to be_nil
           expect(flash[:alert]).not_to be_nil

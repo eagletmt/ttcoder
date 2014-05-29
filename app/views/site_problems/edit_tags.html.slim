@@ -11,7 +11,7 @@ div
     ul.tags.float-listing
       - @tags.each do |tag|
         li.tag
-          = check_box_tag 'tags[]', tag.name, @problem.tags.exists?(tag), id: "tag_#{tag.name}"
+          = check_box_tag 'tags[]', tag.name, @problem.tags.exists?(tag.id), id: "tag_#{tag.name}"
           = label_tag "tag_#{tag.name}", tag.name, class: %w[tag-text]
     div= submit_tag 'Update tags'
 

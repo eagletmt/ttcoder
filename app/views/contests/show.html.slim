@@ -16,7 +16,7 @@ p.alert= alert
     = link_to 'Edit this contest', edit_contest_path(@contest), class: 'link-button'
     .hspace
     - if @current_user
-      - if @contest.users.exists?(@current_user)
+      - if @contest.users.exists?(@current_user.id)
         = form_tag(leave_contest_path(@contest), class: 'inline') do
           = submit_tag 'Leave'
       - else
