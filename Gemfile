@@ -36,7 +36,7 @@ gem 'faraday'
 gem 'nokogiri'
 
 gem 'acts_as_list'
-gem 'redis'
+gem 'redis', '~> 3.0.0' # For fakeredis
 gem 'fluent-logger'
 gem 'msgpack', '>= 0.5.8'
 gem 'active_decorator'
@@ -67,10 +67,10 @@ group :test do
   if edge
     gem 'rspec-rails', github: 'rspec/rspec-rails'
   else
-    gem 'rspec-rails', '>= 3.0.0.rc1'
+    gem 'rspec-rails', '>= 3.0.0'
   end
   gem 'fuubar', '>= 2.0.0.rc1'
-  gem 'rspec', '>= 3.0.0.rc1'
+  gem 'rspec', '>= 3.0.0'
   gem 'rspec-activemodel-mocks'
   gem 'factory_girl_rails'
   gem 'capybara', '>= 2.3.0', require: 'capybara/rspec'
