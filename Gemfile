@@ -21,7 +21,7 @@ if edge
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'coffee-rails', github: 'rails/coffee-rails'
 else
-  gem 'rails', '4.1.2.rc1'
+  gem 'rails', '4.1.4'
   gem 'sass-rails', '~> 4.0.0'
   gem 'coffee-rails', '~> 4.0.0'
 end
@@ -66,11 +66,16 @@ end
 group :test do
   if edge
     gem 'rspec-rails', github: 'rspec/rspec-rails'
+    gem 'rspec', github: 'rspec/rspec'
+    gem 'rspec-core', github: 'rspec/rspec-core'
+    gem 'rspec-expectations', github: 'rspec/rspec-expectations'
+    gem 'rspec-mocks', github: 'rspec/rspec-mocks'
+    gem 'rspec-support', github: 'rspec/rspec-support'
   else
     gem 'rspec-rails', '>= 3.0.0'
+    gem 'rspec', '>= 3.0.0'
   end
   gem 'fuubar', '>= 2.0.0.rc1'
-  gem 'rspec', '>= 3.0.0'
   gem 'rspec-activemodel-mocks'
   gem 'factory_girl_rails'
   gem 'capybara', '>= 2.3.0', require: 'capybara/rspec'
