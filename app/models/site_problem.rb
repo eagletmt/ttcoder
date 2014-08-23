@@ -5,8 +5,8 @@ class SiteProblem < ActiveRecord::Base
 
   has_many :contests_site_problems
   has_many :contests, through: :contests_site_problems
-
-  acts_as_taggable_on :tags
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   def description
     self.class.description(site, problem_id)

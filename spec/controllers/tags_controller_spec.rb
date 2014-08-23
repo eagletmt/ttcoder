@@ -9,24 +9,22 @@ RSpec.describe TagsController, type: :controller do
   let!(:tag3) { FactoryGirl.create(:tag, name: 'z') }
 
   before do
-    problem1.tag_list = [tag1.name, tag2.name]
+    problem1.tags = [tag1, tag2]
     problem1.save!
-    problem2.tag_list = [tag2.name]
+    problem2.tags = [tag2]
     problem2.save!
-    problem3.tag_list = [tag1.name]
+    problem3.tags = [tag1]
     problem3.save!
   end
 
   describe '#index' do
-    it 'lists tags of problems with count in alphabetical order' do
+    it 'lists tags of problems in alphabetical order' do
       get :index
       expect(response).to be_ok
       tags = assigns(:tags)
-      expect(tags.size).to eq(2)
+      expect(tags.size).to eq(3)
       expect(tags[0].name).to eq(tag2.name)
-      expect(tags[0].count).to eq(2)
       expect(tags[1].name).to eq(tag1.name)
-      expect(tags[1].count).to eq(2)
     end
   end
 

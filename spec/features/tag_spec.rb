@@ -4,10 +4,10 @@ RSpec.describe 'Tags', type: :feature do
   let(:user) { FactoryGirl.create(:twitter_user).user }
   let!(:poj_problem) { FactoryGirl.create(:poj_problem, problem_id: '1000') }
   let!(:aoj_problem) { FactoryGirl.create(:aoj_problem, problem_id: '1000') }
+  let!(:simple_tag) { FactoryGirl.create(:tag, name: 'simple') }
+  let!(:dp_tag) { FactoryGirl.create(:tag, name: 'dp') }
 
   before do
-    FactoryGirl.create(:tag, name: 'simple')
-    FactoryGirl.create(:tag, name: 'dp')
     FactoryGirl.create(:tag, name: 'parsing')
   end
 
@@ -79,24 +79,24 @@ RSpec.describe 'Tags', type: :feature do
   end
 
   it 'Show tagged problems' do
-    poj_problem.tag_list = %w[simple]
+    poj_problem.tags = [simple_tag]
     poj_problem.save!
-    aoj_problem.tag_list = %w[simple dp]
+    aoj_problem.tags = [simple_tag, dp_tag]
     aoj_problem.save!
 
     visit '/'
     click_link 'Tags'
-    expect(page).to have_link('simple (2)')
-    expect(page).to have_link('dp (1)')
-    expect(page).not_to have_link('parsing (0)')
+    expect(page).to have_link('simple')
+    expect(page).to have_link('dp')
+    expect(page).to have_link('parsing')
 
-    click_link 'simple (2)'
+    click_link 'simple'
     expect(page).to have_link('POJ 1000')
     expect(page).to have_link('AOJ 1000')
 
     visit '/'
     click_link 'Tags'
-    click_link 'dp (1)'
+    click_link 'dp'
     expect(page).not_to have_link('POJ 1000')
     expect(page).to have_link('AOJ 1000')
   end

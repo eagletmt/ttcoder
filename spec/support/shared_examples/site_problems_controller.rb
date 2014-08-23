@@ -41,9 +41,9 @@ shared_examples 'a site problems controller' do
       con2.site_problems << problem1
       con3.site_problems << problem2
 
-      problem1.tag_list = [tag1.name, tag2.name]
+      problem1.tags = [tag1, tag2]
       problem1.save!
-      problem2.tag_list = [tag2.name]
+      problem2.tags = [tag2]
       problem2.save!
     end
 
@@ -82,9 +82,9 @@ shared_examples 'a site problems controller' do
     let(:problem2) { FactoryGirl.create(:problem, site: site) }
 
     before do
-      problem1.tag_list = [tag1.name, tag2.name]
+      problem1.tags = [tag1, tag2]
       problem1.save!
-      problem2.tag_list = [tag2.name]
+      problem2.tags = [tag2]
       problem2.save!
     end
 

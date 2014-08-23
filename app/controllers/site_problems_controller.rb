@@ -61,7 +61,7 @@ class SiteProblemsController < ApplicationController
 
   def update_tags
     site_problem = SiteProblem.find_or_create_by(site: site, problem_id: params[:problem_id])
-    site_problem.tag_list = params[:tags]
+    site_problem.tags = params[:tags].map { |tag| Tag.find_by!(name: tag) }
     site_problem.save!
     Activity.create(user: @current_user, target: site_problem, kind: :tags_update, parameters: site_problem.tags.pluck(:id))
     redirect_to send(:"#{site}_path", params[:problem_id])

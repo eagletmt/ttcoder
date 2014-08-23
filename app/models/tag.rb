@@ -4,6 +4,9 @@ class Tag < ActiveRecord::Base
 
   belongs_to :owner, class_name: 'User'
 
+  has_many :taggings, dependent: :destroy
+  has_many :site_problems, through: :taggings
+
   after_create :create_create_activity
 
   def to_param

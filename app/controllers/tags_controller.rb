@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @tags = SiteProblem.tag_counts_on(:tags).order(:name)
+    @tags = Tag.order(:name)
   end
 
   def create
@@ -17,7 +17,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @problems = SiteProblem.tagged_with(@tag.name).sort_by(&:description)
+    @problems = @tag.site_problems.sort_by(&:description)
   end
 
   private

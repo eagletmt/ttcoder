@@ -43,7 +43,6 @@ gem 'active_decorator'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'redis-rails'
-gem 'acts-as-taggable-on', '>= 3.1.0'
 
 group :doc do
   gem 'sdoc', require: false
