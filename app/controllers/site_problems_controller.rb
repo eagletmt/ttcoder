@@ -54,6 +54,7 @@ class SiteProblemsController < ApplicationController
 
   def edit_tags
     @problem = SiteProblem.find_or_create_by(site: site, problem_id: params[:problem_id])
+    @problem_tag_ids = @problem.tags.pluck(:id)
     @tags =Tag.all.order(:name)
     @tag = Tag.new
     session[:return_to] = request.fullpath
