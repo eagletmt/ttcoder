@@ -23,7 +23,7 @@ class ContestsController < ApplicationController
       end
     end
     @scores = calculate_scores @users, @problems, @standing
-    @activities = Activity.recent(ACTIVITY_COUNT).where(target: @contest)
+    @activities = Activity.includes(:user).recent(ACTIVITY_COUNT).where(target: @contest)
     if request.xhr?
       render partial: 'standing'
     end
