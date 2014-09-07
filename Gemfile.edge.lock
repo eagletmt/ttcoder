@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/arel
-  revision: 53bc8426648cc93695525e8f12102cd416b2d772
+  revision: 36836fa5e7c084c0dce2818577e6fd0cf815f786
   specs:
     arel (6.0.0.beta1.20140817224534)
 
@@ -14,56 +14,57 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails
-  revision: 33c05363e2ed52aa8bdbf5ebf9ee5226ab85ecbc
+  revision: 4c3b3a2518f0f482f13a373e039c41be2487b752
   specs:
-    actionmailer (4.2.0.alpha)
-      actionpack (= 4.2.0.alpha)
-      actionview (= 4.2.0.alpha)
-      activejob (= 4.2.0.alpha)
+    actionmailer (4.2.0.beta1)
+      actionpack (= 4.2.0.beta1)
+      actionview (= 4.2.0.beta1)
+      activejob (= 4.2.0.beta1)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.2)
-    actionpack (4.2.0.alpha)
-      actionview (= 4.2.0.alpha)
-      activesupport (= 4.2.0.alpha)
+    actionpack (4.2.0.beta1)
+      actionview (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       rack (~> 1.6.0.beta)
       rack-test (~> 0.6.2)
-      rails-deprecated_sanitizer (~> 1.0, >= 1.0.2)
       rails-dom-testing (~> 1.0, >= 1.0.2)
-    actionview (4.2.0.alpha)
-      activesupport (= 4.2.0.alpha)
+      rails-html-sanitizer (~> 1.0)
+    actionview (4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-      rails-deprecated_sanitizer (~> 1.0, >= 1.0.2)
       rails-dom-testing (~> 1.0, >= 1.0.2)
-    activejob (4.2.0.alpha)
+      rails-html-sanitizer (~> 1.0)
+    activejob (4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       globalid (>= 0.2.3)
-    activemodel (4.2.0.alpha)
-      activesupport (= 4.2.0.alpha)
+    activemodel (4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       builder (~> 3.1)
-    activerecord (4.2.0.alpha)
-      activemodel (= 4.2.0.alpha)
-      activesupport (= 4.2.0.alpha)
+    activerecord (4.2.0.beta1)
+      activemodel (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       arel (>= 6.0.0.beta1, < 6.1)
-    activesupport (4.2.0.alpha)
+    activesupport (4.2.0.beta1)
       i18n (>= 0.7.0.beta1, < 0.8)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    rails (4.2.0.alpha)
-      actionmailer (= 4.2.0.alpha)
-      actionpack (= 4.2.0.alpha)
-      actionview (= 4.2.0.alpha)
-      activejob (= 4.2.0.alpha)
-      activemodel (= 4.2.0.alpha)
-      activerecord (= 4.2.0.alpha)
-      activesupport (= 4.2.0.alpha)
+    rails (4.2.0.beta1)
+      actionmailer (= 4.2.0.beta1)
+      actionpack (= 4.2.0.beta1)
+      actionview (= 4.2.0.beta1)
+      activejob (= 4.2.0.beta1)
+      activemodel (= 4.2.0.beta1)
+      activerecord (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.0.alpha)
+      railties (= 4.2.0.beta1)
       sprockets-rails (~> 3.0.0.beta1)
-    railties (4.2.0.alpha)
-      actionpack (= 4.2.0.alpha)
-      activesupport (= 4.2.0.alpha)
+    railties (4.2.0.beta1)
+      actionpack (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
 
@@ -79,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/sprockets-rails
-  revision: 40cd1d4c1966e8920242a8786f834e425ecacbbb
+  revision: 53f640ed38a509253e869305eb4de7ce3d5cb776
   specs:
     sprockets-rails (3.0.0.beta1)
       actionpack (>= 4.0)
@@ -88,53 +89,53 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec
-  revision: 2b826653e1f55f63e4f99d8dd1f14b5d35d0a0b7
+  revision: 6af4995482ade2d49ad361ee003dee29f713ab17
   specs:
-    rspec (3.1.0.pre)
-      rspec-core (= 3.1.0.pre)
-      rspec-expectations (= 3.1.0.pre)
-      rspec-mocks (= 3.1.0.pre)
+    rspec (3.2.0.pre)
+      rspec-core (= 3.2.0.pre)
+      rspec-expectations (= 3.2.0.pre)
+      rspec-mocks (= 3.2.0.pre)
 
 GIT
   remote: https://github.com/rspec/rspec-core
-  revision: 019cdfee32c93489607e3c1023493ba9e7c2974b
+  revision: ec0c5695788e38533c2f39448be4b8db20d4256b
   specs:
-    rspec-core (3.1.0.pre)
-      rspec-support (= 3.1.0.pre)
+    rspec-core (3.2.0.pre)
+      rspec-support (= 3.2.0.pre)
 
 GIT
   remote: https://github.com/rspec/rspec-expectations
-  revision: 95bcb4b329b67a28a6a7a4848cadcd9cd5d11f7c
+  revision: 92f4a0d39d992dc355cc7a763b22046bf5e07358
   specs:
-    rspec-expectations (3.1.0.pre)
+    rspec-expectations (3.2.0.pre)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.1.0.pre)
+      rspec-support (= 3.2.0.pre)
 
 GIT
   remote: https://github.com/rspec/rspec-mocks
-  revision: c93dd6b90e60f3d7cdc0545b9011f23665ff2b83
+  revision: 9e261ad968be31b0c980896ed7261f4e13ceeff9
   specs:
-    rspec-mocks (3.1.0.pre)
-      rspec-support (= 3.1.0.pre)
+    rspec-mocks (3.2.0.pre)
+      rspec-support (= 3.2.0.pre)
 
 GIT
   remote: https://github.com/rspec/rspec-rails
-  revision: 91c317fd0505a98401aea4b2139372ea186a25bb
+  revision: b4384f9aa45453dd3650e2ae9284469da636e364
   specs:
-    rspec-rails (3.1.0.pre)
+    rspec-rails (3.2.0.pre)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (= 3.1.0.pre)
-      rspec-expectations (= 3.1.0.pre)
-      rspec-mocks (= 3.1.0.pre)
-      rspec-support (= 3.1.0.pre)
+      rspec-core (= 3.2.0.pre)
+      rspec-expectations (= 3.2.0.pre)
+      rspec-mocks (= 3.2.0.pre)
+      rspec-support (= 3.2.0.pre)
 
 GIT
   remote: https://github.com/rspec/rspec-support
-  revision: 109e934881811a22a4716401c306a93084e004fe
+  revision: e8b52137e7296234246c99b010493f3e0cd51d0b
   specs:
-    rspec-support (3.1.0.pre)
+    rspec-support (3.2.0.pre)
 
 GEM
   remote: https://rubygems.org/
@@ -144,12 +145,15 @@ GEM
       activerecord (>= 3.0)
     addressable (2.3.6)
     ast (2.0.0)
+    astrolabe (1.3.0)
+      parser (>= 2.2.0.pre.3, < 3.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (2.7.0)
-      columnize (~> 0.3)
+    byebug (3.4.0)
+      columnize (~> 0.8)
       debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     capistrano (3.2.1)
       i18n
       rake (>= 10.0.0)
@@ -157,7 +161,7 @@ GEM
     capistrano-bundler (1.1.3)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-rails (1.1.1)
+    capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rbenv (2.0.2)
@@ -174,7 +178,7 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.7.1)
+    coffee-script-source (1.8.0)
     colorize (0.7.3)
     columnize (0.8.9)
     coveralls (0.7.1)
@@ -209,13 +213,13 @@ GEM
       ruby-progressbar (~> 1.4)
     globalid (0.2.3)
       activesupport (>= 4.1.0)
-    hashie (3.2.0)
+    hashie (3.3.1)
     hike (1.2.3)
     i18n (0.7.0.beta1)
     jbuilder (2.1.3)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-rails (3.1.1)
+    jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
@@ -223,12 +227,14 @@ GEM
     launchy (2.4.2)
       addressable (~> 2.3)
     libv8 (3.16.14.3)
+    loofah (2.0.1)
+      nokogiri (>= 1.5.9)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.3)
     mini_portile (0.6.0)
-    minitest (5.4.0)
+    minitest (5.4.1)
     msgpack (0.5.8)
     multi_json (1.10.1)
     multipart-post (2.0.0)
@@ -262,8 +268,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (1.3.3)
-      byebug (~> 2.7)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
       pry (~> 0.10)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
@@ -279,6 +285,8 @@ GEM
       activesupport
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.0.0)
+      loofah (~> 2.0)
     rainbow (2.0.0)
     raindrops (0.13.0)
     rake (10.3.2)
@@ -309,14 +317,15 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
-    rubocop (0.25.0)
+    rubocop (0.26.0)
+      astrolabe (~> 1.3)
       parser (>= 2.2.0.pre.4, < 3.0)
       powerpack (~> 0.0.6)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.5.1)
     safe_yaml (1.0.3)
-    sass (3.4.1)
+    sass (3.4.3)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -334,7 +343,7 @@ GEM
       railties (>= 3.0, < 4.2)
       slim (~> 2.0)
     slop (3.6.0)
-    sprockets (2.12.1)
+    sprockets (2.12.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
