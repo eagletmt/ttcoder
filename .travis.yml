@@ -7,7 +7,7 @@ rvm:
 gemfile:
   - Gemfile
   - Gemfile.edge
-bundler_args: --deployment -j4 --without production development
+bundler_args: -j4 --without production development
 before_install:
   - export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 before_script:
