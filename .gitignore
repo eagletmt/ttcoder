@@ -21,3 +21,4 @@
 /coverage
 
 /.vagrant
+/Gemfile.edge.lock
