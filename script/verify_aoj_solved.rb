@@ -4,7 +4,7 @@ require 'set'
 
 aoj_user = ENV['AOJ_USER']
 unless aoj_user
-  abort "AOJ_USER is'nt set"
+  abort "AOJ_USER isn't set"
 end
 
 xml = open("http://judge.u-aizu.ac.jp/onlinejudge/webservice/user?id=#{aoj_user}&mode=solution").read
