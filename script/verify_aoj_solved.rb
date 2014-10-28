@@ -17,4 +17,4 @@ solved_ids = AojSubmission.user(user_id: aoj_user).accepts.distinct(:problem_id)
 
 puts "Actual solved: #{actual_solved_ids.size}. Solved #{solved_ids.size}."
 puts "actual_solved_ids - solved_ids: #{actual_solved_ids - solved_ids}"
-puts "solved_ids - actual_solved_ids: #{solved_ids - exact_ids}"
+puts "solved_ids - actual_solved_ids: #{solved_ids - actual_solved_ids}"
