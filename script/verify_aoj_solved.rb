@@ -13,8 +13,8 @@ actual_solved_ids = doc.xpath('/user/solved_list/problem').map do |problem|
   problem.at_xpath('id').text.strip
 end.to_set
 
-solved_ids = AojSubmission.user(user_id: aoj_user).accepts.distinct(:problem_id).pluck(:problem_id).to_set
+solved_ids = AojSubmission.user(aoj_user).accepts.distinct(:problem_id).pluck(:problem_id).to_set
 
 puts "Actual solved: #{actual_solved_ids.size}. Solved #{solved_ids.size}."
-puts "actual_solved_ids - solved_ids: #{actual_solved_ids - solved_ids}"
-puts "solved_ids - actual_solved_ids: #{solved_ids - actual_solved_ids}"
+puts "actual_solved_ids - solved_ids: #{(actual_solved_ids - solved_ids).to_a}"
+puts "solved_ids - actual_solved_ids: #{(solved_ids - actual_solved_ids).to_a}"
