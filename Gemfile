@@ -37,7 +37,7 @@ gem 'faraday'
 gem 'nokogiri'
 
 gem 'acts_as_list'
-gem 'redis', '~> 3.0.0' # For fakeredis
+gem 'redis'
 gem 'fluent-logger'
 gem 'msgpack', '>= 0.5.8'
 gem 'active_decorator'
