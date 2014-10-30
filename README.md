@@ -5,7 +5,7 @@
 [![Dependency Status](https://gemnasium.com/eagletmt/ttcoder.svg)](https://gemnasium.com/eagletmt/ttcoder)
 [![Gitter chat](https://badges.gitter.im/eagletmt/ttcoder.png)](https://gitter.im/eagletmt/ttcoder)
 
-http://ttc.wanko.cc/
+https://ttc.wanko.cc/
 
 ## Development
 [DEVELOPMENT.md](DEVELOPMENT.md)
