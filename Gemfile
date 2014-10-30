@@ -21,7 +21,7 @@ if edge
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'coffee-rails', github: 'rails/coffee-rails'
 else
-  gem 'rails', '4.2.0.beta1'
+  gem 'rails', '4.2.0.beta2'
   gem 'sprockets-rails', '3.0.0.beta1'
   gem 'sass-rails', '~> 5.0.0.beta1'
   gem 'coffee-rails', '~> 4.0.0'
