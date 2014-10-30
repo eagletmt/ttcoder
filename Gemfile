@@ -84,8 +84,6 @@ group :test do
   gem 'simplecov'
 
   gem 'webmock', require: 'webmock/rspec'
-  # webmock depends on safe_yaml and the current released safe_yaml is broken against Ruby 2.2.
-  gem 'safe_yaml', github: 'dtao/safe_yaml', ref: '4201ed53522bd5a4da02b336bfbe92a8fc2c4abe'
   gem 'vcr'
   gem 'fakeredis', require: 'fakeredis/rspec'
   gem 'timecop'
