@@ -6,11 +6,8 @@ Wants=nginx.service postgresql.service redis.service
 [Service]
 Type=forking
 User=ttcoder
-Environment=BUNDLE_GEMFILE=/home/ttcoder/deploy/current/Gemfile
-Environment=RBENV_ROOT=/usr/local/rbenv
-Environment=RBENV_VERSION=2.1.2
 WorkingDirectory=/home/ttcoder/deploy/current
-ExecStart=/usr/local/rbenv/shims/bundle exec unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production -D
+ExecStart=/usr/bin/bundle exec unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production -D
 ExecReload=/bin/kill -HUP $MAINPID
 ExecRestart=/bin/kill -USR2 $MAINPID
 ExecRestart=/usr/bin/sleep 2
