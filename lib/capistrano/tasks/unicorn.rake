@@ -1,9 +1,9 @@
 namespace :unicorn do
-  desc 'Send QUIT signal to Unicorn'
-  task :quit do
+  desc 'Send USR2 signal to Unicorn'
+  task :restart do
     on roles(:app) do
       unit_name = 'ttcoder.service'
-      signal = :QUIT
+      signal = :USR2
 
        main_pid = capture(:systemctl, 'show', unit_name, '--property', 'MainPID', '--no-pager')[/\AMainPID=(\d+)\z/, 1].to_i
        if main_pid == 0
@@ -15,6 +15,6 @@ namespace :unicorn do
   end
 end
 
-after 'deploy:publishing', 'unicorn:quit'
+after 'deploy:publishing', 'unicorn:restart'
 
 # vim: set ft=ruby:
