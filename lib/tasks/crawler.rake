@@ -3,7 +3,7 @@ namespace :crawler do
   task :work => [:environment] do
     if Rails.env.production?
       # Re-configure
-      Raven.configure do
+      Raven.configure do |config|
         config.dsn = "fluentd://#{ENV['SENTRY_PUBLIC_KEY_CRAWLER']}:#{ENV['SENTRY_SECRET_KEY_CRAWLER']}@localhost:24224/3"
       end
     end
