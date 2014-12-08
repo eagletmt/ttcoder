@@ -20,13 +20,7 @@ namespace :crawler do
           begin
             crawler.run
           rescue Exception => e
-            Fluent::Logger.post("#{klass.name.underscore}_error", {
-              crawler_class: klass.name,
-              class: e.class.name,
-              message: e.message,
-              backtrace: e.backtrace,
-            })
-            AlertMailer.crawler_error(klass, e)
+            Raven.capture_exception(e)
           end
           sleep INTERVAL
         end
