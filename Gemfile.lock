@@ -99,6 +99,11 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -212,6 +217,10 @@ GEM
     rainbow (2.0.0)
     raindrops (0.13.0)
     rake (10.4.0)
+    raven-transports-fluentd (0.1.1)
+      fluent-logger
+      hashie
+      sentry-raven (>= 0.10.1)
     rdoc (4.1.2)
       json (~> 1.4)
     redis (3.1.0)
@@ -276,6 +285,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sentry-raven (0.12.1)
+      faraday (>= 0.7.6)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -347,6 +358,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   coveralls
   database_rewinder
+  dotenv-rails
   factory_girl_rails
   fakeredis
   faraday
@@ -365,6 +377,7 @@ DEPENDENCIES
   pry-rails
   pry-stack_explorer
   rails (= 4.2.0.rc1)
+  raven-transports-fluentd
   redis
   redis-rails
   rspec (>= 3.0.0)
@@ -373,6 +386,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0.0.beta1)
   sdoc
+  sentry-raven
   simplecov
   slim-rails
   sprockets-rails (= 3.0.0.beta1)

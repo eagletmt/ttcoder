@@ -12,7 +12,7 @@ set :use_sudo, false
 # set :log_level, :debug
 # set :pty, true
 
-set :linked_files, %w[config/secrets.yml config/database.yml]
+set :linked_files, %w[config/secrets.yml config/database.yml .env]
 set :linked_dirs, %w[log tmp/pids]
 
 # set :keep_releases, 5

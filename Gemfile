@@ -46,6 +46,7 @@ gem 'active_decorator'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'redis-rails'
+gem 'dotenv-rails'
 
 group :doc do
   gem 'sdoc', require: false
@@ -54,6 +55,8 @@ end
 group :production do
   gem 'pg'
   gem 'unicorn'
+  gem 'sentry-raven'
+  gem 'raven-transports-fluentd'
 end
 
 group :development do
