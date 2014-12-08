@@ -1,6 +1,13 @@
 namespace :crawler do
   desc 'Run crawlers periodically'
   task :work => [:environment] do
+    if Rails.env.production?
+      # Re-configure
+      Raven.configure do
+        config.dsn = "fluentd://#{ENV['SENTRY_PUBLIC_KEY_CRAWLER']}:#{ENV['SENTRY_SECRET_KEY_CRAWLER']}@localhost:24224/3"
+      end
+    end
+
     require 'aoj_crawler'
     require 'poj_crawler'
 
