@@ -124,16 +124,26 @@ shared_examples 'a site problems controller' do
     end
 
     context 'with sign-in' do
+      include SiteProblemsHelper
+
       before do
         session[:user_id] = user.id
       end
 
       it 'works' do
-        extend SiteProblemsHelper
         post :update_tags, problem_id: problem1.problem_id, tags: [tag1.name, tag2.name]
         expect(response).to redirect_to(problem_path(problem1))
         problem1.reload
         expect(problem1.tags.map(&:name)).to match_array([tag2.name, tag1.name])
+      end
+
+      context 'when no tags are given' do
+        it 'clears tags' do
+          post :update_tags, problem_id: problem1.problem_id
+          expect(response).to redirect_to(problem_path(problem1))
+          problem1.reload
+          expect(problem1.tags).to be_empty
+        end
       end
     end
   end
