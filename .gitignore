@@ -20,6 +20,7 @@
 /config/database.yml
 /coverage
 /.env
+/.capistrano
 
 /.vagrant
 /Gemfile.edge.lock
