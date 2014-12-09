@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  private
+
   before_action :set_leftbar_contests
   def set_leftbar_contests
     @leftbar_contests = Contest.all.limit(30)
@@ -17,6 +19,15 @@ class ApplicationController < ActionController::Base
     unless @current_user
       session[:return_to] = request.fullpath
       redirect_to new_session_path, alert: 'Login is required'
+    end
+  end
+
+  if Rails.env.production?
+    before_action :set_raven_context
+    def set_raven_context
+      if @current_user
+        Raven.user_context(id: @current_user.id)
+      end
     end
   end
 end
