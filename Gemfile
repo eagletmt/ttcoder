@@ -45,8 +45,8 @@ gem 'msgpack', '>= 0.5.8'
 gem 'active_decorator'
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'redis-rails'
 gem 'dotenv-rails'
+gem 'dalli'
 
 group :doc do
   gem 'sdoc', require: false
