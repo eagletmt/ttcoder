@@ -37,8 +37,7 @@ gem 'slim-rails'
 gem 'faraday'
 gem 'nokogiri'
 
-# https://github.com/swanandp/acts_as_list/pull/140
-gem 'acts_as_list', github: 'swanandp/acts_as_list', ref: 'fa1520af7655d422db51f8468dcabbc7a1b1c273'
+gem 'acts_as_list', '>= 0.6.0'
 gem 'redis'
 gem 'fluent-logger'
 gem 'msgpack', '>= 0.5.8'
