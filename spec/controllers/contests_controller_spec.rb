@@ -26,9 +26,9 @@ RSpec.describe ContestsController, type: :controller do
     it 'assigns to @contests in ascending order of created_at' do
       FactoryGirl.create :contest, created_at: contest.created_at - 1.day
       get :index
-      contests = assigns :contests
-      expect(contests.size).to eq(2)
-      expect(contests[0].created_at).to be < contests[1].created_at
+      c = assigns :contests
+      expect(c.size).to eq(2)
+      expect(c[0].created_at).to be < c[1].created_at
     end
   end
 
@@ -42,9 +42,9 @@ RSpec.describe ContestsController, type: :controller do
         post :create, contest: contest_params
         expect(response).to be_ok
         expect(response).to render_template(:new)
-        contest = assigns(:contest)
-        expect(contest.errors[:name]).not_to be_empty
-        expect(contest.message).to eq(contest.message)
+        c = assigns(:contest)
+        expect(c.errors[:name]).not_to be_empty
+        expect(c.message).to eq(c.message)
       end
     end
   end
