@@ -32,8 +32,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder'
-# https://github.com/slim-template/slim-rails/pull/69
-gem 'slim-rails', github: 'slim-template/slim-rails', ref: '7d352df66dfd56642b03234d69116a63eb15d02d'
+gem 'slim-rails','>= 3.0.1'
 
 gem 'faraday'
 gem 'nokogiri'
