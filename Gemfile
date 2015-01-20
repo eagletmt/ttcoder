@@ -46,13 +46,13 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'dalli'
+gem 'pg'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :production do
-  gem 'pg'
   gem 'unicorn'
   gem 'sentry-raven'
   gem 'raven-transports-fluentd'
@@ -93,8 +93,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3'
-
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   gem 'pry-rails'

@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 15) do
 
-  create_table "activities", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "target_id",   null: false
     t.string   "target_type", null: false
@@ -23,10 +26,10 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "updated_at"
   end
 
-  add_index "activities", ["target_id", "target_type"], name: "index_activities_on_target_id_and_target_type"
-  add_index "activities", ["user_id"], name: "index_activities_on_user_id"
+  add_index "activities", ["target_type", "target_id"], name: "index_activities_on_target_type_and_target_id", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
-  create_table "aoj_submissions", force: true do |t|
+  create_table "aoj_submissions", force: :cascade do |t|
     t.integer  "run_id"
     t.string   "user_id"
     t.string   "problem_id"
@@ -40,12 +43,11 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "updated_at"
   end
 
-  add_index "aoj_submissions", ["problem_id"], name: "index_aoj_submissions_on_problem_id"
-  add_index "aoj_submissions", ["run_id"], name: "index_aoj_submissions_on_run_id"
-  add_index "aoj_submissions", ["submission_date"], name: "index_aoj_submissions_on_submission_date"
-  add_index "aoj_submissions", ["user_id"], name: "index_aoj_submissions_on_user_id"
+  add_index "aoj_submissions", ["problem_id"], name: "index_aoj_submissions_on_problem_id", using: :btree
+  add_index "aoj_submissions", ["run_id"], name: "index_aoj_submissions_on_run_id", using: :btree
+  add_index "aoj_submissions", ["submission_date"], name: "index_aoj_submissions_on_submission_date", using: :btree
 
-  create_table "contests", force: true do |t|
+  create_table "contests", force: :cascade do |t|
     t.string   "name"
     t.text     "message",    default: ""
     t.integer  "owner_id"
@@ -53,25 +55,25 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "updated_at"
   end
 
-  add_index "contests", ["owner_id"], name: "index_contests_on_owner_id"
+  add_index "contests", ["owner_id"], name: "index_contests_on_owner_id", using: :btree
 
-  create_table "contests_site_problems", force: true do |t|
+  create_table "contests_site_problems", force: :cascade do |t|
     t.integer "contest_id"
     t.integer "site_problem_id"
     t.integer "position"
   end
 
-  create_table "contests_users", force: true do |t|
+  create_table "contests_users", force: :cascade do |t|
     t.integer  "contest_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "contests_users", ["contest_id"], name: "index_contests_users_on_contest_id"
-  add_index "contests_users", ["user_id"], name: "index_contests_users_on_user_id"
+  add_index "contests_users", ["contest_id"], name: "index_contests_users_on_contest_id", using: :btree
+  add_index "contests_users", ["user_id"], name: "index_contests_users_on_user_id", using: :btree
 
-  create_table "poj_submissions", force: true do |t|
+  create_table "poj_submissions", force: :cascade do |t|
     t.string   "user"
     t.integer  "problem_id"
     t.string   "result"
@@ -84,18 +86,17 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "updated_at"
   end
 
-  add_index "poj_submissions", ["problem_id"], name: "index_poj_submissions_on_problem_id"
-  add_index "poj_submissions", ["submitted_at"], name: "index_poj_submissions_on_submitted_at"
-  add_index "poj_submissions", ["user"], name: "index_poj_submissions_on_user"
+  add_index "poj_submissions", ["problem_id"], name: "index_poj_submissions_on_problem_id", using: :btree
+  add_index "poj_submissions", ["submitted_at"], name: "index_poj_submissions_on_submitted_at", using: :btree
 
-  create_table "site_problems", force: true do |t|
+  create_table "site_problems", force: :cascade do |t|
     t.string "site",       null: false
     t.string "problem_id", null: false
   end
 
-  add_index "site_problems", ["site", "problem_id"], name: "index_site_problems_on_site_and_problem_id", unique: true
+  add_index "site_problems", ["site", "problem_id"], name: "index_site_problems_on_site_and_problem_id", unique: true, using: :btree
 
-  create_table "standing_caches", force: true do |t|
+  create_table "standing_caches", force: :cascade do |t|
     t.string   "user",         null: false
     t.string   "problem_type", null: false
     t.string   "problem_id",   null: false
@@ -105,9 +106,9 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "updated_at"
   end
 
-  add_index "standing_caches", ["user", "problem_type", "problem_id"], name: "index_standing_caches_on_user_and_problem_type_and_problem_id", unique: true
+  add_index "standing_caches", ["user", "problem_type", "problem_id"], name: "index_standing_caches_on_user_and_problem_type_and_problem_id", unique: true, using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "site_problem_id"
     t.string   "taggable_type"
@@ -117,17 +118,17 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "site_problem_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["tag_id", "site_problem_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "owner_id",                   null: false
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "twitter_users", id: false, force: true do |t|
+  create_table "twitter_users", id: false, force: :cascade do |t|
     t.string  "uid",                     null: false
     t.string  "name",                    null: false
     t.string  "token",                   null: false
@@ -136,7 +137,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.boolean "public",  default: false, null: false
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "poj_user"
     t.string   "aoj_user"

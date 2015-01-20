@@ -1,19 +1,25 @@
-development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
-
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
-
-production:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: ttcoder_production
   pool: 5
+
+development:
+  database: ttcoder_development
+  username: ttcoder
+  password:
+
+test:
+  <<: *default
+  database: ttcoder_test
+<% if ENV['TRAVIS'] %>
+  username: postgres
+<% else %>
+  username: ttcoder
+<% end %>
+  password:
+
+production:
+  <<: *default
+  database: ttcoder_production
   username: ttcoder
   password:
