@@ -4,6 +4,7 @@ default: &default
   pool: 5
 
 development:
+  <<: *default
   database: ttcoder_development
   username: ttcoder
   password:
