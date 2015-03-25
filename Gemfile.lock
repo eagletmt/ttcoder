@@ -212,6 +212,8 @@ GEM
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    revision_plate (0.1.1)
+      rack
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -351,6 +353,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   raven-transports-fluentd
   redis
+  revision_plate
   rspec (>= 3.0.0)
   rspec-activemodel-mocks
   rspec-rails (>= 3.0.0)

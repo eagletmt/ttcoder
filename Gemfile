@@ -33,6 +33,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'slim-rails','>= 3.0.1'
+gem 'revision_plate', require: 'revision_plate/rails'
 
 gem 'faraday'
 gem 'nokogiri'

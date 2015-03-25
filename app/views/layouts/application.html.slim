@@ -31,7 +31,6 @@ html lang="ja"
       p= link_to 'Home', root_path
       p= link_to 'Tags', tags_path
       p= link_to 'Codeboard', codeboard_path
-      p.version-info= Rails.configuration.current_version
       - if @current_user
         p= link_to 'Logout', destroy_session_path, class: 'link-button'
     div#content
