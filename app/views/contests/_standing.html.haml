@@ -19,7 +19,7 @@
               - status = result.try :fetch, :status
               - submitted_at = result.try :fetch, :submitted_at
               %td{class: ['column', 'status', status.try(:downcase), check_old(@contest, submitted_at)]}= status
-            td.column= sprintf '%.2f', @scores[user.name]
+            %td.column= sprintf '%.2f', @scores[user.name]
   %p
     %tt score(user) = sum(user.solved?(problem) ? 360.0/number-of-solved-users(problem) : 0)
 - if @contest.message.present?
