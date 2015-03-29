@@ -1,9 +1,9 @@
 - content_for :title, "Recent ACs at #{@site.upcase}"
-h1= yield :title
+%h1= yield :title
 
-div#weekly-graph
+%div#weekly-graph
 
 = render partial: "#{@site}/submissions", locals: { submissions: @submissions, usermap: @usermap }
 
-javascript:
+:javascript
   renderGraph("#{send("#{@site}_weekly_path", format: :json)}")

@@ -1,26 +1,26 @@
-div
+%div
   .grid-table-scroll
-    table.grid-table
-      thead
-        tr
-          th User
+    %table.grid-table
+      %thead
+        %tr
+          %th User
           - @problems.each do |problem|
-            th.column
+            %th.column
               = link_to problem.description, problem_link(problem), target: '_blank'
-              br
+              %br
               = link_to '■', problem_path(problem)
-          th.column Score
-      tbody
+          %th.column Score
+      %tbody
         - @users.each do |user|
-          tr
-            td= link_to user.name, user
+          %tr
+            %td= link_to user.name, user
             - @problems.each do |problem|
               - result = @standing[user.name][problem.description]
               - status = result.try :fetch, :status
               - submitted_at = result.try :fetch, :submitted_at
-              td class=['column', 'status', status.try(:downcase), check_old(@contest, submitted_at)] = status
+              %td{class: ['column', 'status', status.try(:downcase), check_old(@contest, submitted_at)]}= status
             td.column= sprintf '%.2f', @scores[user.name]
-  p
-    tt score(user) = sum(user.solved?(problem) ? 360.0/number-of-solved-users(problem) : 0)
+  %p
+    %tt score(user) = sum(user.solved?(problem) ? 360.0/number-of-solved-users(problem) : 0)
 - if @contest.message.present?
-  p= simple_format @contest.message
+  %p= simple_format @contest.message

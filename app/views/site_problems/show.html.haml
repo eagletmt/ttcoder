@@ -1,27 +1,27 @@
 - content_for :title, "#{@problem.description}"
-h1= yield :title
+%h1= yield :title
 
-p= link_to problem_link(@problem), problem_link(@problem), target: '_blank'
+%p= link_to problem_link(@problem), problem_link(@problem), target: '_blank'
 
 = render partial: 'used_in'
 
 = render partial: 'solved_by'
 
-div
-  h2 style='margin-bottom: 0;' Tags
+%div
+  %h2{style: 'margin-bottom: 0;'} Tags
   - if @tags.empty?
-    p No tags yet
+    %p No tags yet
   - else
-    ul.float-listing.tags
+    %ul.float-listing.tags
       - @tags.each do |tag|
-        li.tag= link_to tag.name, tag_path(tag.name)
-  div
+        %li.tag= link_to tag.name, tag_path(tag.name)
+  %div
     = link_to 'Edit tags', edit_problem_tags_path(@problem), class: 'link-button'
 
-div
-  h2= "Last #{@count} submissions"
+%div
+  %h2= "Last #{@count} submissions"
   = render partial: "#{@problem.site}/submissions", locals: { submissions: @submissions, usermap: @usermap }
 
-div
-  h2 Activities
+%div
+  %h2 Activities
   = render 'activities/list'

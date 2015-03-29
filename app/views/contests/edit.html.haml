@@ -1,0 +1,27 @@
+- content_for :title, 'Editing contest'
+%h1= yield :title
+
+%p.notice= notice
+%p.alert= alert
+
+= render 'form'
+
+%div
+  %h2 Problems
+  %ul
+    - @contest.site_problems.each do |problem|
+      %li
+        %span= link_to problem.description, problem_path(problem)
+        %span.control-button= link_to 'Up', up_problem_contest_path(@contest, problem.id), method: :post
+        %span.control-button= link_to 'Down', down_problem_contest_path(@contest, problem.id), method: :post
+        %span.control-button= link_to 'Remove', remove_problem_contest_path(@contest, problem.id), method: :delete
+  %p
+  = form_for(:problem, url: problem_contest_path(@contest), method: :post) do |f|
+    %div
+      - SiteProblem::SITES.each do |site|
+        = f.radio_button :site, site, checked: (site == @last_type)
+        = f.label :"site_#{site}", site.upcase, class: 'radio-label'
+    = f.text_field :problem_id, placeholder: '1000'
+    = f.submit 'Add problem'
+
+%p= link_to 'Back', @contest, class: 'link-button'

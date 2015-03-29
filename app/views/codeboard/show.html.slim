@@ -1,9 +1,0 @@
-- content_for :title, 'Codeboard'
-h1= yield :title
-
-div
-  p The source code is refreshed every 5 seconds.
-  textarea#codeboard= @source
-
-script type="text/javascript"
-  == "controlCodeboard('#{codeboard_path format: :json}', $('#codeboard'));"

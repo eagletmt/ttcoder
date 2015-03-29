@@ -1,6 +1,0 @@
-- content_for :title, "Tag: #{@tag.name}"
-h1= yield :title
-
-ul
-  - @problems.each do |problem|
-    li= link_to problem.description, problem_path(problem)

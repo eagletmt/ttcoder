@@ -1,6 +1,0 @@
-- unless @used_contests.empty?
-  div
-    h2 Used in
-    ul
-      - @used_contests.each do |contest|
-        li= link_to contest.name, contest_path(contest)

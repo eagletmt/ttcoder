@@ -1,0 +1,6 @@
+- content_for :title, 'Editing user'
+%h1= yield :title
+
+= render 'form'
+
+%p= link_to 'Back', @user, class: 'link-button'

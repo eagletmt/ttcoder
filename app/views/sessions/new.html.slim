@@ -1,8 +1,0 @@
-- content_for :title, 'Login'
-h1= yield :title
-
-- if alert
-  p.alert= alert
-
-ul.no-list-type
-  li= link_to image_tag('sign-in-with-twitter-gray.png', alt: 'Sign in with Twitter'), auth_path(:twitter)

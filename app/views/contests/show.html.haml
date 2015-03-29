@@ -1,16 +1,16 @@
 - content_for :title, @contest.name
-h1= yield :title
+%h1= yield :title
 
-p.notice= notice
-p.alert= alert
+%p.notice= notice
+%p.alert= alert
 
 #contest
-  div
-    p The standing is updated every minute.
+  %div
+    %p The standing is updated every minute.
     #standing
       = render 'standing'
 
-  div
+  %div
     = link_to 'Reload', contest_path(@contest), remote: true, class: %w[link-button], id: 'reload'
     .hspace
     = link_to 'Edit this contest', edit_contest_path(@contest), class: 'link-button'
@@ -23,11 +23,11 @@ p.alert= alert
         = form_tag(join_contest_path(@contest), class: 'inline') do
           = submit_tag 'Join'
 
-  div
-    h2 Activities
+  %div
+    %h2 Activities
     = render 'activities/list'
 
-javascript:
+:javascript
   $(document).ready(function() {
     $('#reload').on('ajax:success', function(evt, data, xhr) {
       $('.alert').text('');

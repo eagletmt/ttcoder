@@ -1,0 +1,23 @@
+%h1= 'Tokyo Tech Coder'
+
+%div.home-recent-acs
+  - if partial_exists? 'message'
+    %div.top-message
+      = render partial: 'message'
+  %div
+    %h2 Recent ACs at POJ
+    = render partial: 'poj/submissions', locals: { submissions: @poj_submissions, usermap: @poj_usermap }
+    %p= link_to 'View more', poj_recent_path, class: 'link-button'
+
+  %div
+    %h2 Recent ACs at AOJ
+    = render partial: 'aoj/submissions', locals: { submissions: @aoj_submissions, usermap: @aoj_usermap }
+    %p= link_to 'View more', aoj_recent_path, class: 'link-button'
+
+- repository_url = 'https://github.com/eagletmt/ttcoder'
+- issues_url = repository_url + '/issues'
+%footer.clear
+  %p
+    何か問題点や要望があれば #{link_to_twitter 'eagletmt'} や #{link_to 'eagletmt/ttcoder', issues_url} や eagletmt@じーめーる へ。
+    %br
+    = simple_link_to repository_url

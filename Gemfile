@@ -1,4 +1,3 @@
-# http://mrkn.hatenablog.com/entry/2013/10/29/120436
 if ENV['BUNDLE_SOURCE'].nil? || ENV['BUNDLE_SOURCE'].empty?
   source 'https://rubygems.org'
 else
@@ -32,7 +31,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder'
-gem 'slim-rails','>= 3.0.1'
+gem 'faml'
 gem 'revision_plate', require: 'revision_plate/rails'
 
 gem 'faraday'

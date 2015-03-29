@@ -1,0 +1,5 @@
+.activities
+  - @activities.each do |activity|
+    .activity
+      %span.created_at= activity.created_at.strftime('%F %X')
+      %span= activity.description
