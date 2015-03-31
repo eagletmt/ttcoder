@@ -3,7 +3,7 @@ set :application, 'ttcoder'
 set :scm, :git
 set :branch, 'master'
 set :deploy_to, '/home/ttcoder/deploy'
-set :repo_url, 'https://github.com/eagletmt/ttcoder.git'
+set :repo_url, 'https://github.com/eagletmt/ttcoder'
 
 set :user, 'ttcoder'
 set :use_sudo, false
@@ -46,3 +46,13 @@ namespace :deploy do
 
   after :finishing, 'deploy:cleanup'
 end
+
+require 'capistrano/git'
+module FullRevisionStrategy
+  include Capistrano::Git::DefaultStrategy
+
+  def fetch_revision
+    context.capture(:git, "rev-list --max-count=1 #{fetch(:branch)}")
+  end
+end
+set :git_strategy, FullRevisionStrategy
