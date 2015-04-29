@@ -47,6 +47,8 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'dalli'
 gem 'pg'
+gem 'sentry-raven'
+gem 'raven-transports-fluentd'
 
 group :doc do
   gem 'sdoc', require: false
@@ -54,8 +56,6 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'sentry-raven'
-  gem 'raven-transports-fluentd'
 end
 
 group :development do
