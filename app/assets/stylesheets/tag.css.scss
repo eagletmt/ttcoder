@@ -6,10 +6,10 @@
 }
 
 .tag {
-  border: 1px solid #aaa;
-  border-radius: 5px;
   @include flatter-gradient-background(lighten(saturate($link-button-bg, 50%), 30%));
-  color: #444;
+  border: 1px solid $tag-border-color;
+  border-radius: 5px;
+  color: $tag-fg;
 
   a {
     color: inherit;

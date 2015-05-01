@@ -2,8 +2,10 @@ $main-fg: #666;
 $main-bg: #f8f8f8;
 
 $submit-bg: hsl(165, 40%, 50%);
+$submit-fg: #fff;
 
 $link-button-bg: hsl(200, 60%, 55%);
+$link-button-fg: #fff;
 $link-button-padding: 7px;
 $submit-button-padding: $link-button-padding;
 
@@ -17,3 +19,9 @@ $fail-color: #f00;
 $miss-color: #080;
 
 $tag-margin: .3em;
+$tag-fg: #444;
+$tag-border-color: #aaa;
+
+$help-text-color: #888;
+
+$contest-border-color: #ddd;

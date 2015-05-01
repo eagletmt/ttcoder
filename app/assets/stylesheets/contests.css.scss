@@ -36,7 +36,7 @@
 }
 
 form .help-text {
-  color: #888;
+  color: $help-text-color;
   font-size: 80%;
 }
 
@@ -51,11 +51,11 @@ form .help-text {
   }
 
   th {
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid $contest-border-color;
   }
 
   td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $contest-border-color;
   }
 
   .name-cell {

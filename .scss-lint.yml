@@ -1,1 +1,8 @@
 exclude: 'app/assets/stylesheets/application.css'
+linters:
+  VendorPrefix:
+    enabled: false
+  QualifyingElement:
+    enabled: false
+  IdSelector:
+    enabled: false

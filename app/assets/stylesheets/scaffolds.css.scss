@@ -1,7 +1,10 @@
+$alert-color: #f00;
+$notice-color: #080;
+
 .alert {
-  color: #f00;
+  color: $alert-color;
 }
 
 .notice {
-  color: #080;
+  color: $notice-color;
 }
