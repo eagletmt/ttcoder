@@ -36,6 +36,7 @@ class UsersController < ApplicationController
       redirect_to @current_user, notice: 'User was successfully updated.'
     else
       @current_user.name = @current_user.name_was
+      @user = @current_user
       render action: 'edit'
     end
   end

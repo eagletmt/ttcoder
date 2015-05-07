@@ -116,6 +116,21 @@ RSpec.describe 'User CRUD', type: :feature do
     expect(page).not_to have_content('AC')
   end
 
+  it 'Rejects invalid modification' do
+    visit '/'
+    click_link 'Login'
+    click_link 'Sign in with Twitter'
+    click_button 'Create'
+
+    visit '/users/edit'
+    fill_in 'username', with: ''
+    click_button 'Update'
+    expect(page).to have_css('.alert')
+    within('.alert') do
+      expect(page).to have_content('username is invalid')
+    end
+  end
+
   it 'View username on each page' do
     visit '/'
     expect(page).to_not have_link(username)
