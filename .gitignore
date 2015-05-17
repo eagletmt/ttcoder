@@ -24,3 +24,4 @@
 
 /.vagrant
 /Gemfile.edge.lock
+/vendor/assets/bower_components
