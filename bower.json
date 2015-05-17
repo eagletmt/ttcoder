@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "normalize.css": "~3.0.3"
+    "normalize.css": "~3.0.3",
+    "highcharts": "~4.1.5"
   }
 }
