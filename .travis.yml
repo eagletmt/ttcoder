@@ -11,12 +11,11 @@ gemfile:
   - Gemfile
   - Gemfile.edge
 bundler_args: -j4 --without production development
-before_install:
-  - export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 before_script:
   - cp config/database.yml.sample config/database.yml
   - cp config/secrets.yml.sample config/secrets.yml
   - bundle exec rake db:create db:migrate RAILS_ENV=test
+  - bower install
 matrix:
   allow_failures:
     - rvm: ruby-head
