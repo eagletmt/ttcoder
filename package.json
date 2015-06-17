@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "highcharts-release": "^4.1.6",
+    "normalize.css": "^3.0.3"
+  },
+  "private": true
+}
