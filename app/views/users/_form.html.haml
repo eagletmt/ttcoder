@@ -28,8 +28,8 @@
         %td.help-text= "Leave this field blank if it's the same with #{User.human_attribute_name(:name)}"
       - if @user.twitter_user
         = f.fields_for :twitter_user do |twitter_form|
-            %tr
-              %td= twitter_form.check_box :public
-              %td= twitter_form.label :public
+          %tr
+            %td= twitter_form.check_box :public
+            %td= twitter_form.label :public
   %div
     = f.submit(submit)
