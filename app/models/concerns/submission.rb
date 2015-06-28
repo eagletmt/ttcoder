@@ -5,8 +5,7 @@ module Submission
     scope :accepts, lambda { where(status_field => 'Accepted') }
 
     scope :between, lambda { |from, to|
-      where("#{submitted_at_field} >= ?", from.in_time_zone)
-      .where("#{submitted_at_field} < ?", to.in_time_zone)
+      where(submitted_at_field => (from.in_time_zone ... to.in_time_zone))
     }
 
     scope :order_by_submission, lambda {
