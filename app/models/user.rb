@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :poj_user, uniqueness: true, format: /\A\w+\z/
   validates :aoj_user, uniqueness: true, format: /\A\w+\z/
 
-  has_many :contests, lambda { order('id DESC') }, foreign_key: :owner_id
+  has_many :contests, lambda { order(id: :desc) }, foreign_key: :owner_id
   has_one :twitter_user
   accepts_nested_attributes_for :twitter_user
 

@@ -10,7 +10,7 @@ module Submission
     }
 
     scope :order_by_submission, lambda {
-      order("#{submitted_at_field} DESC")
+      order(submitted_at_field => :desc)
     }
 
     scope :recent, lambda {

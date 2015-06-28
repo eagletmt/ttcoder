@@ -9,7 +9,7 @@ class Contest < ActiveRecord::Base
   has_many :contests_site_problems, lambda { order(:position) }
   has_many :site_problems, through: :contests_site_problems
 
-  default_scope { order('contests.id DESC') }
+  default_scope { order(id: :desc) }
 
   after_create :create_create_activity
 
