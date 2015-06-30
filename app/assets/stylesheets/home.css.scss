@@ -75,7 +75,7 @@ form {
     padding: $submit-button-padding;
   }
 
-  .inline {
+  &.inline {
     display: inline;
   }
 }
