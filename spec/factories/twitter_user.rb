@@ -1,7 +1,5 @@
 FactoryGirl.define do
-  sequence :twitter_uid do |n|
-    n.to_s
-  end
+  sequence(:twitter_uid, &:to_s)
 
   sequence :twitter_user_name do |n|
     "Twitter_User#{n}"

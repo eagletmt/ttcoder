@@ -1,0 +1,16 @@
+# Offense count: 15
+Metrics/AbcSize:
+  Max: 34
+
+# Offense count: 17
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 21
+
+
+# Offense count: 6
+# Configuration parameters: AllowedVariables.
+Style/GlobalVars:
+  Exclude:
+    - 'app/controllers/codeboard_controller.rb'
+    - 'config/initializers/redis.rb'

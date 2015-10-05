@@ -7,7 +7,7 @@ RSpec.describe 'Ruby files' do
   let(:stderr) { StringIO.new }
 
   it 'has no syntax errors or warnings' do
-    check_output, _ = Open3.capture2e(syntax_checker, *ruby_files)
+    check_output, = Open3.capture2e(syntax_checker, *ruby_files)
     expect(check_output).to eq('')
   end
 end

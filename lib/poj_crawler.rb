@@ -14,7 +14,7 @@ class PojCrawler
       top = opts[:top]
     end
 
-    n.times do |i|
+    n.times do
       params = { size: size, top: top }
       from = Time.now
       top = crawl(params)
@@ -44,10 +44,7 @@ class PojCrawler
 
     subs.keys.min
   rescue Faraday::Error::ClientError => e
-    Fluent::Logger.post('poj_http_error', {
-      message: e.message,
-      backtrace: Rails.backtrace_cleaner.clean(e.backtrace),
-    })
+    Fluent::Logger.post('poj_http_error', message: e.message, backtrace: Rails.backtrace_cleaner.clean(e.backtrace))
   end
 
   def extract_submissions(doc)
@@ -65,7 +62,7 @@ class PojCrawler
       end
       sub.language = tds[6]
       sub.length = tds[7]
-      sub.submitted_at = Time.parse(tds[8] + ' +0800')  # XXX
+      sub.submitted_at = Time.parse(tds[8] + ' +0800') # XXX
       subs[sub.id] = sub
     end
     subs

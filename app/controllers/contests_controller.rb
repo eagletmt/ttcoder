@@ -77,7 +77,7 @@ class ContestsController < ApplicationController
     Activity.create(user: @current_user, target: @contest, kind: :contest_join)
     redirect_to contest_path(@contest), notice: "Joined to #{@contest.name}"
   rescue ActiveRecord::RecordInvalid
-    redirect_to contest_path(@contest), alert: "You have already joined!"
+    redirect_to contest_path(@contest), alert: 'You have already joined!'
   end
 
   def leave
@@ -101,44 +101,44 @@ class ContestsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contest
-      @contest = Contest.find_by! name: params[:id]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contest
+    @contest = Contest.find_by! name: params[:id]
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contest_params
-      params.require(:contest).permit(:name, :message)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contest_params
+    params.require(:contest).permit(:name, :message)
+  end
 
-    def problem_params
-      params.require(:problem).permit(:site, :problem_id)
-    end
+  def problem_params
+    params.require(:problem).permit(:site, :problem_id)
+  end
 
-    def keep_last_type
-      flash.keep :last_type
-    end
+  def keep_last_type
+    flash.keep :last_type
+  end
 
-    def calculate_scores(users, problems, standing)
-      count = {}
-      problems.each do |problem|
-        count[problem.description] = 0
-      end
-      standing.each do |user, h|
-        h.each do |problem, result|
-          if result.try(:fetch, :status) == 'AC'
-            count[problem] += 1
-          end
+  def calculate_scores(users, problems, standing)
+    count = {}
+    problems.each do |problem|
+      count[problem.description] = 0
+    end
+    standing.each do |_user, h|
+      h.each do |problem, result|
+        if result.try(:fetch, :status) == 'AC'
+          count[problem] += 1
         end
       end
-
-      scores = {}
-      users.each do |user|
-        scores[user.name] = 0.0
-        standing[user.name].each do |problem, result|
-          scores[user.name] += 360.0 / count[problem] if result.try(:fetch, :status) == 'AC'
-        end
-      end
-      scores
     end
+
+    scores = {}
+    users.each do |user|
+      scores[user.name] = 0.0
+      standing[user.name].each do |problem, result|
+        scores[user.name] += 360.0 / count[problem] if result.try(:fetch, :status) == 'AC'
+      end
+    end
+    scores
+  end
 end

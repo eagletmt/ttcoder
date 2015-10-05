@@ -38,10 +38,7 @@ class AojCrawler
     end
     true
   rescue Faraday::Error::ClientError => e
-    Fluent::Logger.post('aoj_http_error', {
-      message: e.message,
-      backtrace: Rails.backtrace_cleaner.clean(e.backtrace),
-    })
+    Fluent::Logger.post('aoj_http_error', message: e.message, backtrace: Rails.backtrace_cleaner.clean(e.backtrace))
     true
   end
 

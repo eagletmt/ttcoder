@@ -4,7 +4,7 @@ module FluentLoggerHelper
   end
 
   def last_log(tag)
-    logger.queue.select { |h| h.tag == tag }.last
+    logger.queue.reverse.find { |h| h.tag == tag }
   end
 end
 

@@ -73,7 +73,7 @@ RSpec.describe 'Contest', type: :feature do
     let(:interval) { 3.seconds }
 
     before do
-      ContestsController.class_eval {}  # autoload first
+      ContestsController.class_eval {} # autoload first
       stub_const('ContestsController::STANDING_RELOAD_INTERVAL', interval)
     end
 

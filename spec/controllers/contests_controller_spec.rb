@@ -36,7 +36,7 @@ RSpec.describe ContestsController, type: :controller do
     context 'with empty name' do
       let(:contest_name) { '' }
       let(:contest_message) { 'Something went wrong' }
-      let(:contest_params) { { name: contest_name, message: contest_message} }
+      let(:contest_params) { { name: contest_name, message: contest_message } }
 
       it 'rejects' do
         post :create, contest: contest_params

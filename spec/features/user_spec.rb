@@ -102,7 +102,7 @@ RSpec.describe 'User CRUD', type: :feature do
     expect(page).to have_content('AC')
     expect(page).not_to have_content('WA')
 
-    visit "/users/edit"
+    visit '/users/edit'
     expect(page).to have_field('username', with: username)
     expect(page).to have_field('username at POJ', with: username)
     expect(page).to have_field('username at AOJ', with: username)

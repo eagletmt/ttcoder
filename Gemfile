@@ -16,7 +16,7 @@ edge = Pathname.new(__FILE__).extname == '.edge'
 if edge
   gem 'rails', github: 'rails'
   gem 'arel', github: 'rails/arel'
-  gem 'sprockets-rails',  github: 'rails/sprockets-rails'
+  gem 'sprockets-rails', github: 'rails/sprockets-rails'
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'coffee-rails', github: 'rails/coffee-rails'
 else

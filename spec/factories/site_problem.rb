@@ -1,7 +1,5 @@
 FactoryGirl.define do
-  sequence :problem_id do |n|
-    n.to_s
-  end
+  sequence(:problem_id, &:to_s)
 
   factory :problem, class: SiteProblem do
     problem_id { generate(:problem_id) }

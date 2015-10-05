@@ -53,7 +53,7 @@ class PojSubmission < ActiveRecord::Base
     'Running & Judging',
     'Waiting',
   ]
-  def ignorable_error?(attr, msg)
+  def ignorable_error?(attr, _msg)
     attr == :result && KNOWN_INVALID_RESULTS.include?(self[attr.to_s])
   end
 end

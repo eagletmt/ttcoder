@@ -39,10 +39,10 @@ RSpec.describe PojController, type: :controller do
       expect(response).to render_template('poj/weekly')
       today = Date.today
       expect(assigns(:dates)).to eq(6.step(0, -1).map { |i| i.days.ago(today) })
-      expect(assigns(:weekly)).to eq({
+      expect(assigns(:weekly)).to eq(
         user1.name => [0, 0, 0, 2, 0, 0, 0],
         user2.name => [0, 0, 0, 0, 1, 0, 0],
-      })
+      )
     end
   end
 

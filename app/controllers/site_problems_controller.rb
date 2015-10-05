@@ -34,7 +34,7 @@ class SiteProblemsController < ApplicationController
       @dates << date
       d = date.next_day
       submission_class.user(@usermap.keys).accepts.between(date, d)
-      .group_by_user.distinct.count(:problem_id).each do |user_id, count|
+        .group_by_user.distinct.count(:problem_id).each do |user_id, count|
         @weekly[@usermap[user_id.downcase].name][i] = count
       end
       date = d
@@ -55,7 +55,7 @@ class SiteProblemsController < ApplicationController
   def edit_tags
     @problem = SiteProblem.find_or_create_by(site: site, problem_id: params[:problem_id])
     @problem_tag_ids = @problem.tags.pluck(:id)
-    @tags =Tag.all.order(:name)
+    @tags = Tag.all.order(:name)
     @tag = Tag.new
     session[:return_to] = request.fullpath
   end

@@ -43,14 +43,14 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find_by! name: params[:id]
-    end
+  def set_user
+    @user = User.find_by! name: params[:id]
+  end
 
-    def user_params
-      params.require(:user).permit(
-        :name, :poj_user, :aoj_user,
-        twitter_user_attributes: [:id, :public],
-      )
-    end
+  def user_params
+    params.require(:user).permit(
+      :name, :poj_user, :aoj_user,
+      twitter_user_attributes: [:id, :public],
+    )
+  end
 end

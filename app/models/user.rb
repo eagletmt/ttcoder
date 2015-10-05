@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
     attr_name = :"#{auth.provider}_user"
     klass = attr_name.to_s.camelize.constantize
-    self.transaction do
+    transaction do
       provider_user = klass.find_by(uid: uid)
       if provider_user
         Rails.logger.info("[Auth #{auth.provider}] Update #{uid} name=#{name.inspect}")
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
         provider_user.user
       else
         Rails.logger.info("[Auth #{auth.provider}] New #{uid} name=#{name.inspect}")
-        user = new({name: name}.merge(user_params))
+        user = new({ name: name }.merge(user_params))
         user.send("build_#{attr_name}", uid: uid, name: name, token: token, secret: secret)
         user
       end

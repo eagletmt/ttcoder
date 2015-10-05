@@ -1,11 +1,50 @@
-LineLength:
-  Max: 120
-RegexpLiteral:
-  MaxSlashes: 0
+inherit_from: .rubocop_todo.yml
 
-Documentation:
+AllCops:
+  Exclude:
+    - 'db/**/*'
+
+Metrics/LineLength:
+  Max: 160
+Metrics/AbcSize:
+  Max: 34
+Metrics/ClassLength:
+  Max: 120
+
+Lint/AssignmentInCondition:
   Enabled: false
-IfUnlessModifier:
+Lint/HandleExceptions:
   Enabled: false
-Lambda:
+Lint/RescueException:
+  Enabled: false
+
+Style/AlignParameters:
+  Enabled: false
+Style/BlockDelimiters:
+  Enabled: false
+Style/BracesAroundHashParameters:
+  Exclude:
+    - 'config/deploy.rb'
+Style/FormatString:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/HashSyntax:
+  Exclude:
+    - 'lib/tasks/**/*.rake'
+    - 'Rakefile'
+Style/NumericLiterals:
+  Enabled: false
+Style/SignalException:
+  Enabled: false
+Style/TrailingComma:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%w': '[]'
+Style/Documentation:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/Lambda:
   Enabled: false

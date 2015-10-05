@@ -119,6 +119,6 @@ RSpec.describe 'Contest edition', type: :feature do
     e1 = find('.column', text: poj4000.description)
     expect(page).to have_xpath("#{e1.path}/following-sibling::*", text: poj3000.description)
     e2 = find(:xpath, "#{e1.path}/following-sibling::*", text: poj3000.description)
-    expect(page).to have_xpath("#{e1.path}/following-sibling::*", text: aoj4000.description)
+    expect(page).to have_xpath("#{e2.path}/following-sibling::*", text: aoj4000.description)
   end
 end
