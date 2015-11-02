@@ -12,6 +12,7 @@ ExecRestart=/bin/kill -USR2 $MAINPID
 ExecRestart=/usr/bin/sleep 2
 ExecRestart=/bin/kill -QUIT $MAINPID
 ExecStop=/bin/kill -QUIT $MAINPID
+PIDFile=/home/ttcoder/deploy/current/tmp/pids/unicorn.pid
 
 [Install]
 WantedBy=multi-user.target
