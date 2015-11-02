@@ -4,17 +4,14 @@ After=nginx.service postgresql.service redis.service
 Wants=nginx.service postgresql.service redis.service
 
 [Service]
-Type=forking
 User=ttcoder
 WorkingDirectory=/home/ttcoder/deploy/current
-ExecStart=/usr/bin/bundle exec unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production -D
+ExecStart=/usr/bin/bundle exec --keep-file-descriptors unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production
 ExecReload=/bin/kill -HUP $MAINPID
 ExecRestart=/bin/kill -USR2 $MAINPID
 ExecRestart=/usr/bin/sleep 2
 ExecRestart=/bin/kill -QUIT $MAINPID
 ExecStop=/bin/kill -QUIT $MAINPID
-Restart=always
-PIDFile=/home/ttcoder/deploy/current/tmp/pids/unicorn.pid
 
 [Install]
 WantedBy=multi-user.target
