@@ -8,7 +8,7 @@ FactoryGirl.define do
     problem_id
     language 'G++'
     length 100
-    submitted_at { Time.now }
+    submitted_at { Time.zone.now }
 
     factory :poj_submission_ac do
       result 'Accepted'

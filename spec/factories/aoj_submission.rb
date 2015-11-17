@@ -15,7 +15,7 @@ FactoryGirl.define do
     cputime 0
     memory 0
     code_size 100
-    submission_date { Time.now }
+    submission_date { Time.zone.now }
 
     factory :aoj_submission_ac do
       status 'Accepted'

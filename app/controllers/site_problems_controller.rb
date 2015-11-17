@@ -27,7 +27,7 @@ class SiteProblemsController < ApplicationController
   end
 
   def weekly
-    date = 6.days.ago(Date.today)
+    date = 6.days.ago(Date.current)
     @dates = []
     @weekly = Hash.new { |h, k| h[k] = 7.times.map { 0 } }
     7.times do |i|

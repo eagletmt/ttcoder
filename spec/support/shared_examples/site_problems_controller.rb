@@ -66,7 +66,7 @@ shared_examples 'a site problems controller' do
     let!(:sub2) { create_ac('1010', user2, 3.weeks.ago) }
     let!(:sub3) { create_wa('1011', user2, 3.days.ago) }
     let!(:sub4) { create_ac('1100', user1, 2.days.ago) }
-    let!(:sub5) { create_ac('1101', 'non_member', Time.now) }
+    let!(:sub5) { create_ac('1101', 'non_member', Time.zone.now) }
 
     it 'sets recent accepts in submission date order' do
       get :recent

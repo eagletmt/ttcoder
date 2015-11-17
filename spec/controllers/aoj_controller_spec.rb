@@ -14,7 +14,7 @@ RSpec.describe AojController, type: :controller do
 
     before do
       # Stabilize submission dates
-      Timecop.travel(Time.now.noon)
+      Timecop.travel(Time.zone.now.noon)
 
       # Non-weekly accepts are not counted.
       FactoryGirl.create(:aoj_submission_ac, user_id: user1.aoj_user, problem_id: problem1, submission_date: 3.weeks.ago)
@@ -37,7 +37,7 @@ RSpec.describe AojController, type: :controller do
       xhr :get, :weekly
       expect(response).to be_ok
       expect(response).to render_template('aoj/weekly')
-      today = Date.today
+      today = Date.current
       expect(assigns(:dates)).to eq(6.step(0, -1).map { |i| i.days.ago(today) })
       expect(assigns(:weekly)).to eq(
         user1.name => [0, 0, 0, 2, 0, 0, 0],
