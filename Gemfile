@@ -84,7 +84,7 @@ group :test do
   gem 'capybara', '>= 2.3.0', require: 'capybara/rspec'
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'database_rewinder'
-  gem 'simplecov'
+  gem 'simplecov', '>= 0.9.0'
 
   gem 'webmock', require: 'webmock/rspec'
   gem 'vcr'
