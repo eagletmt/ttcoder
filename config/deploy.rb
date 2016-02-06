@@ -4,6 +4,8 @@ set :scm, :git
 set :branch, 'master'
 set :deploy_to, '/home/ttcoder/deploy'
 set :repo_url, 'https://github.com/eagletmt/ttcoder'
+require 'sshkit/backends/libssh'
+set :sshkit_backend, SSHKit::Backend::Libssh
 
 set :user, 'ttcoder'
 set :use_sudo, false

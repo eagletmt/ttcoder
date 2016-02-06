@@ -135,6 +135,7 @@ GEM
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    libssh (0.3.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -340,6 +341,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   launchy
+  libssh
   msgpack (>= 0.5.8)
   nokogiri
   omniauth

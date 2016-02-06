@@ -62,6 +62,7 @@ group :development do
   gem 'capistrano', '>= 3.2', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', '>= 1.1.2', require: false
+  gem 'libssh', require: false
   gem 'rubocop', require: false
 end
 
