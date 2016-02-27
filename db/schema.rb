@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 15) do
+ActiveRecord::Schema.define(version: 16) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,22 @@ ActiveRecord::Schema.define(version: 15) do
   add_index "aoj_submissions", ["problem_id"], name: "index_aoj_submissions_on_problem_id", using: :btree
   add_index "aoj_submissions", ["run_id"], name: "index_aoj_submissions_on_run_id", using: :btree
   add_index "aoj_submissions", ["submission_date"], name: "index_aoj_submissions_on_submission_date", using: :btree
+
+  create_table "codeforces_submissions", force: :cascade do |t|
+    t.string   "problem_id"
+    t.string   "handle"
+    t.datetime "submission_time"
+    t.string   "verdict"
+    t.string   "programming_language"
+    t.integer  "time_consumed_millis"
+    t.integer  "memory_consumed_bytes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "codeforces_submissions", ["handle"], name: "index_codeforces_submissions_on_handle", using: :btree
+  add_index "codeforces_submissions", ["problem_id"], name: "index_codeforces_submissions_on_problem_id", using: :btree
+  add_index "codeforces_submissions", ["submission_time"], name: "index_codeforces_submissions_on_submission_time", using: :btree
 
   create_table "contests", force: :cascade do |t|
     t.string   "name"
@@ -143,6 +159,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.string   "aoj_user"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "codeforces_user"
   end
 
 end

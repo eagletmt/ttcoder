@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validate_as_param :name
   validates :poj_user, uniqueness: true, format: /\A\w+\z/
   validates :aoj_user, uniqueness: true, format: /\A\w+\z/
+  validates :codeforces_user, uniqueness: true
 
   has_many :contests, lambda { order(id: :desc) }, foreign_key: :owner_id
   has_one :twitter_user
@@ -15,6 +16,7 @@ class User < ActiveRecord::Base
   before_validation(on: :create) do
     self.poj_user = name if poj_user.blank?
     self.aoj_user = name if aoj_user.blank?
+    self.codeforces_user = name if codeforces_user.blank?
   end
 
   after_save :update_standing_cache!
@@ -58,6 +60,7 @@ class User < ActiveRecord::Base
     ActiveRecord::Base.transaction do
       PojSubmission.user(poj_user.downcase).each(&:update_standing_cache!)
       AojSubmission.user(aoj_user.downcase).each(&:update_standing_cache!)
+      CodeforcesSubmission.user(codeforces_user.downcase).each(&:update_standing_cache!)
     end
   end
 end

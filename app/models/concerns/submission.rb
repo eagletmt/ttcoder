@@ -2,7 +2,7 @@ module Submission
   extend ActiveSupport::Concern
 
   included do
-    scope :accepts, lambda { where(status_field => 'Accepted') }
+    scope :accepts, lambda { where(status_field => accepted_status_name) }
 
     scope :between, lambda { |from, to|
       where(submitted_at_field => (from.in_time_zone...to.in_time_zone))
@@ -28,8 +28,6 @@ module Submission
     scope :group_by_user, lambda {
       group("lower(#{quoted_user_column_name})")
     }
-
-    validates :problem_id, presence: true, format: /\A\d+\z/
 
     after_save :update_standing_cache!
     after_create :create_create_activity
@@ -59,6 +57,7 @@ module Submission
     attr_accessor :site
     attr_accessor :user_field, :status_field, :submitted_at_field
     attr_accessor :status_abbreviations
+    attr_accessor :accepted_status_name
 
     def quoted_user_column_name
       @quoted_user_column_name ||= connection.quote_column_name(user_field)
@@ -74,7 +73,7 @@ module Submission
         user: site2user.keys,
         problem_id: problem_id,
         problem_type: site,
-        status: 'Accepted',
+        status: accepted_status_name,
       ).pluck(:user).map do |user|
         site2user[user]
       end
