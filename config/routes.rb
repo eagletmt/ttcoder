@@ -38,6 +38,16 @@ Rails.application.routes.draw do
     end
   end
 
+  scope '/codeforces' do
+    get 'weekly', to: 'codeforces#weekly', as: :codeforces_weekly
+    get 'recent', to: 'codeforces#recent', as: :codeforces_recent
+    constraints(problem_id: /\d+[A-Z]\d?/) do
+      get ':problem_id', to: 'codeforces#show', as: :codeforces
+      post ':problem_id/update_tags', to: 'codeforces#update_tags', as: :update_codeforces_tags
+      get ':problem_id/edit_tags', to: 'codeforces#edit_tags', as: :edit_codeforces_tags
+    end
+  end
+
   get 'codeboard', to: 'codeboard#show'
   post 'codeboard', to: 'codeboard#create'
 
