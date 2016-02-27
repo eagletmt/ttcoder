@@ -1,3 +1,5 @@
+require 'codeforces_crawler'
+
 class User < ActiveRecord::Base
   include ParamAttribute
   validate_as_param :name
@@ -20,6 +22,7 @@ class User < ActiveRecord::Base
   end
 
   after_save :update_standing_cache!
+  after_save :fetch_submissions_from_codeforces
 
   def self.find_or_new_from_omniauth(auth, user_params = {})
     uid = auth.uid
@@ -62,5 +65,10 @@ class User < ActiveRecord::Base
       AojSubmission.user(aoj_user.downcase).each(&:update_standing_cache!)
       CodeforcesSubmission.user(codeforces_user.downcase).each(&:update_standing_cache!)
     end
+  end
+
+  def fetch_submissions_from_codeforces
+    return unless codeforces_user_changed?
+    CodeforcesCrawler.new.crawl({ method: 'user.status', handle: codeforces_user })
   end
 end

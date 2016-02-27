@@ -17,7 +17,8 @@ class CodeforcesCrawler
       faraday.adapter Faraday.default_adapter
     end
 
-    res = @conn.get('problemset.recentStatus', params)
+    api_method = params[:method] || 'problemset.recentStatus'
+    res = @conn.get(api_method, params)
     subs = extract_submissions(JSON.parse(res.body))
     remove_existing_submissions(subs)
     return false if subs.empty?
