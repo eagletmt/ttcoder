@@ -10,6 +10,7 @@ namespace :crawler do
 
     require 'aoj_crawler'
     require 'poj_crawler'
+    require 'codeforces_crawler'
 
     INTERVAL = 5.minutes
 
@@ -30,8 +31,11 @@ namespace :crawler do
     poj_thread = start_crawler(PojCrawler)
     sleep 1.minute
     aoj_thread = start_crawler(AojCrawler)
+    sleep 1.minute
+    codeforces_thread = start_crawler(CodeforcesCrawler)
 
     poj_thread.join
     aoj_thread.join
+    codeforces_thread.join
   end
 end
