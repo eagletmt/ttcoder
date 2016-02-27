@@ -26,6 +26,10 @@
         %td= f.label :aoj_user
         %td= f.text_field :aoj_user
         %td.help-text= "Leave this field blank if it's the same with #{User.human_attribute_name(:name)}"
+      %tr
+        %td= f.label :codeforces_user
+        %td= f.text_field :codeforces_user
+        %td.help-text= "Leave this field blank if it's the same with #{User.human_attribute_name(:name)}"
       - if @user.twitter_user
         = f.fields_for :twitter_user do |twitter_form|
           %tr

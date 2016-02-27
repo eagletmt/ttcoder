@@ -1,6 +1,6 @@
 shared_examples 'a site problems show' do
   before do
-    assign :problem, stub_model(SiteProblem, site: site, problem_id: '1234')
+    assign :problem, FactoryGirl.create(:"#{site}_problem", site: site)
     assign :count, 100
     assign :submissions, []
     assign :used_contests, []

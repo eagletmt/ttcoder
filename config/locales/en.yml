@@ -26,5 +26,6 @@ en:
         name: username
         poj_user: username at POJ
         aoj_user: username at AOJ
+        codeforces_user: username at Codeforces
       twitter_user:
         public: Display link to your Twitter account

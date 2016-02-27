@@ -60,6 +60,6 @@ class SessionsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :poj_user, :aoj_user)
+    params.require(:user).permit(:name, :poj_user, :aoj_user, :codeforces_user)
   end
 end

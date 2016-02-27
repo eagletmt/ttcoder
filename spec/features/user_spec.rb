@@ -13,7 +13,7 @@ RSpec.describe 'User CRUD', type: :feature do
 
     click_link username
     within '#content' do
-      expect(page).to have_content(username, count: 3)
+      expect(page).to have_content(username, count: 4)
     end
   end
 
@@ -26,15 +26,18 @@ RSpec.describe 'User CRUD', type: :feature do
     custom_name = 'Custom'
     custom_poj_user = 'Poj_C2'
     custom_aoj_user = 'Aoj_C2'
+    custom_codeforces_user = 'Codeforces_C2'
     fill_in 'username', with: custom_name
     fill_in 'username at POJ', with: custom_poj_user
     fill_in 'username at AOJ', with: custom_aoj_user
+    fill_in 'username at Codeforces', with: custom_codeforces_user
     expect { click_button 'Create' }.to change { User.count }.by(1)
 
     click_link custom_name
     expect(page).to have_content(custom_name)
     expect(page).to have_content(custom_poj_user)
     expect(page).to have_content(custom_aoj_user)
+    expect(page).to have_content(custom_codeforces_user)
   end
 
   it 'Reject direct access to /users/new' do
@@ -106,6 +109,7 @@ RSpec.describe 'User CRUD', type: :feature do
     expect(page).to have_field('username', with: username)
     expect(page).to have_field('username at POJ', with: username)
     expect(page).to have_field('username at AOJ', with: username)
+    expect(page).to have_field('username at Codeforces', with: username)
     fill_in 'username', with: 'Next_User'
     fill_in 'username at POJ', with: 'POJ_Next'
     click_button 'Update'

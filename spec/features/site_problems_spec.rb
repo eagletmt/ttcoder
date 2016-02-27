@@ -10,4 +10,9 @@ RSpec.describe 'Site problem', type: :feature do
     let(:site) { 'aoj' }
     it_behaves_like 'a site problem page'
   end
+
+  describe 'Codeforces' do
+    let(:site) { 'codeforces' }
+    it_behaves_like 'a site problem page'
+  end
 end

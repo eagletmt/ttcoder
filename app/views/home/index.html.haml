@@ -14,6 +14,11 @@
     = render partial: 'aoj/submissions', locals: { submissions: @aoj_submissions, usermap: @aoj_usermap }
     %p= link_to 'View more', aoj_recent_path, class: 'link-button'
 
+  %div
+    %h2 Recent ACs at Codeforces
+    = render partial: 'codeforces/submissions', locals: { submissions: @codeforces_submissions, usermap: @codeforces_usermap }
+    %p= link_to 'View more', codeforces_recent_path, class: 'link-button'
+
 - repository_url = 'https://github.com/eagletmt/ttcoder'
 - issues_url = repository_url + '/issues'
 %footer.clear

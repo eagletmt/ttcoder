@@ -6,4 +6,8 @@ module UserDecorator
   def aoj_link
     "http://judge.u-aizu.ac.jp/onlinejudge/user.jsp?id=#{aoj_user}"
   end
+
+  def codeforces_link
+    "http://codeforces.com/profile/#{codeforces_user}"
+  end
 end

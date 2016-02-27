@@ -10,4 +10,9 @@ RSpec.describe 'site_problems/show', type: :view do
     let(:site) { 'aoj' }
     it_behaves_like 'a site problems show'
   end
+
+  context 'with codeforces' do
+    let(:site) { 'codeforces' }
+    it_behaves_like 'a site problems show'
+  end
 end

@@ -15,14 +15,18 @@ class UsersController < ApplicationController
   def show
     @poj_tried_count = StandingCache.where(user: @user.poj_user.downcase, problem_type: :poj).count
     @aoj_tried_count = StandingCache.where(user: @user.aoj_user.downcase, problem_type: :aoj).count
+    @codeforces_tried_count = StandingCache.where(user: @user.codeforces_user.downcase, problem_type: :codeforces).count
     @poj_accept_count = StandingCache.where(user: @user.poj_user.downcase, problem_type: :poj).where(status: 'Accepted').count
     @aoj_accept_count = StandingCache.where(user: @user.aoj_user.downcase, problem_type: :aoj).where(status: 'Accepted').count
+    @codeforces_accept_count = StandingCache.where(user: @user.codeforces_user.downcase, problem_type: :codeforces).where(status: 'OK').count
 
     @poj_tried_but_failed = StandingCache.where(user: @user.poj_user.downcase, problem_type: :poj).where.not(status: 'Accepted')
     @aoj_tried_but_failed = StandingCache.where(user: @user.aoj_user.downcase, problem_type: :aoj).where.not(status: 'Accepted')
+    @codeforces_tried_but_failed = StandingCache.where(user: @user.codeforces_user.downcase, problem_type: :codeforces).where.not(status: 'OK')
 
     @poj_tried_but_failed_count = @poj_tried_but_failed.count
     @aoj_tried_but_failed_count = @aoj_tried_but_failed.count
+    @codeforces_tried_but_failed_count = @codeforces_tried_but_failed.count
 
     @activities = Activity.recent(ACTIVITY_COUNT).where(user: @user)
   end
@@ -49,7 +53,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :name, :poj_user, :aoj_user,
+      :name, :poj_user, :aoj_user, :codeforces_user,
       twitter_user_attributes: [:id, :public],
     )
   end

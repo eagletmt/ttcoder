@@ -28,4 +28,19 @@ RSpec.describe 'site controller routing', type: :routing do
       expect(post: '/aoj/new/update_tags').not_to be_routable
     end
   end
+
+  describe '/codeforces' do
+    it 'routes /\d{3}[A-Z]\d?/ problem_id' do
+      expect(get: '/codeforces/123A').to route_to(controller: 'codeforces', action: 'show', problem_id: '123A')
+      expect(get: '/codeforces/123A1').to route_to(controller: 'codeforces', action: 'show', problem_id: '123A1')
+      expect(get: '/codeforces/123A/edit_tags').to route_to(controller: 'codeforces', action: 'edit_tags', problem_id: '123A')
+      expect(post: '/codeforces/123A/update_tags').to route_to(controller: 'codeforces', action: 'update_tags', problem_id: '123A')
+    end
+
+    it 'does not route not /\d{3}[A-Z]\d?/ problem_id' do
+      expect(get: '/codeforces/new').not_to be_routable
+      expect(get: '/codeforces/new/edit_tags').not_to be_routable
+      expect(post: '/codeforces/new/update_tags').not_to be_routable
+    end    
+  end
 end
