@@ -5,7 +5,7 @@ class CreateActivities < ActiveRecord::Migration
       t.references :target, null: false, index: true, polymorphic: true
       t.integer :kind, null: false
       t.text :parameters
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

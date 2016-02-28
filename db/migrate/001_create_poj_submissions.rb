@@ -1,16 +1,16 @@
 class CreatePojSubmissions < ActiveRecord::Migration
   def change
     create_table :poj_submissions do |t|
-      t.string :user
-      t.integer :problem_id
-      t.string :result
+      t.string :user, null: false
+      t.integer :problem_id, null: false
+      t.string :result, null: false
       t.integer :memory
       t.integer :time
-      t.string :language
-      t.integer :length
-      t.datetime :submitted_at
+      t.string :language, null: false
+      t.integer :length, null: false
+      t.datetime :submitted_at, null: false
 
-      t.timestamps
+      t.timestamps null: false
 
       t.index :user
       t.index :problem_id
