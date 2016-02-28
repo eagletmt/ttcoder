@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
   def create_user
     if flash[:auth]
-      @user = User.find_or_new_from_omniauth(OmniAuth::AuthHash.new(JSON.parse(flash[:auth])), user_params)
+      @user = User.find_or_new_from_omniauth(OmniAuth::AuthHash.new(JSON.parse(flash[:auth])), user_params.to_h)
       if @user.save
         login! @user
       else
