@@ -4,6 +4,7 @@ class AojSubmission < ActiveRecord::Base
   self.status_field = :status
   self.submitted_at_field = :submission_date
   self.user_field = :user_id
+  self.accepted_status_name = 'Accepted'
   self.status_abbreviations = {
     'Accepted' => 'AC',
     'Wrong Answer' => 'WA',
@@ -18,6 +19,7 @@ class AojSubmission < ActiveRecord::Base
 
   validates user_field, presence: true, format: /\A\w+\z/
   validates submitted_at_field, presence: true
+  validates :problem_id, presence: true, format: /\A\d+\z/
 
   validates :run_id, presence: true, uniqueness: true, format: /\A\d+\z/
   VALID_STATUSES = [

@@ -1,0 +1,2 @@
+class CodeforcesController < SiteProblemsController
+end

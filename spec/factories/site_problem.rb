@@ -11,5 +11,10 @@ FactoryGirl.define do
     factory :aoj_problem do
       site 'aoj'
     end
+
+    factory :codeforces_problem do
+      site 'codeforces'
+      problem_id { generate :codeforces_problem_id }
+    end
   end
 end

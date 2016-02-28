@@ -9,6 +9,10 @@ shared_examples 'a site problem page' do
     FactoryGirl.create(:"#{site}_submission_#{sym}", params)
   end
 
+  def create_problem
+    FactoryGirl.create(:"#{site}_problem", site: site)
+  end
+
   def create_ac(problem, user, submitted_at)
     create_submission(:ac, problem, user, submitted_at)
   end
@@ -17,7 +21,7 @@ shared_examples 'a site problem page' do
     create_submission(:wa, problem, user, submitted_at)
   end
 
-  let(:problem) { FactoryGirl.create(:problem, site: site) }
+  let(:problem) { FactoryGirl.create(:"#{site}_problem", site: site) }
   let(:user1) { FactoryGirl.create(:user) }
   let(:user2) { FactoryGirl.create(:user) }
   let!(:sub1) { create_ac(problem, user1, 5.days.ago) }

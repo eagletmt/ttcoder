@@ -4,6 +4,7 @@ class PojSubmission < ActiveRecord::Base
   self.status_field = :result
   self.submitted_at_field = :submitted_at
   self.user_field = :user
+  self.accepted_status_name = 'Accepted'
   self.status_abbreviations = {
     'Accepted' => 'AC',
     'Wrong Answer' => 'WA',
@@ -19,6 +20,7 @@ class PojSubmission < ActiveRecord::Base
 
   validates user_field, presence: true, format: /\A\w+\z/
   validates submitted_at_field, presence: true
+  validates :problem_id, presence: true, format: /\A\d+\z/
 
   VALID_RESULTS = [
     'Accepted',

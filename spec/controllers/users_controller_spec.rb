@@ -25,6 +25,9 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:aoj_tried_count)).to eq(0)
       expect(assigns(:aoj_accept_count)).to eq(0)
       expect(assigns(:aoj_tried_but_failed_count)).to eq(0)
+      expect(assigns(:codeforces_tried_count)).to eq(0)
+      expect(assigns(:codeforces_accept_count)).to eq(0)
+      expect(assigns(:codeforces_tried_but_failed_count)).to eq(0)
     end
   end
 

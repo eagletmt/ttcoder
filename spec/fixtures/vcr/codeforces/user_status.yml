@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://codeforces.com/api/user.status?count=10&handle=hadrori&method=user.status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.6.3
+      Date:
+      - Sat, 27 Feb 2016 14:01:48 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - 39ce7=CF7mRHjs; Expires=Thu, 10-Mar-2016 03:48:28 GMT; Path=/
+      - JSESSIONID=DD5C27C02596993C174DBAA67D4ABEFC-n1; Path=/; HttpOnly
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      - private,no-cache,no-store,max-age=0,must-revalidate
+      Expires:
+      - "-1"
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status":"OK","result":[{"id":16379707,"contestId":1,"creationTimeSeconds":1456569927,"relativeTimeSeconds":2147483647,"problem":{"contestId":1,"index":"A","name":"Theatre
+        Square","type":"PROGRAMMING","tags":["math"]},"author":{"contestId":1,"members":[{"handle":"hadrori"}],"participantType":"PRACTICE","ghost":false,"startTimeSeconds":1266580800},"programmingLanguage":"Haskell","verdict":"OK","testset":"TESTS","passedTestCount":20,"timeConsumedMillis":30,"memoryConsumedBytes":8601600},{"id":16378784,"contestId":1,"creationTimeSeconds":1456567492,"relativeTimeSeconds":2147483647,"problem":{"contestId":1,"index":"A","name":"Theatre
+        Square","type":"PROGRAMMING","tags":["math"]},"author":{"contestId":1,"members":[{"handle":"hadrori"}],"participantType":"PRACTICE","ghost":false,"startTimeSeconds":1266580800},"programmingLanguage":"Haskell","verdict":"OK","testset":"TESTS","passedTestCount":20,"timeConsumedMillis":30,"memoryConsumedBytes":8499200},{"id":12198167,"contestId":302,"creationTimeSeconds":1437645154,"relativeTimeSeconds":3454,"problem":{"contestId":302,"index":"B","name":"Eugeny
+        and Play List","type":"PROGRAMMING","points":1000.0,"tags":["binary search","implementation","two
+        pointers"]},"author":{"contestId":302,"members":[{"handle":"hadrori"}],"participantType":"VIRTUAL","ghost":false,"startTimeSeconds":1437641700},"programmingLanguage":"GNU
+        C++11","verdict":"OK","testset":"TESTS","passedTestCount":54,"timeConsumedMillis":686,"memoryConsumedBytes":819200},{"id":12197985,"contestId":302,"creationTimeSeconds":1437644362,"relativeTimeSeconds":2662,"problem":{"contestId":302,"index":"A","name":"Eugeny
+        and Array","type":"PROGRAMMING","points":500.0,"tags":["implementation"]},"author":{"contestId":302,"members":[{"handle":"hadrori"}],"participantType":"VIRTUAL","ghost":false,"startTimeSeconds":1437641700},"programmingLanguage":"GNU
+        C++11","verdict":"OK","testset":"TESTS","passedTestCount":38,"timeConsumedMillis":826,"memoryConsumedBytes":819200},{"id":12197958,"contestId":302,"creationTimeSeconds":1437644231,"relativeTimeSeconds":2531,"problem":{"contestId":302,"index":"A","name":"Eugeny
+        and Array","type":"PROGRAMMING","points":500.0,"tags":["implementation"]},"author":{"contestId":302,"members":[{"handle":"hadrori"}],"participantType":"VIRTUAL","ghost":false,"startTimeSeconds":1437641700},"programmingLanguage":"GNU
+        C++11","verdict":"WRONG_ANSWER","testset":"TESTS","passedTestCount":3,"timeConsumedMillis":0,"memoryConsumedBytes":409600},{"id":12197928,"contestId":302,"creationTimeSeconds":1437644043,"relativeTimeSeconds":2343,"problem":{"contestId":302,"index":"A","name":"Eugeny
+        and Array","type":"PROGRAMMING","points":500.0,"tags":["implementation"]},"author":{"contestId":302,"members":[{"handle":"hadrori"}],"participantType":"VIRTUAL","ghost":false,"startTimeSeconds":1437641700},"programmingLanguage":"GNU
+        C++11","verdict":"WRONG_ANSWER","testset":"TESTS","passedTestCount":10,"timeConsumedMillis":77,"memoryConsumedBytes":409600},{"id":12197815,"contestId":302,"creationTimeSeconds":1437643598,"relativeTimeSeconds":1898,"problem":{"contestId":302,"index":"C","name":"Yaroslav
+        and Sequence","type":"PROGRAMMING","points":1500.0,"tags":["constructive algorithms"]},"author":{"contestId":302,"members":[{"handle":"hadrori"}],"participantType":"VIRTUAL","ghost":false,"startTimeSeconds":1437641700},"programmingLanguage":"GNU
+        C++11","verdict":"OK","testset":"TESTS","passedTestCount":49,"timeConsumedMillis":62,"memoryConsumedBytes":0},{"id":12197729,"contestId":302,"creationTimeSeconds":1437643241,"relativeTimeSeconds":1541,"problem":{"contestId":302,"index":"C","name":"Yaroslav
+        and Sequence","type":"PROGRAMMING","points":1500.0,"tags":["constructive algorithms"]},"author":{"contestId":302,"members":[{"handle":"hadrori"}],"participantType":"VIRTUAL","ghost":false,"startTimeSeconds":1437641700},"programmingLanguage":"GNU
+        C++11","verdict":"WRONG_ANSWER","testset":"TESTS","passedTestCount":2,"timeConsumedMillis":30,"memoryConsumedBytes":0},{"id":12197597,"contestId":302,"creationTimeSeconds":1437642672,"relativeTimeSeconds":972,"problem":{"contestId":302,"index":"C","name":"Yaroslav
+        and Sequence","type":"PROGRAMMING","points":1500.0,"tags":["constructive algorithms"]},"author":{"contestId":302,"members":[{"handle":"hadrori"}],"participantType":"VIRTUAL","ghost":false,"startTimeSeconds":1437641700},"programmingLanguage":"GNU
+        C++11","verdict":"WRONG_ANSWER","testset":"TESTS","passedTestCount":2,"timeConsumedMillis":30,"memoryConsumedBytes":0},{"id":12083958,"contestId":300,"creationTimeSeconds":1437051673,"relativeTimeSeconds":2147483647,"problem":{"contestId":300,"index":"E","name":"Empire
+        Strikes Back","type":"PROGRAMMING","points":3000.0,"tags":["binary search","math"]},"author":{"contestId":300,"members":[{"handle":"hadrori"}],"participantType":"PRACTICE","ghost":false,"startTimeSeconds":1366903800},"programmingLanguage":"GNU
+        C++11","verdict":"OK","testset":"TESTS","passedTestCount":30,"timeConsumedMillis":3336,"memoryConsumedBytes":54272000}]}'
+    http_version: 
+  recorded_at: Sat, 27 Feb 2016 14:01:48 GMT
+recorded_with: VCR 3.0.1

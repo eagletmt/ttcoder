@@ -10,6 +10,10 @@ shared_examples 'a site problems controller' do
     FactoryGirl.create(:"#{site}_submission_#{sym}", params)
   end
 
+  def create_problem
+    FactoryGirl.create(:"#{site}_problem", site: site)
+  end
+
   def create_ac(problem, user, submitted_at)
     create_submission(:ac, problem, user, submitted_at)
   end
@@ -19,8 +23,8 @@ shared_examples 'a site problems controller' do
   end
 
   describe '#show' do
-    let(:problem1) { FactoryGirl.create(:problem, site: site) }
-    let(:problem2) { FactoryGirl.create(:problem, site: site) }
+    let(:problem1) { FactoryGirl.create(:"#{site}_problem", site: site) }
+    let(:problem2) { FactoryGirl.create(:"#{site}_problem", site: site) }
     let(:user1) { user }
     let(:user2) { FactoryGirl.create(:user) }
 
@@ -62,11 +66,11 @@ shared_examples 'a site problems controller' do
   describe '#recent' do
     let(:user1) { user }
     let(:user2) { FactoryGirl.create(:user) }
-    let!(:sub1) { create_ac('1000', user1, 2.months.ago) }
-    let!(:sub2) { create_ac('1010', user2, 3.weeks.ago) }
-    let!(:sub3) { create_wa('1011', user2, 3.days.ago) }
-    let!(:sub4) { create_ac('1100', user1, 2.days.ago) }
-    let!(:sub5) { create_ac('1101', 'non_member', Time.zone.now) }
+    let!(:sub1) { create_ac(create_problem, user1, 2.months.ago) }
+    let!(:sub2) { create_ac(create_problem, user2, 3.weeks.ago) }
+    let!(:sub3) { create_wa(create_problem, user2, 3.days.ago) }
+    let!(:sub4) { create_ac(create_problem, user1, 2.days.ago) }
+    let!(:sub5) { create_ac(create_problem, 'non_member', Time.zone.now) }
 
     it 'sets recent accepts in submission date order' do
       get :recent
@@ -78,8 +82,8 @@ shared_examples 'a site problems controller' do
   end
 
   describe '#edit_tags' do
-    let(:problem1) { FactoryGirl.create(:problem, site: site) }
-    let(:problem2) { FactoryGirl.create(:problem, site: site) }
+    let(:problem1) { create_problem }
+    let(:problem2) { create_problem }
 
     before do
       problem1.tags = [tag1, tag2]
@@ -113,8 +117,8 @@ shared_examples 'a site problems controller' do
   end
 
   describe '#update_tags' do
-    let(:problem1) { FactoryGirl.create(:problem, site: site) }
-    let(:problem2) { FactoryGirl.create(:problem, site: site) }
+    let(:problem1) { create_problem }
+    let(:problem2) { create_problem }
 
     context 'without sign-in' do
       it 'rejects' do

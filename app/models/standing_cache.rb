@@ -1,5 +1,5 @@
 class StandingCache < ActiveRecord::Base
-  validates :user, format: /\A[a-z0-9_]+\z/
+  validates :user, format: /\A[a-z0-9_\.\-]+\z/
 
   def update?(attrs)
     if status == 'Accepted'

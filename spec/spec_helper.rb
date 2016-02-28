@@ -50,6 +50,7 @@ RSpec.configure do |config|
     DatabaseRewinder.clean_all
   end
   config.before :each do |example|
+    allow_any_instance_of(User).to receive(:fetch_submissions_from_codeforces).and_return(true)
     if example.metadata[:js]
       nil
     else

@@ -7,6 +7,7 @@ RSpec.describe ContestsController, type: :controller do
   let(:p1) { FactoryGirl.create :poj_problem }
   let(:p2) { FactoryGirl.create :aoj_problem }
   let(:p3) { FactoryGirl.create :poj_problem }
+  let(:p4) { FactoryGirl.create :codeforces_problem }
   let(:problems) { [p1, p2, p3] }
   let(:contest) { FactoryGirl.create(:contest, users: users) }
 

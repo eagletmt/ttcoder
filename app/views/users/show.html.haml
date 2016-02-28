@@ -20,10 +20,16 @@
       %td.column.number-cell= @poj_tried_but_failed_count
     %tr
       %td AOJ
-      %td.column.number-cell= link_to @user.aoj_user, @user.aoj_link
+      %td.column= link_to @user.aoj_user, @user.aoj_link
       %td.column.number-cell= @aoj_tried_count
       %td.column.number-cell= @aoj_accept_count
       %td.column.number-cell= @aoj_tried_but_failed_count
+    %tr
+      %td Codeforces
+      %td.column= link_to @user.codeforces_user, @user.codeforces_link
+      %td.column.number-cell= @codeforces_tried_count
+      %td.column.number-cell= @codeforces_accept_count
+      %td.column.number-cell= @codeforces_tried_but_failed_count
 
 %dl
   - if @user.twitter_user.try(:public)
@@ -41,6 +47,9 @@
   %ul.float-listing
     - @aoj_tried_but_failed.each do |c|
       %li= link_to "AOJ #{c.problem_id}", aoj_path(c.problem_id)
+  %ul.float-listing
+    - @codeforces_tried_but_failed.each do |c|
+      %li= link_to "Codeforces #{c.problem_id}", codeforces_path(c.problem_id)
 
 %div
   %h2 Activities

@@ -1,8 +1,11 @@
+require 'codeforces_crawler'
+
 class User < ActiveRecord::Base
   include ParamAttribute
   validate_as_param :name
   validates :poj_user, uniqueness: true, format: /\A\w+\z/
   validates :aoj_user, uniqueness: true, format: /\A\w+\z/
+  validates :codeforces_user, uniqueness: true
 
   has_many :contests, lambda { order(id: :desc) }, foreign_key: :owner_id
   has_one :twitter_user
@@ -15,9 +18,11 @@ class User < ActiveRecord::Base
   before_validation(on: :create) do
     self.poj_user = name if poj_user.blank?
     self.aoj_user = name if aoj_user.blank?
+    self.codeforces_user = name if codeforces_user.blank?
   end
 
   after_save :update_standing_cache!
+  after_save :fetch_submissions_from_codeforces
 
   def self.find_or_new_from_omniauth(auth, user_params = {})
     uid = auth.uid
@@ -58,6 +63,12 @@ class User < ActiveRecord::Base
     ActiveRecord::Base.transaction do
       PojSubmission.user(poj_user.downcase).each(&:update_standing_cache!)
       AojSubmission.user(aoj_user.downcase).each(&:update_standing_cache!)
+      CodeforcesSubmission.user(codeforces_user.downcase).each(&:update_standing_cache!)
     end
+  end
+
+  def fetch_submissions_from_codeforces
+    return unless codeforces_user_changed?
+    CodeforcesCrawler.new.crawl({ method: 'user.status', handle: codeforces_user })
   end
 end
