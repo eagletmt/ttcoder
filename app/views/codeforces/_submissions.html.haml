@@ -20,7 +20,7 @@
         %td.column= link_to submission.id, submission.submission_link
         %td.column= link_to submission.problem_id, codeforces_path(submission.problem_id)
         %td{class: ['column', 'status', submission.abbrev_status.downcase]}= submission.verdict
-        %td.column= submission.time_consumed_millis * 10
+        %td.column= submission.time_consumed_millis
         %td.column= submission.memory_consumed_bytes
         %td.column= submission.programming_language
         %td.column= submission.submission_time.strftime '%F %X'
