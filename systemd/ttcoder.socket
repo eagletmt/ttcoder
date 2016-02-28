@@ -1,5 +1,0 @@
-[Socket]
-ListenStream=/tmp/ttcoder.sock
-
-[Install]
-WantedBy=sockets.target

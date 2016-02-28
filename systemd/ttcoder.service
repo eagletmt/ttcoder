@@ -4,11 +4,13 @@ After=nginx.service postgresql.service redis.service
 Wants=nginx.service postgresql.service redis.service
 
 [Service]
+Type=forking
 User=ttcoder
 WorkingDirectory=/home/ttcoder/deploy/current
-ExecStart=/usr/bin/bundle exec --keep-file-descriptors unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production
+ExecStart=/usr/bin/bundle exec unicorn -c /home/ttcoder/deploy/current/config/unicorn.rb -E production -D
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -QUIT $MAINPID
+Restart=always
 PIDFile=/home/ttcoder/deploy/current/tmp/pids/unicorn.pid
 
 [Install]
