@@ -79,7 +79,6 @@ group :test do
     gem 'rspec', '>= 3.0.0'
   end
   gem 'fuubar', '>= 2.0.0.rc1'
-  gem 'rspec-activemodel-mocks'
   gem 'factory_girl_rails'
   gem 'capybara', '>= 2.3.0', require: 'capybara/rspec'
   gem 'poltergeist', require: 'capybara/poltergeist'

@@ -4,8 +4,8 @@ RSpec.describe 'contests/show', type: :view do
   let(:t1) { Time.parse '2013-06-04 10:00' }
   let(:t2) { Time.parse '2013-06-04 12:00' }
   let(:t3) { Time.parse '2013-06-04 14:00' }
-  let(:users) { [stub_model(User, name: 'Stern', poj_user: 'Stern')] }
-  let(:problems) { [stub_model(SiteProblem, site: 'poj', problem_id: '4000')] }
+  let(:users) { [FactoryGirl.create(:user, name: 'Stern', poj_user: 'Stern')] }
+  let(:problems) { [FactoryGirl.create(:poj_problem, problem_id: '4000')] }
 
   before do
     assign :users, users
@@ -14,7 +14,7 @@ RSpec.describe 'contests/show', type: :view do
 
   context 'when the latest submission is after contest creation' do
     it 'does not render with .old' do
-      assign :contest, stub_model(Contest, users: users, name: 'Unbreakable Dark', site_problems: problems, created_at: t2)
+      assign :contest, FactoryGirl.create(:contest, users: users, name: 'Unbreakable Dark', site_problems: problems, created_at: t2)
       standing = {
         'Stern' => {
           'POJ 4000' => { status: 'AC', submitted_at: t3 },
@@ -34,7 +34,7 @@ RSpec.describe 'contests/show', type: :view do
 
   context 'when the latest submission is before contest creation' do
     it 'renders with .old' do
-      assign :contest, stub_model(Contest, users: users, name: 'Unbreakable Dark', site_problems: problems, created_at: t2)
+      assign :contest, FactoryGirl.create(:contest, users: users, name: 'Unbreakable Dark', site_problems: problems, created_at: t2)
       standing = {
         'Stern' => {
           'POJ 4000' => { status: 'AC', submitted_at: t1 },

@@ -11,7 +11,7 @@ shared_examples 'a site problems show' do
 
   context 'with contest' do
     it 'renders Used in' do
-      contest = stub_model Contest, name: 'Virtual Arena'
+      contest = FactoryGirl.create(:contest, name: 'Virtual Arena')
       assign :used_contests, [contest]
       render
       expect(rendered).to have_content('Used in')
@@ -28,7 +28,7 @@ shared_examples 'a site problems show' do
 
   context 'with solved users' do
     it 'renders Solved by' do
-      user = stub_model User, name: 'Stern'
+      user = FactoryGirl.create(:user, name: 'Stern')
       assign :solved_users, [user]
       render
       expect(rendered).to have_content('Solved by')
