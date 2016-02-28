@@ -81,9 +81,7 @@ RSpec.describe ContestsController, type: :controller do
 
     context 'with empty users' do
       before do
-        contest.users.each do |user|
-          contest.users.destroy(user)
-        end
+        contest.users.destroy_all
       end
 
       it 'assigns @scores with empty hash' do
