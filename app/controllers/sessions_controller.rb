@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if user.persisted?
         login! user
       else
-        flash[:auth] = auth
+        flash[:auth] = auth.to_json
         redirect_to new_user_path
       end
     else
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def new_user
     if flash[:auth]
-      @user = User.find_or_new_from_omniauth(flash[:auth])
+      @user = User.find_or_new_from_omniauth(OmniAuth::AuthHash.new(JSON.parse(flash[:auth])))
       flash.keep(:auth)
     else
       redirect_to new_session_path
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
   def create_user
     if flash[:auth]
-      @user = User.find_or_new_from_omniauth(flash[:auth], user_params)
+      @user = User.find_or_new_from_omniauth(OmniAuth::AuthHash.new(JSON.parse(flash[:auth])), user_params)
       if @user.save
         login! @user
       else
