@@ -20,11 +20,11 @@ if edge
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'coffee-rails', github: 'rails/coffee-rails'
 else
-  gem 'rails', '4.2.5.2'
+  gem 'rails', '5.0.0'
   gem 'arel', '>= 6.0.0'
   gem 'sprockets-rails'
-  gem 'sass-rails', '~> 5.0.0'
-  gem 'coffee-rails', '~> 4.1.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
 end
 
 gem 'uglifier', '>= 1.3.0'
@@ -40,7 +40,7 @@ gem 'acts_as_list', '>= 0.6.0'
 gem 'redis'
 gem 'fluent-logger'
 gem 'msgpack', '>= 0.5.8'
-gem 'active_decorator'
+gem 'active_decorator', '>= 0.7.1'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
@@ -75,8 +75,8 @@ group :test do
     gem 'rspec-mocks', github: 'rspec/rspec-mocks'
     gem 'rspec-support', github: 'rspec/rspec-support'
   else
-    gem 'rspec-rails', '>= 3.0.0'
-    gem 'rspec', '>= 3.0.0'
+    gem 'rspec-rails', '>= 3.5.0.beta1'
+    gem 'rspec', '>= 3.5.0.beta1'
   end
   gem 'fuubar', '>= 2.0.0.rc1'
   gem 'factory_girl_rails'
@@ -89,6 +89,7 @@ group :test do
   gem 'vcr'
   gem 'fakeredis', require: 'fakeredis/rspec'
   gem 'timecop'
+  gem 'rails-controller-testing'
 end
 
 group :development, :test do

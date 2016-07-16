@@ -17,7 +17,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'works' do
-      get :show, id: user.name
+      get :show, params: { id: user.name }
       expect(response).to be_ok
       expect(assigns(:poj_tried_count)).to eq(3)
       expect(assigns(:poj_accept_count)).to eq(1)

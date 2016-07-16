@@ -34,7 +34,7 @@ RSpec.describe CodeforcesController, type: :controller do
     end
 
     it 'sets the number of weekly accepts' do
-      xhr :get, :weekly
+      get :weekly, xhr: true
       expect(response).to be_ok
       expect(response).to render_template('codeforces/weekly')
       today = Date.current
