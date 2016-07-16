@@ -40,7 +40,7 @@ RSpec.describe ContestsController, type: :controller do
       let(:contest_params) { { name: contest_name, message: contest_message } }
 
       it 'rejects' do
-        post :create, contest: contest_params
+        post :create, params: { contest: contest_params }
         expect(response).to be_ok
         expect(response).to render_template(:new)
         c = assigns(:contest)
@@ -52,7 +52,7 @@ RSpec.describe ContestsController, type: :controller do
 
   describe '#show' do
     it 'assigns @standing' do
-      get :show, id: contest.name
+      get :show, params: { id: contest.name }
       expect(response).to be_ok
       standing = assigns :standing
 
@@ -70,7 +70,7 @@ RSpec.describe ContestsController, type: :controller do
     end
 
     it 'assigns @scores' do
-      get :show, id: contest.name
+      get :show, params: { id: contest.name }
       expect(response).to be_ok
       scores = assigns :scores
       expect(scores).to be_a Hash
@@ -85,7 +85,7 @@ RSpec.describe ContestsController, type: :controller do
       end
 
       it 'assigns @scores with empty hash' do
-        get :show, id: contest.name
+        get :show, params: { id: contest.name }
         expect(response).to be_ok
         scores = assigns :scores
         expect(scores).to be_a Hash
@@ -99,7 +99,7 @@ RSpec.describe ContestsController, type: :controller do
       end
 
       it 'assigns @scores with hash filled with 0' do
-        get :show, id: contest.name
+        get :show, params: { id: contest.name }
         expect(response).to be_ok
         scores = assigns :scores
         expect(scores).to be_a Hash
@@ -111,12 +111,12 @@ RSpec.describe ContestsController, type: :controller do
 
   describe '#edit' do
     it 'works' do
-      get :edit, id: contest.name
+      get :edit, params: { id: contest.name }
       expect(response).to be_ok
     end
 
     it 'assigns @last_type' do
-      get :edit, id: contest.name
+      get :edit, params: { id: contest.name }
       expect(assigns(:last_type)).to eq 'poj'
     end
   end
@@ -126,7 +126,7 @@ RSpec.describe ContestsController, type: :controller do
 
     it 'adds new problem at the last' do
       expect do
-        post :add_problem, id: contest.name, problem: problem_params
+        post :add_problem, params: { id: contest.name, problem: problem_params }
         contest.reload
       end.to change { contest.site_problems.count }.by 1
       expect(response).to redirect_to edit_contest_path(contest)
@@ -137,13 +137,13 @@ RSpec.describe ContestsController, type: :controller do
 
     context 'with duplication' do
       before do
-        post :add_problem, id: contest.name, problem: problem_params
+        post :add_problem, params: { id: contest.name, problem: problem_params }
         contest.reload
       end
 
       it 'rejects' do
         expect {
-          post :add_problem, id: contest.name, problem: problem_params
+          post :add_problem, params: { id: contest.name, problem: problem_params }
           contest.reload
         }.not_to change { contest.site_problems.count }
         expect(response).to redirect_to(edit_contest_path(contest))
@@ -161,7 +161,7 @@ RSpec.describe ContestsController, type: :controller do
       end
 
       it 'works' do
-        expect { post :join, id: contest.name }.to change { contest.reload.users.exists?(new_user.id) }.from(false).to(true)
+        expect { post :join, params: { id: contest.name } }.to change { contest.reload.users.exists?(new_user.id) }.from(false).to(true)
         expect(response).to redirect_to(contest)
         expect(flash[:notice]).not_to be_nil
         expect(flash[:alert]).to be_nil
@@ -173,7 +173,7 @@ RSpec.describe ContestsController, type: :controller do
         end
 
         it 'rejects' do
-          expect { post :join, id: contest.name }.not_to change { contest.reload.users.exists?(new_user.id) }
+          expect { post :join, params: { id: contest.name } }.not_to change { contest.reload.users.exists?(new_user.id) }
           expect(response).to redirect_to(contest)
           expect(flash[:notice]).to be_nil
           expect(flash[:alert]).not_to be_nil

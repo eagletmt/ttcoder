@@ -52,7 +52,7 @@ shared_examples 'a site problems controller' do
     end
 
     it 'sets submissions of the problem in submission date order' do
-      get :show, problem_id: problem1.problem_id
+      get :show, params: { problem_id: problem1.problem_id }
       expect(response).to be_ok
       expect(response).to render_template('site_problems/show')
       expect(assigns(:problem)).to eq(problem1)
@@ -94,7 +94,7 @@ shared_examples 'a site problems controller' do
 
     context 'without sign-in' do
       it 'rejects' do
-        get :edit_tags, problem_id: problem1.problem_id
+        get :edit_tags, params: { problem_id: problem1.problem_id }
         expect(response).to redirect_to(new_session_path)
       end
     end
@@ -105,11 +105,11 @@ shared_examples 'a site problems controller' do
       end
 
       it 'works' do
-        get :edit_tags, problem_id: problem1.problem_id
+        get :edit_tags, params: { problem_id: problem1.problem_id }
         expect(response).to be_ok
         expect(assigns(:tags).map(&:name)).to eq([tag2.name, tag1.name])
 
-        get :edit_tags, problem_id: problem2.problem_id
+        get :edit_tags, params: { problem_id: problem2.problem_id }
         expect(response).to be_ok
         expect(assigns(:tags).map(&:name)).to eq([tag2.name, tag1.name])
       end
@@ -122,7 +122,7 @@ shared_examples 'a site problems controller' do
 
     context 'without sign-in' do
       it 'rejects' do
-        post :update_tags, problem_id: problem1.problem_id, tags: [tag1.name, tag2.name]
+        post :update_tags, params: { problem_id: problem1.problem_id, tags: [tag1.name, tag2.name] }
         expect(response).to redirect_to(new_session_path)
       end
     end
@@ -135,7 +135,7 @@ shared_examples 'a site problems controller' do
       end
 
       it 'works' do
-        post :update_tags, problem_id: problem1.problem_id, tags: [tag1.name, tag2.name]
+        post :update_tags, params: { problem_id: problem1.problem_id, tags: [tag1.name, tag2.name] }
         expect(response).to redirect_to(problem_path(problem1))
         problem1.reload
         expect(problem1.tags.map(&:name)).to match_array([tag2.name, tag1.name])
@@ -143,7 +143,7 @@ shared_examples 'a site problems controller' do
 
       context 'when no tags are given' do
         it 'clears tags' do
-          post :update_tags, problem_id: problem1.problem_id
+          post :update_tags, params: { problem_id: problem1.problem_id }
           expect(response).to redirect_to(problem_path(problem1))
           problem1.reload
           expect(problem1.tags).to be_empty
