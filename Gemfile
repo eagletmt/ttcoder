@@ -48,6 +48,7 @@ gem 'dalli'
 gem 'pg'
 gem 'sentry-raven'
 gem 'raven-transports-fluentd'
+gem 'ridgepole', '>= 0.6.5.beta10'
 
 group :doc do
   gem 'sdoc', require: false

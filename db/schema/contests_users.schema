@@ -1,0 +1,8 @@
+create_table "contests_users", force: :cascade do |t|
+  t.integer  "contest_id", null: false
+  t.integer  "user_id",    null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["contest_id"], name: "index_contests_users_on_contest_id", using: :btree
+  t.index ["user_id"], name: "index_contests_users_on_user_id", using: :btree
+end

@@ -1,0 +1,8 @@
+create_table "twitter_users", id: false, force: :cascade do |t|
+  t.string  "uid",                     null: false
+  t.string  "name",                    null: false
+  t.string  "token",                   null: false
+  t.string  "secret",                  null: false
+  t.integer "user_id",                 null: false
+  t.boolean "public",  default: false, null: false
+end

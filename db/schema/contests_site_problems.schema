@@ -1,0 +1,5 @@
+create_table "contests_site_problems", force: :cascade do |t|
+  t.integer "contest_id"
+  t.integer "site_problem_id"
+  t.integer "position"
+end

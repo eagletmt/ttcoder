@@ -1,0 +1,15 @@
+create_table "poj_submissions", force: :cascade do |t|
+  t.string   "user",         null: false
+  t.integer  "problem_id",   null: false
+  t.string   "result",       null: false
+  t.integer  "memory"
+  t.integer  "time"
+  t.string   "language",     null: false
+  t.integer  "length",       null: false
+  t.datetime "submitted_at", null: false
+  t.datetime "created_at",   null: false
+  t.datetime "updated_at",   null: false
+  t.index "lower((\"user\")::text)", name: "index_poj_submissions_on_user", using: :btree
+  t.index ["problem_id"], name: "index_poj_submissions_on_problem_id", using: :btree
+  t.index ["submitted_at"], name: "index_poj_submissions_on_submitted_at", using: :btree
+end

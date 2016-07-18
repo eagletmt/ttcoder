@@ -1,0 +1,17 @@
+create_table "aoj_submissions", force: :cascade do |t|
+  t.integer  "run_id",          null: false
+  t.string   "user_id",         null: false
+  t.string   "problem_id",      null: false
+  t.datetime "submission_date", null: false
+  t.string   "status",          null: false
+  t.string   "language",        null: false
+  t.integer  "cputime",         null: false
+  t.integer  "memory",          null: false
+  t.integer  "code_size",       null: false
+  t.datetime "created_at",      null: false
+  t.datetime "updated_at",      null: false
+  t.index "lower((user_id)::text)", name: "index_aoj_submissions_on_user_id", using: :btree
+  t.index ["problem_id"], name: "index_aoj_submissions_on_problem_id", using: :btree
+  t.index ["run_id"], name: "index_aoj_submissions_on_run_id", using: :btree
+  t.index ["submission_date"], name: "index_aoj_submissions_on_submission_date", using: :btree
+end

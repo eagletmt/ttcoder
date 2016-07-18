@@ -1,0 +1,14 @@
+create_table "codeforces_submissions", force: :cascade do |t|
+  t.string   "problem_id",            null: false
+  t.string   "handle",                null: false
+  t.datetime "submission_time",       null: false
+  t.string   "verdict",               null: false
+  t.string   "programming_language",  null: false
+  t.integer  "time_consumed_millis",  null: false
+  t.integer  "memory_consumed_bytes", null: false
+  t.datetime "created_at",            null: false
+  t.datetime "updated_at",            null: false
+  t.index ["handle"], name: "index_codeforces_submissions_on_handle", using: :btree
+  t.index ["problem_id"], name: "index_codeforces_submissions_on_problem_id", using: :btree
+  t.index ["submission_time"], name: "index_codeforces_submissions_on_submission_time", using: :btree
+end

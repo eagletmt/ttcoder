@@ -12,7 +12,7 @@ bundler_args: -j4 --without production development
 before_script:
   - cp config/database.yml.sample config/database.yml
   - cp config/secrets.yml.sample config/secrets.yml
-  - bundle exec rake db:create db:migrate RAILS_ENV=test
+  - bundle exec rake db:create ridgepole:apply RAILS_ENV=test
   - npm install
 matrix:
   allow_failures:
