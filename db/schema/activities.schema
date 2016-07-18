@@ -1,7 +1,7 @@
 create_table "activities", force: :cascade do |t|
   t.integer  "user_id",     null: false
-  t.string   "target_type", null: false
   t.integer  "target_id",   null: false
+  t.string   "target_type", null: false
   t.integer  "kind",        null: false
   t.text     "parameters"
   t.datetime "created_at",  null: false
