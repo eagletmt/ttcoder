@@ -2,7 +2,7 @@ set :application, 'ttcoder'
 
 set :scm, :git
 set :branch, 'master'
-set :deploy_to, '/home/ttcoder/deploy'
+set :deploy_to, '/home/ttcoder/ttcoder'
 set :repo_url, 'https://github.com/eagletmt/ttcoder'
 require 'sshkit/backends/libssh'
 set :sshkit_backend, SSHKit::Backend::Libssh

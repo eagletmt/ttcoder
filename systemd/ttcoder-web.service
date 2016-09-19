@@ -1,0 +1,17 @@
+[Unit]
+Description=Tokyo Tech Coder
+After=redis.service
+Wants=redis.service
+
+[Service]
+Type=forking
+User=ttcoder
+WorkingDirectory=/home/ttcoder/ttcoder/current
+ExecStart=/usr/bin/bundle exec unicorn -c /home/ttcoder/ttcoder/current/config/unicorn.rb -E production -D
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -QUIT $MAINPID
+Restart=always
+PIDFile=/home/ttcoder/ttcoder/current/tmp/pids/unicorn.pid
+
+[Install]
+WantedBy=multi-user.target

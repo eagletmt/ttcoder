@@ -15,7 +15,7 @@
 
 ## Initial setup
 ### System configuration
-The systemd units [ttcoder.service](systemd/ttcoder.service) and [ttcoder-crawler.service](systemd/ttcoder-crawler.service) assumes that:
+The systemd units [ttcoder-web.service](systemd/ttcoder-web.service) and [ttcoder-crawler.service](systemd/ttcoder-crawler.service) assumes that:
 
 - `ttcoder` user exists
 
@@ -26,7 +26,7 @@ Local host:
 ```sh
 ssh-keygen -f ttcoder
 mv ttcoder ~/.ssh/ttcoder.pem
-scp ttcoder.pub systemd/ttcoder-crawler.service systemd/ttcoder.service remote-host:/tmp
+scp ttcoder.pub systemd/ttcoder-crawler.service systemd/ttcoder-web.service remote-host:/tmp
 ```
 
 Remote host:
@@ -36,8 +36,8 @@ sudo mkdir -m 700 ~ttcoder/.ssh
 sudo mv /tmp/ttcoder.pub ~ttcoder/.ssh/authorized_keys
 sudo chmod 600 ~ttcoder/.ssh/authorized_keys
 sudo chown ttcoder:ttcoder -R ~ttcoder/.ssh
-sudo mv /tmp/ttcoder-crawler.service /tmp/ttcoder.service /etc/systemd/system
-sudo systemctl enable ttcoder.service
+sudo mv /tmp/ttcoder-crawler.service /tmp/ttcoder-web.service /etc/systemd/system
+sudo systemctl enable ttcoder-web.service
 sudo systemctl enable ttcoder-crawler.service
 ```
 
@@ -57,7 +57,7 @@ bin/cap production secrets:upload
 Remote host:
 
 ```sh
-sudo systemctl start ttcoder.service
+sudo systemctl start ttcoder-web.service
 sudo systemctl start ttcoder-crawler.service
 ```
 
