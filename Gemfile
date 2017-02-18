@@ -20,7 +20,7 @@ if edge
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'coffee-rails', github: 'rails/coffee-rails'
 else
-  gem 'rails', '5.0.0'
+  gem 'rails', '5.0.1'
   gem 'arel', '>= 6.0.0'
   gem 'sprockets-rails'
   gem 'sass-rails'
@@ -49,10 +49,6 @@ gem 'pg'
 gem 'sentry-raven'
 gem 'raven-transports-fluentd'
 gem 'ridgepole', '>= 0.6.5.beta10'
-
-group :doc do
-  gem 'sdoc', require: false
-end
 
 group :production do
   gem 'unicorn'
